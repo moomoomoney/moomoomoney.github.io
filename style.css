@@ -1,0 +1,190 @@
+.box {
+  width: 95%;
+  height: 100px;
+  border: 5px dashed black;
+  background-color: #7cedc4;
+  padding: 20px;
+  margin: 22px;
+  text-align: center;
+  font-size: 40px;
+}
+
+p {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.dropdownTitle{
+  background-color: #7cedc4;
+  color: black;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 97.5%;
+  margin-left: 20px;
+  font-size: 25px;
+}
+
+#dropped{
+  background-color: #7cedc4;
+  color: black;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 97.5%;
+  margin-left: 20px;
+  font-size: 25px;
+}
+
+
+.loginPage {
+  margin-top: 40px;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+.center {
+  text-align: center;
+}
+
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Account Dashboard Display */
+.grid-display {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color: #06d68a;
+  margin: 20px;
+  gap: 10px;
+}
+
+.grid-item {
+  background-color: #06d68a;
+  padding: 0px 20px;
+  text-align: center;
+  font-size: 25px;
+  margin: 0;
+}
+
+.grid-title {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 0px 10px;
+}
+
+body {
+  background-color: #87cee8;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.subtitle {
+  font-size: 25px;
+}
+.heading{
+  margin: 20px;
+}
+
+
+/* EARN Dashboard Display */
+.earn-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Ensures 4 equal columns */
+  grid-auto-rows: minmax(100px, auto); /* Ensures rows grow with content */
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  column-gap: 20px;
+}
+
+.earn-item {
+  background-color: #7cedc4;
+  border-color: #090909;
+  text-align: center;
+  font-size: 20px; 
+}
+
+.earn-title {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 0px 10px;
+}
+
+
+/* Tracking Table */
+.table-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.table {
+  border-collapse: collapse;
+  width: 80%; 
+}
+.table th, .table td {
+  border: 1px solid #000000;
+  padding: 8px;
+  text-align: left;
+}
+.table th {
+  background-color: #7cedc4;
+}
+.header {
+  background-color: #68e0b4;
+}
+
+
+
+
+body {
+  background-color: #87cee8;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar a {
+  float: left;
+  color: #090909;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 28px;
+  border-width: 2px;
+  border-color: black;
+  background-color: rgb(26, 221, 221);
+}
+
+.navbar a.active {
+  background-color: #498fb4;
+  color: black;
+}
+
+.logout {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+}
