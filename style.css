@@ -178,11 +178,31 @@ body {
   color: black;
 }
 
+.flex-container {
+  display: flex;
+}
+
+.flex-container > div {
+  padding: 20px;
+  flex-basis: 45%;
+}
+
 .logout {
   background-color: #04aa6d;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  top: 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+}
+
+.login {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  top: 0;
   border: none;
   cursor: pointer;
   width: 100%;
