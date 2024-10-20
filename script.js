@@ -25,3 +25,21 @@ function reveal(id) {
 function refresh() {
   window.location.reload();
 }
+
+// Login Button
+function login(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the values from the input fields
+  const username = document.getElementById("username").value; 
+  const password = document.getElementById("password").value; 
+
+  // Check credentials
+  if (username === "Zhongjie" && password === "IsSmart") {
+    // Redirect to home.html
+    window.location.href = "home.html";
+  } else {
+    alert("Password or username incorrect.");
+  }
+}

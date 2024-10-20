@@ -12,27 +12,31 @@
     <title>Login</title>
   </head>
   <body>
-    <h1 class="center">Welcome Back to Moo Moo Money  (M³)!</h1>
-    <img src="cow.jpg" alt="logo" width="200" height="200" class="img">
-    <form
-      class="loginPage"
-      action="/home.html"
-    >
+    <h1 class="center">Welcome Back to Moo Moo Money (M³)!</h1>
+    <img src="cow.jpg" alt="logo" width="200" height="200" class="img" />
+    <form class="loginPage">
       <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required />
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter Username"
+          name="uname"
+          required
+        />
 
         <label for="psw"><b>Password</b></label>
         <input
+          id="password"
           type="password"
           placeholder="Enter Password"
           name="psw"
           required
         />
-        <button class="login">Login</button>
+        <button class="login" type="button" onclick="login(event)">Login</button>
       </div>
     </form>
   </body>
-  
+
   <script src="script.js"></script>
 </html>
