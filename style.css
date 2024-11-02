@@ -1,12 +1,11 @@
 .box {
-  width: 95%;
   height: 100px;
   border: 5px dashed black;
   background-color: #7cedc4;
   padding: 20px;
   margin: 22px;
   text-align: center;
-  font-size: 40px;
+  font-size: 200%;
 }
 
 p {
