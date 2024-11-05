@@ -25,7 +25,7 @@ input[type="password"] {
 }
 
 .dropdownTitle{
-  background-color: #7cedc4;
+  background-color: #68e0b4;
   color: black;
   padding: 14px 20px;
   border: none;
@@ -35,7 +35,8 @@ input[type="password"] {
   font-size: 25px;
 }
 
-#dropped{
+
+#dropdownText{
   background-color: #7cedc4;
   color: black;
   padding: 14px 20px;

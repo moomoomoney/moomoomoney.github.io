@@ -63,61 +63,301 @@
     <a href="./land.html">Land</a>
     <a href="./purchase.html" class="active">Purchase</a>
   </div>
+
 <h1 class="center">Currently Owned: None</h1>
-<button class="dropdownTitle" onclick="reveal('dropped')">
-    <h3 class="heading"><b>Cows</b></h3>
+
+
+<!-- LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND-->
+<button class="dropdownTitle" onclick="reveal('land')">
+  <h3 class="heading"><b>Land</b></h3>
 </button>
-<button class="dropdownText" id="dropped" style="display: none">
-<!-- Earn Options -->
+<div class="dropdownText" id="land" style="display: none">
 <div class="earn-display">
   <!-- Earn Item Title -->
   <div class="earn-item">
     <p class="earn-title">
-        Cow Farm
-        <div class="subtitle">(200 M³)</div>
+        Shed
+        <div class="subtitle">15 M³
+        </div>
     </p> 
   </div>
   <div class="earn-item">
     <p class="earn-title">
-        Cows
-        <div class="subtitle">(50 M³)</div>
+        Hut
+        <div class="subtitle">20  M³</div>
     </p>
   </div>
   <div class="earn-item">
     <p class="earn-title">
-        Cattles
-        <div class="subtitle">(250 M³)</div>
+        House
+        <div class="subtitle">30  M³</div>
     </p>
   </div>
   <div class="earn-item">
     <p class="earn-title">
-        Bulls
-        <div class="subtitle">(500 M³)</div>
+        Small Farm
+        <div class="subtitle">50 M³</div>
     </p>
   </div>
   <!-- Earn Item Description -->
   <div class="earn-item">
     <p>
-       *Required to own cows and cattle* <br> 
-       Max capacity: 24 cows and 10 cattle<br>
+      Land with enough space to build a shed
     </p>
   </div>
   <div class="earn-item">
-    <p>1 M³ /day <br>
-        *Required for bulls and cattle*
+    <p>Land with enough space to build a hut<br>
+       
     </p>
   </div>
   <div class="earn-item">
-    <p>5 M³ /day</p>
+    <p>Land with enough space to build a house (includes small lawn)</p>
   </div>
   <div class="earn-item">
-    <p>100 M³ /day <br>
-        *Bull Arena (1,000 M³) and Bull Facilities (200 M³ /bull) required* <br>  
-        Max: 3 bulls
+    <p>Land for a small farm <br>
+      (Includes hut, grass/garden, and barn) <br><br>
+      Max: 3 cows
     </p>
   </div>
 </div>
+</div>
+
+<br>
+<br>
+<div class="dropwdown">
+  <!-- RESOURCES RESOURCES RESOURCES RESOURCES RESOURCES RESOURCES RESOURCES RESOURCES -->
+<button class="dropdownTitle" onclick="reveal('RESOURCES')">
+  <h3 class="heading"><b>Resources (per day)</b></h3>
 </button>
+<div class="dropdownText" id="RESOURCES" style="display: none">
+<div class="earn-display">
+  <!-- Title -->
+  <div class="earn-item">
+    <p class="earn-title">
+        Water
+        <div class="subtitle">(1 M³)</div>
+    </p> 
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Ale
+        <div class="subtitle">(3 M³)</div>
+    </p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Basic Food
+        <div class="subtitle">(2 M³)</div>
+    </p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Standard Food
+        <div class="subtitle">(5 M³)</div>
+    </p>
+  </div>
+  <!-- Description -->
+  <div class="earn-item">
+    <p>
+      *Required to live* 
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>
+        Ale / Apple Cider / Other drinks 
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>*Required to survive* 
+      <br> Includes bread, porridge, vegetables, few meat
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>Better than basic food<br>
+      Includes soft bread, porridge, premium vegetables, meat (beef, pork, chicken)
+    </p>
+  </div>
+</div>
+</div>
+<br>
+<br>
+</div>
+
+<div class="dropwdown">
+    <!-- COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS -->
+  <button class="dropdownTitle" onclick="reveal('dropped')">
+    <h3 class="heading"><b>Cows</b></h3>
+  </button>
+  <div class="dropdownText" id="dropped" style="display: none">
+  <div class="earn-display">
+    <!-- Title -->
+    <div class="earn-item">
+      <p class="earn-title">
+          Cow Farm
+          <div class="subtitle">(200 M³)</div>
+      </p> 
+    </div>
+    <div class="earn-item">
+      <p class="earn-title">
+          Cows
+          <div class="subtitle">(50 M³)</div>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p class="earn-title">
+          Cattles
+          <div class="subtitle">(250 M³)</div>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p class="earn-title">
+          Bulls
+          <div class="subtitle">(500 M³)</div>
+      </p>
+    </div>
+    <!-- Description -->
+    <div class="earn-item">
+      <p>
+        *Required to own cows and cattle* <br> 
+        Max capacity: 24 cows and 10 cattle<br>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p>1 M³ /day <br>
+          *Required for bulls and cattle*
+      </p>
+    </div>
+    <div class="earn-item">
+      <p>5 M³ /day</p>
+    </div>
+    <div class="earn-item">
+      <p>100 M³ /day <br>
+          *Bull Arena (1,000 M³) and Bull Facilities (200 M³ /bull) required* <br>  
+          Max: 3 bulls
+      </p>
+    </div>
+  </div>
+  </div>
+  <br>
+  <br>
+</div>
+
+<div class="dropwdown">
+  <!-- WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS  -->
+<button class="dropdownTitle" onclick="reveal('WEAPONS')">
+  <h3 class="heading"><b>Weapons</b></h3>
+</button>
+<div class="dropdownText" id="WEAPONS" style="display: none">
+<div class="earn-display">
+  <!-- Title -->
+  <div class="earn-item">
+    <p class="earn-title">
+        Darts
+        <div class="subtitle">(5 M³)</div>
+    </p> 
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Bow and 5 Arrows
+        <div class="subtitle">(15 M³)</div>
+    </p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Spear
+        <div class="subtitle">(50 M³)</div>
+    </p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Sword
+        <div class="subtitle">(150 M³)</div>
+    </p>
+  </div>
+  <!-- Description -->
+  <div class="earn-item">
+    <p>
+      Five darts, useful for hiting short range targets
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>
+      Useful for long range targets
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>Fun to stab people with 
+      <br> Stick + Rock
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>Metal sword <br>
+      Sharper, better than spears
+    </p>
+  </div>
+</div>
+</div>
+<br>
+<br>
+</div>
+
+<div class="dropwdown">
+  <!-- TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS   -->
+<button class="dropdownTitle" onclick="reveal('TOOLS')">
+  <h3 class="heading"><b>Tools</b></h3>
+</button>
+<div class="dropdownText" id="TOOLS" style="display: none">
+<div class="earn-display">
+  <!-- Title -->
+  <div class="earn-item">
+    <p class="earn-title">
+        Axe
+        <div class="subtitle">(10 M³)</div>
+    </p> 
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Shovel
+        <div class="subtitle">(10 M³)</div>
+    </p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Hammer
+        <div class="subtitle">(10 M³)</div>
+    </p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">
+        Building Stuff
+        <div class="subtitle">(20 M³)</div>
+    </p>
+  </div>
+  <!-- Description -->
+  <div class="earn-item">
+    <p>
+      Chop things
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>
+      Dig things
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>Hit things
+    </p>
+  </div>
+  <div class="earn-item">
+    <p>Build things
+    </p>
+  </div>
+</div>
+</div>
+<br>
+<br>
+</div>
+
 
 <script src="script.js"></script>
 </html>
