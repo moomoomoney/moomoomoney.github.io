@@ -1,6 +1,6 @@
 // Update Homescreen
-var coins = "218 M³"  // Available Coins
-var income = "13 M³"; // Today's Income
+var coins = "230 M³"  // Available Coins
+var income = "12 M³"; // Today's Income
 var losses = "0 M³"; //Today's losses
 var auto = "0 M³";   //Auto Earnings
 
