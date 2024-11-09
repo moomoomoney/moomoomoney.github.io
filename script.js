@@ -1,6 +1,6 @@
 // Initialize variables with values from localStorage, or default if not set
-let coins = parseInt(localStorage.getItem('coins')) || 230;  // Default to 230 if no value is stored
-let income = 12;  // Today's Income (this value isn't stored in localStorage)
+let coins = parseInt(localStorage.getItem('coins')) || 243;  // Default to 230 if no value is stored
+let income = 13;  // Today's Income (this value isn't stored in localStorage)
 let losses = 0;   // Today's Losses (this value isn't stored in localStorage)
 let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
 
@@ -14,7 +14,6 @@ function updateDashboard() {
 
 // Function to add coins
 function addCoins() {
-  // Get the value entered by the user from the input field
   const addCoinsBy = parseInt(document.getElementsByClassName("addCoins")[0].value);
 
   // Add the entered amount to the current coins
@@ -23,14 +22,10 @@ function addCoins() {
   // Save the updated coins value in localStorage
   localStorage.setItem('coins', coins);
 
-  // Update the coins display on the page
   updateDashboard();
-
-  // Clear the input field after adding coins
   document.getElementsByClassName("addCoins")[0].value = "";
 }
 
-// Call the updateDashboard function to set the correct values on page load
 updateDashboard();
 
 // Function to toggle visibility of an element
