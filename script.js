@@ -1,39 +1,57 @@
-// Update Homescreen
-var coins = "230 M³"  // Available Coins
-var income = "12 M³"; // Today's Income
-var losses = "0 M³"; //Today's losses
-var auto = "0 M³";   //Auto Earnings
+// Initialize variables with values from localStorage, or default if not set
+let coins = parseInt(localStorage.getItem('coins')) || 230;  // Default to 230 if no value is stored
+let income = 12;  // Today's Income (this value isn't stored in localStorage)
+let losses = 0;   // Today's Losses (this value isn't stored in localStorage)
+let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
 
-// Get the elements by class name
-const coinsElement = document.getElementsByClassName("coins")[0];
-const incomeElement = document.getElementsByClassName("income")[0];
-const lossesElement = document.getElementsByClassName("losses")[0];
-const autoElement = document.getElementsByClassName("auto")[0];
+// Function to update the display on the page
+function updateDashboard() {
+  document.getElementsByClassName("coins")[0].innerHTML = coins + " M³";
+  document.getElementsByClassName("income")[0].innerHTML = income + " M³";
+  document.getElementsByClassName("losses")[0].innerHTML = losses + " M³";
+  document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
+}
 
-// Update the inner HTML of each element
-coinsElement.innerHTML = coins;
-incomeElement.innerHTML = income;
-lossesElement.innerHTML = losses;
-autoElement.innerHTML = auto;
+// Function to add coins
+function addCoins() {
+  // Get the value entered by the user from the input field
+  const addCoinsBy = parseInt(document.getElementsByClassName("addCoins")[0].value);
 
+  // Add the entered amount to the current coins
+  coins += addCoinsBy;
+
+  // Save the updated coins value in localStorage
+  localStorage.setItem('coins', coins);
+
+  // Update the coins display on the page
+  updateDashboard();
+
+  // Clear the input field after adding coins
+  document.getElementsByClassName("addCoins")[0].value = "";
+}
+
+// Call the updateDashboard function to set the correct values on page load
+updateDashboard();
+
+// Function to toggle visibility of an element
 function reveal(id) {
-    const element = document.getElementById(id);
-    element.style.display = element.style.display === "none" ? "" : "none";
-  }
+  const element = document.getElementById(id);
+  element.style.display = element.style.display === "none" ? "" : "none";
+}
 
-// Refresh
+// Refresh function to reload the page
 function refresh() {
   window.location.reload();
 }
 
-// Login Button
+// Login function to validate username and password
 function login(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
 
   // Get the values from the input fields
-  const username = document.getElementById("username").value; 
-  const password = document.getElementById("password").value; 
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
   // Check credentials
   if (username === "Zhongjie" && password === "IsSmart") {
