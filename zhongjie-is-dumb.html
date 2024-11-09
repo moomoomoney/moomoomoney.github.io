@@ -41,15 +41,6 @@
       <!-- Available Coins -->
       <div class="grid-item">
         <p class="coins"></p>
-        <input
-          placeholder="Coins"
-          type="number"
-          class="addCoins"
-          max="23"
-          maxlength="2"
-        />
-        <button onclick="addCoins()">Add</button>
-        <br><br>
       </div>
 
       <!-- Income -->
@@ -67,6 +58,12 @@
         <p class="auto"></p>
       </div>
     </div>
+
+    <div class="add-coins-container">
+      <input class="addCoins" placeholder="Coins" type="number" max="23" maxlength="2" />
+      <button onclick="addCoins()">Add</button>
+    </div>
+ 
 
     <!-- Password Modal -->
     <div id="passwordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
