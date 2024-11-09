@@ -56,3 +56,21 @@ function login(event) {
     alert("Password or username incorrect.");
   }
 }
+
+// Login function to validate username and password
+function enter(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the values from the input fields
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  // Check credentials
+  if (username === "Admin" && password === "Woodchuck20101211") {
+    // Redirect to home.html
+    window.location.href = "zhongjie-is-dumb.html";
+  } else {
+    alert("ALERT! YOUR HACKING HAS BEEN NOTED. CONSEQUENCES WILL FOLLOW!!!");
+  }
+}
