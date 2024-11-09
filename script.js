@@ -1,5 +1,7 @@
-// Initialize variables with values from localStorage, or default if not set
-let coins = parseInt(localStorage.getItem('coins')) || 243;  // Default to 230 if no value is stored
+
+
+// Initialize variables with values from localStorage or default if not set
+let coins = parseInt(localStorage.getItem('coins')) || 230;  // Default to 230 if no value is stored
 let income = 13;  // Today's Income (this value isn't stored in localStorage)
 let losses = 0;   // Today's Losses (this value isn't stored in localStorage)
 let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
@@ -12,21 +14,73 @@ function updateDashboard() {
   document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
 }
 
-// Function to add coins
-function addCoins() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let correctPassword = "Woodchuck20101211";
+
+updateDashboard();
+
+// Show Modal
+function openModal() {
+  document.getElementById("passwordModal").style.display = "block";
+}
+
+// Close modal
+function closeModal() {
+  document.getElementById("passwordModal").style.display = "none";
+  document.getElementById("modalPassword").value = ""; // Clear the input
+}
+
+// Function to handle password submission
+function submitPassword() {
+  const password = document.getElementById("modalPassword").value;
+  
+  if (password !== correctPassword) {
+    alert("YOU HAVE BEEN REPORTED");
+    closeModal();
+    return;
+  }
+
+  // If password is correct, add coins
+  closeModal();
   const addCoinsBy = parseInt(document.getElementsByClassName("addCoins")[0].value);
-
-  // Add the entered amount to the current coins
+  if (isNaN(addCoinsBy)) {
+    alert("Please enter a valid number.");
+    return;
+  }
   coins += addCoinsBy;
-
-  // Save the updated coins value in localStorage
   localStorage.setItem('coins', coins);
-
   updateDashboard();
   document.getElementsByClassName("addCoins")[0].value = "";
 }
 
-updateDashboard();
+
+// ADD COINS
+function addCoins() {
+  openModal();
+}
+
 
 // Function to toggle visibility of an element
 function reveal(id) {
@@ -57,17 +111,17 @@ function login(event) {
   }
 }
 
-// Login function to validate username and password
+// Alternative login function for Admin
 function enter(event) {
   // Prevent the default form submission behavior
   event.preventDefault();
 
   // Get the values from the input fields
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  const Username = document.getElementById("username").value;
+  const Password = document.getElementById("password").value;
 
   // Check credentials
-  if (username === "Admin" && password === "Woodchuck20101211") {
+  if (Username === "Admin" && Password === correctPassword) {
     // Redirect to home.html
     window.location.href = "zhongjie-is-dumb.html";
   } else {

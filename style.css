@@ -209,3 +209,28 @@ body {
   width: 100%;
   font-size: 20px;
 }
+
+button {
+  background-color: #04aa6d;
+  color: white;
+  padding: 14px 20px;
+  top: 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  font-size: 20px;
+}
+
+
+/* Style for the input box */
+input[type="number"].addCoins {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #6e6868; 
+  box-sizing: border-box;
+  font-size: 20px;
+  background-color: #7cedc4; 
+  border-radius: 5px; 
+}
