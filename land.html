@@ -59,11 +59,46 @@
   </div>
 <!--Navbar-->
   <div class="navbar">
+    <a href="./world.html" >World</a>
     <a href="./job.html" >Job</a>
     <a href="./land.html" class="active">Land</a>
     <a href="./purchase.html">Purchase</a>
   </div>
 <h1 class="center">Current Land: None Owned</h1>
+
+<button class="dropdownTitle" onclick="reveal('living')">
+  <h3 class="heading"><b>Living Arangement</b></h3>
+</button>
+<div class="dropdownText" id="living" style="display: none">
+
+  <div class="two-display">
+    <!-- Title -->
+    <div class="two-item">
+      <p class="two-title">
+        <h2>Tent</h2>
+        <p class="center">You live in a tent on land provided by ICOF.</p>
+        <img src="tent.png" alt="tent" width="400"  class="img" style="float: left; margin-left: 100px;"/>
+      </p> 
+    </div>
+    <div class="two-item">
+      <p class="two-title">
+        <h2>Inside</h2>
+        <ul style="text-align:left; margin-left: 350px;">
+          <li>Bed</li>
+          <li>Desk</li>
+          <li>Chair</li>
+          <li>Closet</li>
+          <li>Lamp</li>
+          <li>Candle</li>
+          <li>Clothes</li>
+          <li>Articles of Idiocy</li>
+
+        </ul>
+      </p>
+    </div>
+</div>
+
+
 
 <script src="script.js"></script>
 </html>
