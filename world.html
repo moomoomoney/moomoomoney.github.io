@@ -9,72 +9,176 @@
       type="image/x-icon"
       href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
     />
-    <title>World</title>
+    <title>Earn</title>
   </head>
   <div class="flex-container">
     <div>
-      <button class="logout" onclick=refresh()>Refresh</button>
+      <button class="logout" onclick="refresh()">Refresh</button>
     </div>
     <div>
       <a href="./index.html">
         <button class="logout">Log Out</button>
       </a>
     </div>
-  </div>
-  <h1 class="center">Welcome to your Moo Moo Money (M³) Account!</h1>
-  <a href="./home.html">
-    <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
-  </a>
-
-  <!--Account Dashboard-->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="world.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>  
-    </div>
-    <!--Avaiable Coins-->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <!--Income-->
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <!--Losses-->
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <!--Auto Earn-->
-    <div class="grid-item">
-      <p class="auto"></p>
+    <div>
+      <a href="./control.html">
+        <button class="logout">Control</button>
+      </a>
     </div>
   </div>
+    <h1 class="center">Welcome to your Moo Moo Money (M³) Account!</h1>
 
-  <!--Navbar-->
-  <div class="navbar">
-  <a href="./world.html" class="active">World</a>
-    <a href="./job.html">Job</a>
-    <a href="./land.html">Land</a>
-    <a href="./purchase.html">Purchase</a>
-  </div>
-  <br>
+    <a href="./home.html">
+      <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+    </a>
 
-  <button class="dropdownTitle" onclick="reveal('enter')" style="background: none;">
-    <img src="welcome.png" class="img" />
-  </button>
-  <div class="dropdownText" id="enter" style="display: none">
+    <!-- Account Dashboard -->
+    <div class="grid-display">
+      <div class="grid-item">
+        <p class="grid-title">Available Coins</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Today's Income</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Today's Losses</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">
+          Auto Earning
+          <a href="world.html"
+            ><img src="question.png" alt="auto earn" width="20" height="20"
+          /></a>
+        </p>
+      </div>
 
-    sd
-  </div>
-<br>
+      <!-- Available Coins -->
+      <div class="grid-item">
+        <p class="coins"></p>
+      </div>
 
-<script src="script.js"></script>
+      <!-- Income -->
+      <div class="grid-item">
+        <p class="income"></p>
+      </div>
+
+      <!-- Losses -->
+      <div class="grid-item">
+        <p class="losses"></p>
+      </div>
+
+      <!-- Auto Earn -->
+      <div class="grid-item">
+        <p class="auto"></p>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <a href="./world.html" class="active">World</a>
+      <a href="./job.html">Job</a>
+      <a href="./land.html">Land</a>
+      <a href="./purchase.html">Purchase</a>
+    </div>
+
+    <br />
+
+    <!-- Dropdown -->
+    <button
+      class="dropdownTitle"
+      onclick="reveal('enter')"
+      style="background: none"
+    >
+      <img src="welcome.png" class="img" />
+    </button>
+
+    <div class="dropdownText" id="enter" style="display: none">
+      <button class="dropdownTitle" onclick="reveal('about')">
+        <h3 class="heading"><b>About You</b></h3>
+      </button>
+
+      <div class="dropdownText" id="about" style="display: none">
+        <div class="two-display">
+          <!-- Title -->
+          <div class="two-item">
+            <h2>Chester Cow</h2>
+            <img src="idiot.png" class="img" alt="Chester Cow" />
+            <p class="center"><i>(Image of you)</i></p>
+          </div>
+
+          <!-- Information -->
+          <div class="two-item">
+            <h2>Information</h2>
+
+            <h3>Personal Information</h3>
+            <div class="info">
+              <b>Age: </b>18 <br />
+              <b>IQ: </b>Low <br />
+              <b>Family: </b>None that you know of <br />
+              <b>Medical History: </b>Normal, except IQ <br />
+            </div>
+
+            <h3>Social Information</h3>
+            <div class="info">
+              <b>Town: </b>Pus Village, Nincompoop County <br />
+              <b>Job: </b> Professional Idiot enslaved by ICOF <br />
+              <b>Place of Residence: </b>123 Dumbing St. <br />
+              <b>Living Quarters: </b>Tent <br />
+              <b>Land: </b>None <br />
+              <b>Title: </b>Moo <br />
+              <b>Classification: </b>Bobo Chicken <br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>  <br> 
+      <button class="dropdownTitle" onclick="reveal('pus')">
+        <h3 class="heading"><b>Pus Village</b></h3>
+      </button>
+      <div class="dropdownText" id="pus" style="display: none">
+        <div class="two-display">
+          <!-- Title -->
+          <div class="two-item">
+            <h2>Pus Village </h2>
+            <img src="pus village map.png" class="img" alt="pus village map" />
+            <p class="center"><i>Map of Pus Village</i></p>
+          </div>
+
+          <!-- Information -->
+          <div class="two-item">
+            <h2>Information</h2>
+
+            <h3>Basic Information</h3>
+            <div class="info">
+              <b>Population: </b>1,000 <br />
+              <b>Size: </b>40 acres <br />
+              <b>Weather: </b>Pleasant <br />
+              <b>Mayor: </b>Bumblewit Fuddle<br />
+            </div>
+
+            <h3>In the City</h3>
+            <div class="info">
+              <b>City Hall: </b>Where the Mayor does stuff <br />
+              <b>ICOF: </b> Huge circus for entertainment, along with living quarters for workers <br />
+              <b>Farmer's Market: </b>Busy market where farmers sell produce and livestock<br />
+              <b>Marketplace: </b>Bakeries, blacksmiths, shoemaking, apothecariesetc, tailors, carpenter, shops <br />
+              <b>Living Areas: </b>2 to 3 story high houeses<br />
+            </div>
+
+            <h3>Outside the City</h3>
+            <div class="info">
+              <b>Farmlands: </b>Rich farmlands for crops and animals <br />
+              <b>Living Quarters: </b> Single story houses and huts <br />
+              <b>Buildings: </b>Barns, sheds, etc<br />
+              <b>Woods: </b>Trees, all kinds of animals, great for hunting <br />
+              <b>River: </b>River flows outside of city, good for swimming and fishing<br />
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

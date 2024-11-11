@@ -1,43 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" , initial-scale="1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
-    />
-    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+    <title>CONTROL SYSTEM</title>
   </head>
   <body>
-    <br>
-    <br>
-    <h1 class="center">I'M WATCHING YOU!!!!</h1>
-    <form class="loginPage">
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input
-          id="username"
-          type="text"
-          placeholder="Enter Username"
-          name="uname"
-          required
-        />
+    <a href="./index.html">
+      <button class="logout">Log Out</button>
+    </a>
+    <h1 class="center">CONTROL SYSTEM</h1>
+    <a href="./home.html">
+      <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+    </a>
 
-        <label for="psw"><b>Password</b></label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          required
-        />
-        <button class="login" type="button" onclick="enter(event)">Login</button>
+    <!-- Account Dashboard -->
+    <div class="grid-display">
+      <div class="grid-item">
+        <p class="grid-title">Available Coins</p>
       </div>
-    </form>
-  </body>
+      <div class="grid-item">
+        <p class="grid-title">Today's Income</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Today's Losses</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Auto Earning 
+          <a href="world.html"><img src="question.png" alt="auto earn" width="20" height="20" /></a>
+        </p>
+      </div>
 
-  <script src="script.js"></script>
+      <!-- Available Coins -->
+      <div class="grid-item">
+        <p class="coins"></p>
+      </div>
+
+      <!-- Income -->
+      <div class="grid-item">
+        <p class="income"></p>
+      </div>
+
+      <!-- Losses -->
+      <div class="grid-item">
+        <p class="losses"></p>
+      </div>
+
+      <!-- Auto Earn -->
+      <div class="grid-item">
+        <p class="auto"></p>
+      </div>
+    </div>
+
+    <div class="add-coins-container">
+      <input class="addCoins" placeholder="Coins" type="number" max="23" maxlength="2" />
+      <button onclick="addCoins()">Add</button>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
+        <label for="modalPassword">Enter password to add coins:</label>
+        <input type="password" id="modalPassword" />
+        <button onclick="submitPassword()">Submit</button>
+        <button onclick="closeModal()">Cancel</button>
+        <div id="errorMessage" style="color: red; display: none;">Incorrect password. Please try again.</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

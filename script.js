@@ -1,9 +1,7 @@
-
-
 // Initialize variables with values from localStorage or default if not set
 let coins = parseInt(localStorage.getItem('coins')) || 230;  // Default to 230 if no value is stored
-let income = 13;  // Today's Income (this value isn't stored in localStorage)
-let losses = 0;   // Today's Losses (this value isn't stored in localStorage)
+let income = parseInt(localStorage.getItem('income')) || 0;  // Default to 13 if no value is stored
+let losses = parseInt(localStorage.getItem('losses')) || 0;   // Default to 0 if no value is stored
 let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
 
 // Function to update the display on the page
@@ -14,42 +12,35 @@ function updateDashboard() {
   document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let correctPassword = "Woodchuck20101211";
 
 updateDashboard();
 
+// Function to add income
+function addIncome(amount) {
+  income += amount;
+  localStorage.setItem('income', income);
+  updateDashboard();
+}
+
+// Function to add losses
+function addLosses(amount) {
+  losses += amount;
+  localStorage.setItem('losses', losses);
+  updateDashboard();
+}
+
 // Show Modal
 function openModal() {
   document.getElementById("passwordModal").style.display = "block";
+  document.getElementById("errorMessage").style.display = "none"; // Hide error message initially
 }
 
 // Close modal
 function closeModal() {
   document.getElementById("passwordModal").style.display = "none";
   document.getElementById("modalPassword").value = ""; // Clear the input
+  document.getElementById("errorMessage").style.display = "none"; // Hide error message on close
 }
 
 // Function to handle password submission
@@ -57,8 +48,7 @@ function submitPassword() {
   const password = document.getElementById("modalPassword").value;
   
   if (password !== correctPassword) {
-    alert("YOU HAVE BEEN REPORTED");
-    closeModal();
+    document.getElementById("errorMessage").style.display = "block"; // Show error message
     return;
   }
 
@@ -70,17 +60,22 @@ function submitPassword() {
     return;
   }
   coins += addCoinsBy;
+  if (addCoinsBy > 0) {
+    addIncome(addCoinsBy);
+  } else {
+    let lostCoinsBy = addCoinsBy * -1;
+    addLosses(lostCoinsBy);
+  }
+
   localStorage.setItem('coins', coins);
   updateDashboard();
   document.getElementsByClassName("addCoins")[0].value = "";
 }
 
-
 // ADD COINS
 function addCoins() {
   openModal();
 }
-
 
 // Function to toggle visibility of an element
 function reveal(id) {
