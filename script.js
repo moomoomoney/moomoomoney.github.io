@@ -1,8 +1,11 @@
-// Initialize variables with values from localStorage or default if not set
-let coins = parseInt(localStorage.getItem('coins')) || 230;  // Default to 230 if no value is stored
-let income = parseInt(localStorage.getItem('income')) || 0;  // Default to 0 if no value is stored
-let losses = parseInt(localStorage.getItem('losses')) || 0;  // Default to 0 if no value is stored
-let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
+// Initialize variables with Firebase data or default if not set
+let coins = 320;  // Default to 230 if no value is stored
+let income = 0;   // Default to 0 if no value is stored
+let losses = 0;   // Default to 0 if no value is stored
+let auto = 0;     // Auto Earnings 
+
+// Firebase reference to coins
+const coinsRef = firebase.database().ref("coins");
 
 // Function to update the display on the page
 function updateDashboard() {
@@ -12,21 +15,36 @@ function updateDashboard() {
   document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
 }
 
-let correctPassword = "Woodchuck20101211";
+// Fetch coin data from Firebase
+function fetchCoinData() {
+  coinsRef.once('value').then(snapshot => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      coins = data.coins || 230;  // Default to 230 if undefined
+      income = data.income || 0;  // Default to 0 if undefined
+      losses = data.losses || 0;  // Default to 0 if undefined
+      updateDashboard();
+    } else {
+      // If no data exists in Firebase, initialize with defaults
+      coinsRef.set({ coins: 230, income: 0, losses: 0 });
+      updateDashboard();
+    }
+  }).catch(error => {
+    console.error("Error fetching coin data: ", error);
+  });
+}
 
-updateDashboard();
-
-// Function to add income
+// Add income to Firebase
 function addIncome(amount) {
   income += amount;
-  localStorage.setItem('income', income);
+  coinsRef.update({ income: income });
   updateDashboard();
 }
 
-// Function to add losses
+// Add losses to Firebase
 function addLosses(amount) {
   losses += amount;
-  localStorage.setItem('losses', losses);
+  coinsRef.update({ losses: losses });
   updateDashboard();
 }
 
@@ -43,7 +61,7 @@ function closeModal() {
   document.getElementById("errorMessage").style.display = "none"; // Hide error message on close
 }
 
-// Function to handle password submission
+// Handle password submission
 function submitPassword() {
   const password = document.getElementById("modalPassword").value;
 
@@ -77,7 +95,7 @@ function submitPassword() {
     addLosses(lostCoinsBy);
   }
 
-  // Update coinsData in localStorage for tracking
+  // Update coinsData in Firebase for tracking
   let coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
   const date = new Date();
   coinsData.push({
@@ -87,8 +105,8 @@ function submitPassword() {
   });
   localStorage.setItem('coinsData', JSON.stringify(coinsData));
 
-  // Save coins to localStorage
-  localStorage.setItem('coins', coins);
+  // Save coins to Firebase
+  coinsRef.update({ coins: coins });
   updateDashboard();
   document.getElementsByClassName("addCoins")[0].value = "";
   document.getElementsByClassName("addReason")[0].value = ""; // Clear the reason input
@@ -102,41 +120,5 @@ function addCoins() {
   openModal();
 }
 
-// Function to toggle visibility of an element
-function reveal(id) {
-  const element = document.getElementById(id);
-  element.style.display = element.style.display === "none" ? "" : "none";
-}
-
-// Refresh function to reload the page
-function refresh() {
-  window.location.reload();
-}
-
-// Login function to validate username and password
-function login(event) {
-  event.preventDefault();
-
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  if (username === "Zhongjie" && password === "IsSmart") {
-    window.location.href = "home.html";
-  } else {
-    alert("Password or username incorrect.");
-  }
-}
-
-// Admin login function
-function enter(event) {
-  event.preventDefault();
-
-  const Username = document.getElementById("username").value;
-  const Password = document.getElementById("password").value;
-
-  if (Username === "Admin" && Password === correctPassword) {
-    window.location.href = "zhongjie-is-dumb.html";
-  } else {
-    alert("ALERT! YOUR HACKING HAS BEEN NOTED. CONSEQUENCES WILL FOLLOW!!!");
-  }
-}
+// Fetch the coin data when the page loads
+fetchCoinData();
