@@ -4,113 +4,109 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
-    />
+    <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
     <title>Earn</title>
   </head>
-  <div class="flex-container">
-    <div>
-      <button class="logout" onclick="refresh()">Refresh</button>
+  <body>
+    <div class="flex-container">
+      <div>
+        <button class="logout" onclick="refresh()">Refresh</button>
+      </div>
+      <div>
+        <a href="./index.html">
+          <button class="logout">Log Out</button>
+        </a>
+      </div>
+      <div>
+        <a href="./control.html">
+          <button class="logout">Control</button>
+        </a>
+      </div>
     </div>
-    <div>
-      <a href="./index.html">
-        <button class="logout">Log Out</button>
-      </a>
-    </div>
-    <div>
-      <a href="./control.html">
-        <button class="logout">Control</button>
-      </a>
-    </div>
-  </div>
 
+    <h1 class="center">Welcome to your Moo Moo Money (M³) Account!</h1>
+    <a href="./world.html">
+      <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+    </a>
 
-  <h1 class="center">Welcome to your Moo Moo Money (M³) Account!</h1>
-  <a href="./world.html">
-    <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
-  </a>
-
-  <!--Account Dashboard-->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
+    <!--Account Dashboard-->
+    <div class="grid-display">
+      <div class="grid-item">
+        <p class="grid-title">Available Coins</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Today's Income</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Today's Losses</p>
+      </div>
+      <div class="grid-item">
+        <p class="grid-title">Auto Earning <a href="world.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>
+      </div>
+      <!--Avaiable Coins-->
+      <div class="grid-item">
+        <p class="coins"></p>
+      </div>
+      <!--Income-->
+      <div class="grid-item">
+        <p class="income"></p>
+      </div>
+      <!--Losses-->
+      <div class="grid-item">
+        <p class="losses"></p>
+      </div>
+      <!--Auto Earn-->
+      <div class="grid-item">
+        <p class="auto"></p>
+      </div>
     </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="world.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>
-    </div>
-    <!--Avaiable Coins-->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <!--Income-->
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <!--Losses-->
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <!--Auto Earn-->
-    <div class="grid-item">
-      <p class="auto"></p>
-    </div>
-  </div>
-<!--Navbar-->
-  <div class="navbar">
-    <a href="./earn.html">Earn</a>
-    <a href="./redeem.html">Redeem</a>
-    <a href="./track.html" class="active">Track</a>
-  </div>
-
-<!-- Money Tracker -->
-
-<div class="table-container">
-    <table class="table">
-        <tr>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Purpose/Reason</th>
-        </tr>
-        <tr class="header">
-            <td><b>SEPTEMBER</td>
-            <td>55 M³</td>
+  
+    <!-- Money Tracker -->
+    <div class="table-container">
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Purpose/Reason</th>
+            </tr>
+            <tr class="header">
+              <td><b>SEPTEMBER</td>
+              <td>55 M³</td>
+              <td>Total earnings</td>
+          </tr>
+          <tr class="header">
+            <td><b>OCTOBER</td>
+            <td>150 M³</td>
             <td>Total earnings</td>
-        </tr>
-        <tr class="header">
-          <td><b>OCTOBER</td>
-          <td>150 M³</td>
-          <td>Total earnings</td>
-        </tr>
-        <tr>
-          <td>Nov 1 6:00 PM</td>
-          <td>13 M³</td>
-          <td>Basketball</td>
-        </tr>
-        <tr>
-          <td>Nov 4 5:00 PM</td>
-          <td>7 M³</td>
-          <td>Basketball</td>
-        </tr>
-        <tr>
-          <td>Nov 4 8:30 PM</td>
-          <td>5 M³</td>
-          <td>On-time Sleep</td>
-        </tr>
-        <tr>
-          <td>Nov 8 8:22 PM</td>
-          <td>13 M³</td>
-          <td>Basketball; On-time Sleep</td>
-        </tr>
-    </table>
+          </tr>
+            <tbody id="tracker-table-body">
+                <!-- Dynamic rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // Function to update the tracker table with data from localStorage
+      function updateTracker() {
+        const trackerTable = document.getElementById('tracker-table-body');
+        const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
+
+        trackerTable.innerHTML = ''; // Clear existing rows
+
+        coinsData.forEach(entry => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${entry.date}</td>
+            <td>${entry.amount} M³</td>
+            <td>${entry.reason}</td>
+          `;
+          trackerTable.appendChild(row);
+        });
+      }
+
+      // Call the function to populate the table on page load
+      updateTracker();
+    </script>
+  </body>
 </html>
