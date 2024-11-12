@@ -300,3 +300,46 @@ input[type="number"].addCoins {
   font-size: 20px;
 }
 
+/* ... (existing CSS) */
+
+@media (max-width: 768px) {
+  /* For smaller screens */
+  .box, .grid-item, .earn-item, .two-item {
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .dropdownTitle, #dropdownText {
+    font-size: 20px;
+  }
+
+  .loginPage {
+    margin: 20px;
+  }
+
+  .grid-display {
+    grid-template-columns: 1fr; /* One column per row */
+  }
+
+  .earn-display, .two-display {
+    grid-template-columns: 1fr;
+  }
+
+  .info {
+    margin: 10px;
+    text-align: center;
+  }
+
+  .table-container {
+    width: 100%;
+  }
+
+  .navbar a {
+    font-size: 20px;
+  }
+
+  .add-coins-container input {
+    width: 20%;
+  }
+}
