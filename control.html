@@ -28,7 +28,7 @@
         <p class="grid-title">Today's Losses</p>
       </div>
       <div class="grid-item">
-        <p class="grid-title">Auto Earning
+        <p class="grid-title">Auto Earning 
           <a href="world.html"><img src="question.png" alt="auto earn" width="20" height="20" /></a>
         </p>
       </div>
@@ -56,57 +56,8 @@
 
     <div class="add-coins-container">
       <input class="addCoins" placeholder="Coins" type="number" max="23" maxlength="2" />
-      <input class="addReason" placeholder="Reason for Change" type="text" style="width: 30%"/>
       <button onclick="addCoins()">Add</button>
     </div>
-
-        <!-- Money Tracker -->
-        <div class="table-container">
-          <table class="table">
-              <tr>
-                  <th>Date</th>
-                  <th>Amount</th>
-                  <th>Purpose/Reason</th>
-              </tr>
-              <tr class="header">
-                <td><b>SEPTEMBER</td>
-                <td>55 M³</td>
-                <td>Total earnings</td>
-            </tr>
-            <tr class="header">
-              <td><b>OCTOBER</td>
-              <td>150 M³</td>
-              <td>Total earnings</td>
-            </tr>
-              <tbody id="tracker-table-body">
-                  <!-- Dynamic rows will be inserted here -->
-              </tbody>
-          </table>
-      </div>
-  
-      <script src="script.js"></script>
-      <script>
-        // Function to update the tracker table with data from localStorage
-        function updateTracker() {
-          const trackerTable = document.getElementById('tracker-table-body');
-          const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
-  
-          trackerTable.innerHTML = ''; // Clear existing rows
-  
-          coinsData.forEach(entry => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-              <td>${entry.date}</td>
-              <td>${entry.amount} M³</td>
-              <td>${entry.reason}</td>
-            `;
-            trackerTable.appendChild(row);
-          });
-        }
-  
-        // Call the function to populate the table on page load
-        updateTracker();
-      </script>
 
     <!-- Password Modal -->
     <div id="passwordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
