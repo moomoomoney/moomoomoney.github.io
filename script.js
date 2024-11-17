@@ -30,33 +30,38 @@ function addLosses(amount) {
   updateDashboard();
 }
 
-// Function to clear values at the end of the day
-function clearDailyValues() {
-  const currentDate = new Date();
-  const nextMidnight = new Date(currentDate);
-  nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
-
-  const timeUntilMidnight = nextMidnight.getTime() - currentDate.getTime();
-
-  setTimeout(() => {
-    // Clear income and losses from localStorage
-    localStorage.removeItem('income');
-    localStorage.removeItem('losses');
-    
-    // Reset variables if needed
-    income = 0;
-    losses = 0;
-
-    // Update the dashboard after clearing values
-    updateDashboard();
-
-    // Call the function again to repeat the daily reset
-    clearDailyValues();
-  }, timeUntilMidnight);
+// Function to reset income and losses
+function resetDailyValues() {
+  income = 0;
+  losses = 0;
+  localStorage.setItem('income', income);
+  localStorage.setItem('losses', losses);
+  updateDashboard();
 }
 
-// Call clearDailyValues when the page loads
-clearDailyValues();
+// Schedule the reset to occur daily at 00:00:00 AM
+function scheduleDailyReset() {
+  const now = new Date();
+  const nextReset = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1, // Set to the next day
+    0, 0, 0, 0 // At midnight
+  );
+
+  const timeUntilReset = nextReset - now;
+
+  // Set a timeout for the first reset
+  setTimeout(() => {
+    resetDailyValues();
+
+    // After the first reset, schedule it every 24 hours
+    setInterval(resetDailyValues, 24 * 60 * 60 * 1000);
+  }, timeUntilReset);
+}
+
+// Start the daily reset scheduler
+scheduleDailyReset();
 
 // Show Modal
 function openModal() {

@@ -151,7 +151,8 @@ body {
 
 .info {
   text-align: left; 
-  margin-left: 270px;
+  align-items: center;
+  margin-left: 25%;
   margin-right: 100px;
 }
 
