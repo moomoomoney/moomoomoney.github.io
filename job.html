@@ -120,36 +120,4 @@
   </div>
 </div>
 <script src="script.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-<script src="firebase-config.js"></script>
-<script>
-  // Fetch and display current coin count on page load
-  function getCoinCount() {
-    coinsRef.get().then(snapshot => {
-      if (snapshot.exists()) {
-        document.getElementById("coinDisplay").innerText = snapshot.val();
-      } else {
-        console.log("No data available");
-      }
-    }).catch(error => {
-      console.error(error);
-    });
-  }
-
-  // Update coin count in Firebase
-  function updateCoinCount(count) {
-    coinsRef.set(count);  // Updates the coin count in Firebase
-    getCoinCount();       // Fetch and display updated count
-  }
-
-  // Listen for real-time changes in coin count
-  coinsRef.on('value', (snapshot) => {
-    const coinCount = snapshot.val();
-    document.getElementById("coinDisplay").innerText = coinCount;
-  });
-
-  // Initialize page with current coin count
-  getCoinCount();
-</script>
 </html>
