@@ -30,6 +30,34 @@ function addLosses(amount) {
   updateDashboard();
 }
 
+// Function to clear values at the end of the day
+function clearDailyValues() {
+  const currentDate = new Date();
+  const nextMidnight = new Date(currentDate);
+  nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
+
+  const timeUntilMidnight = nextMidnight.getTime() - currentDate.getTime();
+
+  setTimeout(() => {
+    // Clear income and losses from localStorage
+    localStorage.removeItem('income');
+    localStorage.removeItem('losses');
+    
+    // Reset variables if needed
+    income = 0;
+    losses = 0;
+
+    // Update the dashboard after clearing values
+    updateDashboard();
+
+    // Call the function again to repeat the daily reset
+    clearDailyValues();
+  }, timeUntilMidnight);
+}
+
+// Call clearDailyValues when the page loads
+clearDailyValues();
+
 // Show Modal
 function openModal() {
   document.getElementById("passwordModal").style.display = "block";
