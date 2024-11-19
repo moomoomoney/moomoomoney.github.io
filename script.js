@@ -1,5 +1,5 @@
 // Initialize variables with values from localStorage or default if not set
-let coins = parseInt(localStorage.getItem('coins')) || 230;  // Default to 230 if no value is stored
+let coins = parseInt(localStorage.getItem('coins')) || 333;  // Default to 230 if no value is stored
 let income = parseInt(localStorage.getItem('income')) || 0;  // Default to 0 if no value is stored
 let losses = parseInt(localStorage.getItem('losses')) || 0;  // Default to 0 if no value is stored
 let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
