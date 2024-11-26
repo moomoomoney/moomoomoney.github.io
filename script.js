@@ -5,6 +5,17 @@ let losses = parseInt(localStorage.getItem('losses')) || 0;  // Default to 0 if 
 let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
 
 
+// Function to toggle visibility of an element
+function reveal(id) {
+  const element = document.getElementById(id);
+  element.style.display = element.style.display === "none" ? "" : "none";
+}
+
+// Refresh function to reload the page
+function refresh() {
+  window.location.reload();
+}
+
 // Function to update the display on the page
 function updateDashboard() {
   document.getElementsByClassName("coins")[0].innerHTML = coins + " M³";
@@ -64,18 +75,20 @@ function scheduleDailyReset() {
 // Start the daily reset scheduler
 scheduleDailyReset();
 
-// Show Modal
+// Show Modal for Coins
 function openModal() {
   document.getElementById("passwordModal").style.display = "block";
   document.getElementById("errorMessage").style.display = "none"; // Hide error message initially
 }
 
-// Close modal
+// Close modal for Coins
 function closeModal() {
   document.getElementById("passwordModal").style.display = "none";
   document.getElementById("modalPassword").value = ""; // Clear the input
   document.getElementById("errorMessage").style.display = "none"; // Hide error message on close
 }
+
+
 
 // Function to handle password submission
 function submitPassword() {
@@ -83,6 +96,7 @@ function submitPassword() {
 
   if (password !== correctPassword) {
     document.getElementById("errorMessage").style.display = "block"; // Show error message
+    wrongPassword();
     return;
   }
 
@@ -136,31 +150,6 @@ function addCoins() {
   openModal();
 }
 
-// Function to toggle visibility of an element
-function reveal(id) {
-  const element = document.getElementById(id);
-  element.style.display = element.style.display === "none" ? "" : "none";
-}
-
-// Refresh function to reload the page
-function refresh() {
-  window.location.reload();
-}
-
-// Login function to validate username and password
-function login(event) {
-  event.preventDefault();
-
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  if (username === "Zhongjie" && password === "IsSmart") {
-    window.location.href = "home.html";
-  } else {
-    alert("Password or username incorrect.");
-  }
-}
-// COUPONS COUPONS REDEEM COUPONS !!!
 
 // Function to clear the tracker table and reset coinsData in localStorage
 function clearCoins() {
@@ -178,8 +167,106 @@ function clearCoins() {
 // Attach clearCoins function to the "Clear" button
 document.querySelector(".controlButton[onclick='clearCoins()']").addEventListener("click", clearCoins);
 
+// Evil things happen when you enter the wrong password!!!!
+ function wrongPassword() {
+  let userInput;
+
+  // Keep prompting until valid input or user cancels
+  while (true) {
+    userInput = prompt("Your password is INCORRECT. You have been reported. Please enter the correct password to close this alert.");
+
+    // If the user cancels, display alert and loop again
+    if (userInput === null) {
+      alert("Nice try :( You must enter the correct password. There is no way out of it!!!!");
+      continue;  // Continue asking for input
+    }
+
+    // If input is correct, store the correct password flag and exit loop
+    if (userInput.trim() === correctPassword) {
+      localStorage.setItem('passwordCorrect', 'true');  // Store flag in localStorage
+      alert("Correct password! Access granted.");
+      break;  // Exit loop on correct password
+    } else {
+      alert("PASSWORD INCORRECT! Try again.");
+    }
+  }
+}
+
+// Run the password prompt only if the correct password hasn't been entered yet
+window.onload = function() {
+  if (!isPasswordCorrect()) {
+    wrongPassword();  // Start the prompt if password is incorrect
+  }
+};
+
+// Prevent user from closing the tab if password is not correct
+window.onbeforeunload = function(event) {
+  if (!isPasswordCorrect()) {
+    const userInput = prompt("Are you sure you want to leave? You must enter the correct password before leaving.");
+    if (userInput !== correctPassword) {
+      return "Are you sure you want to leave? You must enter the correct password.";
+    }
+  }
+};
+
+// COUPONS COUPONS REDEEM COUPONS !!!
+
+// Function to update the redeem coupon display
+function updateRedeemDisplay() {
+  const redeemBox = document.querySelector('.box');
+  const couponsData = JSON.parse(localStorage.getItem('couponsData')) || [];
+  const totalRedeemed = couponsData.reduce((sum, coupon) => sum + coupon.amount, 0);
+
+  // Update the redeem box content
+  redeemBox.innerHTML = `
+    You have:
+    <b>${totalRedeemed} Redeem Coupon!</b>
+  `;
+}
+
+ // Function to open the modal for coupons
+ function openModal2() {
+  document.getElementById("passwordModal2").style.display = "block";
+  document.getElementById("errorMessage2").style.display = "none"; // Hide error message initially
+}
+
+// Function to close the modal for coupons
+function closeModal2() {
+  document.getElementById("passwordModal2").style.display = "none";
+  document.getElementById("modalPassword2").value = ""; // Clear the input
+  document.getElementById("errorMessage2").style.display = "none"; // Hide error message on close
+}
+
 // Function to add a coupon entry
 function addCoupon() {
+  const amountInput = document.querySelector('.add-coins-container input[placeholder="Amount"]');
+  const reasonInput = document.querySelector('.add-coins-container input[placeholder="Use"]');
+  const amountCoupon = parseInt(amountInput.value, 10); // Renamed variable
+  const reason = reasonInput.value.trim();
+
+  // Validate inputs
+  if (!amountCoupon || !reason) {
+    alert('Please enter a valid amount and reason.');
+    return;
+  }
+
+  openModal2();
+
+}
+
+
+// Function to handle password submission for coupons
+function submitPasswordCoupons() {
+  const passwordCoupons = document.getElementById("modalPassword2").value;
+
+  // Check if the password is correct
+  if (passwordCoupons !== correctPassword) {
+    document.getElementById("errorMessage2").style.display = "block"; // Show error message
+    wrongPassword();
+    return;
+  }
+
+  // If password is correct, proceed with coupon addition
   const amountInput = document.querySelector('.add-coins-container input[placeholder="Amount"]');
   const reasonInput = document.querySelector('.add-coins-container input[placeholder="Use"]');
   const amountCoupon = parseInt(amountInput.value, 10); // Renamed variable
@@ -211,8 +298,9 @@ function addCoupon() {
   amountInput.value = '';
   reasonInput.value = '';
 
-  // Update the table dynamically
+  // Update the coupon tracker table
   updateCouponTracker();
+  closeModal2();
 }
 
 // Function to update the coupon tracker table
@@ -235,6 +323,12 @@ function updateCouponTracker() {
   });
 }
 
+// Ensure coupon tracker table updates on page load
+document.addEventListener('DOMContentLoaded', () => {
+  updateCouponTracker();
+});
+
+
 // Function to clear all coupons
 function clearCoupons() {
   // Clear coupon data in localStorage
@@ -242,51 +336,6 @@ function clearCoupons() {
 
   // Clear the tracker table
   updateCouponTracker();
-}
-
-// Ensure coupon tracker table updates on page load
-document.addEventListener('DOMContentLoaded', () => {
-  updateCouponTracker();
-});
-
-
-// Function to update the redeem coupon display
-function updateRedeemDisplay() {
-  const redeemBox = document.querySelector('.box');
-  const couponsData = JSON.parse(localStorage.getItem('couponsData')) || [];
-  const totalRedeemed = couponsData.reduce((sum, coupon) => sum + coupon.amount, 0);
-
-  // Update the redeem box content
-  redeemBox.innerHTML = `
-    You have:
-    <b>${totalRedeemed} Redeem Coupon!</b>
-  `;
-}
-
-// Function to redeem a coupon
-function redeemCoupon(amount, reason) {
-  if (amount > coins) {
-    alert("Not enough coins to redeem this coupon.");
-    return;
-  }
-
-  // Deduct the coins for redemption
-  coins -= amount;
-  localStorage.setItem('coins', coins);
-
-  // Add the coupon to localStorage
-  const couponsData = JSON.parse(localStorage.getItem('couponsData')) || [];
-  const newCoupon = {
-    date: new Date().toLocaleDateString(),
-    amount: amount,
-    reason: reason,
-  };
-  couponsData.push(newCoupon);
-  localStorage.setItem('couponsData', JSON.stringify(couponsData));
-
-  // Update the dashboard and redeem display
-  refresh();
-  updateRedeemDisplay();
 }
 
 // Ensure displays are updated on page load
@@ -304,4 +353,18 @@ function updateDashboard() {
 
   // Update redeem coupon display
   updateRedeemDisplay();
+}
+
+// Login function to validate username and password
+function login(event) {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (username === "Zhongjie" && password === "IsSmart") {
+    window.location.href = "home.html";
+  } else {
+    alert("Password or username incorrect.");
+  }
 }
