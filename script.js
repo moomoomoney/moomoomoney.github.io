@@ -24,7 +24,18 @@ function updateDashboard() {
   document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
 }
 
-let correctPassword = "Woodchuck20101211";
+// Store the already hashed password
+let correctPassword = "3258ca0784cae2e33e086306589ecaa8e36920e38c10df23d48b16d8924f1256";
+
+// Function to hash entered password
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
 
 updateDashboard();
 
@@ -90,11 +101,12 @@ function closeModal() {
 
 
 
-// Function to handle password submission
-function submitPassword() {
+// Function to handle password submission for coins
+async function submitPassword() {
   const password = document.getElementById("modalPassword").value;
+  const hashedPassword = await hashPassword(password);
 
-  if (password !== correctPassword) {
+  if (hashedPassword !== correctPassword) {
     document.getElementById("errorMessage").style.display = "block"; // Show error message
     wrongPassword();
     return;
@@ -169,19 +181,20 @@ function clearCoins() {
   openModalClear();
 }
 
-// Clear the tracker table and reset coinsData in localStorage after password is entered
-function submitPasswordClear() {
+// Function to handle password submission for clearing coins
+async function submitPasswordClear() {
   const passwordClear = document.getElementById("modalPasswordClear").value;
+  const hashedPassword = await hashPassword(passwordClear);
 
-  if (passwordClear !== correctPassword) {
+  if (hashedPassword !== correctPassword) {
     document.getElementById("errorMessageClear").style.display = "block"; // Show error message
     wrongPassword();
     return;
   }
 
-  // If password is correct, add coins
+  // If password is correct, clear coins
   closeModalClear();
-    
+
   // Clear the coinsData in localStorage
   localStorage.setItem('coinsData', JSON.stringify([]));
 
@@ -191,7 +204,6 @@ function submitPasswordClear() {
 
   // Update the dashboard
   updateDashboard();
-
 }
 
 // Attach clearCoins function to the "Clear" button
@@ -270,11 +282,12 @@ function addCoupon() {
 
 
 // Function to handle password submission for coupons
-function submitPasswordCoupons() {
+async function submitPasswordCoupons() {
   const passwordCoupons = document.getElementById("modalPassword2").value;
+  const hashedPassword = await hashPassword(passwordCoupons);
 
   // Check if the password is correct
-  if (passwordCoupons !== correctPassword) {
+  if (hashedPassword !== correctPassword) {
     document.getElementById("errorMessage2").style.display = "block"; // Show error message
     wrongPassword();
     return;
@@ -283,7 +296,7 @@ function submitPasswordCoupons() {
   // If password is correct, proceed with coupon addition
   const amountInput = document.querySelector('.add-coins-container input[placeholder="Amount"]');
   const reasonInput = document.querySelector('.add-coins-container input[placeholder="Use"]');
-  const amountCoupon = parseInt(amountInput.value, 10); // Renamed variable
+  const amountCoupon = parseInt(amountInput.value, 10);
   const reason = reasonInput.value.trim();
 
   // Validate inputs
@@ -298,7 +311,7 @@ function submitPasswordCoupons() {
   // Create a new coupon entry
   const newCoupon = {
     date: new Date().toLocaleDateString(),
-    amount: amountCoupon, // Updated variable
+    amount: amountCoupon, 
     reason: reason
   };
 
@@ -360,23 +373,25 @@ function clearCoupons() {
   openModalClear2();
 }
 
-function submitPasswordClear2() {
+// Function to handle password submission for clearing coupons
+async function submitPasswordClear2() {
   const passwordClear2 = document.getElementById("modalPasswordClear2").value;
+  const hashedPassword = await hashPassword(passwordClear2);
 
-  if (passwordClear2 !== correctPassword) {
+  if (hashedPassword !== correctPassword) {
     document.getElementById("errorMessageClear2").style.display = "block"; // Show error message
     wrongPassword();
     return;
   }
 
-  // If password is correct, add coins
+  // If password is correct, clear coupons
   closeModalClear2();
+
   // Clear coupon data in localStorage
   localStorage.setItem('couponsData', JSON.stringify([]));
 
   // Clear the tracker table
   updateCouponTracker();
-
 }
 
 // Ensure displays are updated on page load
