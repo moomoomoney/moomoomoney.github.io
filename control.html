@@ -194,11 +194,37 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
   <label for="modalPassword">Enter password to add redeem coupons:</label>
   <input type="password" id="modalPassword2" />
-  <button onclick="submitPasswordCoupons()">Submit</button> <!-- Ensure this calls the correct function -->
+  <button onclick="submitPasswordCoupons()">Submit</button>
   <button onclick="closeModal2()">Cancel</button>
   <div id="errorMessage2" style="color: red; display: none;">Well, now that you figured out the password, do you still remember it? Type it again.</div>
 </div>
 </div>
+
+ <!-- Password Modal for Clearing Coins -->
+ <div id="passwordModalClear"
+ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+ <div
+   style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
+   <label for="modalPasswordClear">Enter password to clear table:</label>
+   <input type="password" id="modalPasswordClear" />
+   <button onclick="submitPasswordClear()">Submit</button> 
+   <button onclick="closeModalClear()">Cancel</button>
+   <div id="errorMessageClear" style="color: red; display: none;">Well, now that you figured out the password, do you still remember it? Type it again.</div>
+ </div>
+ </div>
+
+  <!-- Password Modal for Clearing Coupons -->
+  <div id="passwordModalClear2"
+  style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+  <div
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
+    <label for="modalPasswordClear2">Enter password to clear table:</label>
+    <input type="password" id="modalPasswordClear2" />
+    <button onclick="submitPasswordClear2()">Submit</button> 
+    <button onclick="closeModalClear2()">Cancel</button>
+    <div id="errorMessageClear2" style="color: red; display: none;">Well, now that you figured out the password, do you still remember it? Type it again.</div>
+  </div>
+  </div>
 
   <script src="script.js"></script>
   </body>

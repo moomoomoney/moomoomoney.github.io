@@ -151,8 +151,37 @@ function addCoins() {
 }
 
 
-// Function to clear the tracker table and reset coinsData in localStorage
+// Show Modal for Clearing Coins
+function openModalClear() {
+  document.getElementById("passwordModalClear").style.display = "block";
+  document.getElementById("errorMessageClear").style.display = "none"; // Hide error message initially
+}
+
+// Close modal for Clear Coins
+function closeModalClear() {
+  document.getElementById("passwordModalClear").style.display = "none";
+  document.getElementById("modalPasswordClear").value = ""; // Clear the input
+  document.getElementById("errorMessageClear").style.display = "none"; // Hide error message on close
+}
+
+// Check for password
 function clearCoins() {
+  openModalClear();
+}
+
+// Clear the tracker table and reset coinsData in localStorage after password is entered
+function submitPasswordClear() {
+  const passwordClear = document.getElementById("modalPasswordClear").value;
+
+  if (passwordClear !== correctPassword) {
+    document.getElementById("errorMessageClear").style.display = "block"; // Show error message
+    wrongPassword();
+    return;
+  }
+
+  // If password is correct, add coins
+  closeModalClear();
+    
   // Clear the coinsData in localStorage
   localStorage.setItem('coinsData', JSON.stringify([]));
 
@@ -162,6 +191,7 @@ function clearCoins() {
 
   // Update the dashboard
   updateDashboard();
+
 }
 
 // Attach clearCoins function to the "Clear" button
@@ -192,22 +222,6 @@ document.querySelector(".controlButton[onclick='clearCoins()']").addEventListene
   }
 }
 
-// Run the password prompt only if the correct password hasn't been entered yet
-window.onload = function() {
-  if (!isPasswordCorrect()) {
-    wrongPassword();  // Start the prompt if password is incorrect
-  }
-};
-
-// Prevent user from closing the tab if password is not correct
-window.onbeforeunload = function(event) {
-  if (!isPasswordCorrect()) {
-    const userInput = prompt("Are you sure you want to leave? You must enter the correct password before leaving.");
-    if (userInput !== correctPassword) {
-      return "Are you sure you want to leave? You must enter the correct password.";
-    }
-  }
-};
 
 // COUPONS COUPONS REDEEM COUPONS !!!
 
@@ -328,14 +342,41 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCouponTracker();
 });
 
+// Show Modal for Clearing Coupons
+function openModalClear2() {
+  document.getElementById("passwordModalClear2").style.display = "block";
+  document.getElementById("errorMessageClear2").style.display = "none"; // Hide error message initially
+}
+
+// Close modal for Clear Coupons
+function closeModalClear2() {
+  document.getElementById("passwordModalClear2").style.display = "none";
+  document.getElementById("modalPasswordClear2").value = ""; // Clear the input
+  document.getElementById("errorMessageClear2").style.display = "none"; // Hide error message on close
+}
 
 // Function to clear all coupons
 function clearCoupons() {
+  openModalClear2();
+}
+
+function submitPasswordClear2() {
+  const passwordClear2 = document.getElementById("modalPasswordClear2").value;
+
+  if (passwordClear2 !== correctPassword) {
+    document.getElementById("errorMessageClear2").style.display = "block"; // Show error message
+    wrongPassword();
+    return;
+  }
+
+  // If password is correct, add coins
+  closeModalClear2();
   // Clear coupon data in localStorage
   localStorage.setItem('couponsData', JSON.stringify([]));
 
   // Clear the tracker table
   updateCouponTracker();
+
 }
 
 // Ensure displays are updated on page load
