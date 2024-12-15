@@ -53,6 +53,7 @@ function addLosses(amount) {
   updateDashboard();
 }
 
+
 // Function to reset income and losses
 function resetDailyValues() {
   income = 0;
@@ -62,29 +63,22 @@ function resetDailyValues() {
   updateDashboard();
 }
 
-// Schedule the reset to occur daily at 00:00:00 AM
-function scheduleDailyReset() {
+// Function to check if the reset is needed and perform it
+function checkAndResetDailyValues() {
+  const lastReset = localStorage.getItem('lastReset'); // Get the last reset time
   const now = new Date();
-  const nextReset = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 1, // Set to the next day
-    0, 0, 0, 0 // At midnight
-  );
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
 
-  const timeUntilReset = nextReset - now;
-
-  // Set a timeout for the first reset
-  setTimeout(() => {
+  if (!lastReset || today > new Date(parseInt(lastReset)).getTime()) {
+    // Perform reset if there's no last reset or the last reset was on a previous day
     resetDailyValues();
-
-    // After the first reset, schedule it every 24 hours
-    setInterval(resetDailyValues, 24 * 60 * 60 * 1000);
-  }, timeUntilReset);
+    localStorage.setItem('lastReset', today.toString()); // Store the current day's timestamp
+  }
 }
 
-// Start the daily reset scheduler
-scheduleDailyReset();
+// Call this function on page load or app startup
+checkAndResetDailyValues();
+
 
 // Show Modal for Coins
 function openModal() {
