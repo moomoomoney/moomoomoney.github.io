@@ -1,8 +1,28 @@
+// AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE   
+// Amount of Auto Earn Options owned
+let cowsAmount = 0;
+let cattleAmount = 0;
+let bullAmount = 0;
+let upgradedAmount = 0;  
+
+// Earning rules
+let cowEarns = 1;
+let cattleEarns = 5;
+let bullEarns = 100;
+let upgradedEarns = 4;  
+
+document.getElementsByClassName("cowsAmount")[0].innerHTML = "You own: " + cowsAmount + " cows";
+document.getElementsByClassName("cattleAmount")[0].innerHTML = "You own: " + cattleAmount + " M³";
+document.getElementsByClassName("bullAmount")[0].innerHTML = "You own: " + bullAmount + " M³";
+document.getElementsByClassName("upgradedAmount")[0].innerHTML = "You own: " + upgradedAmount + " M³";
+
+let auto = cowsAmount * cowEarns + cattleAmount * cattleEarns + bullAmount * bullEarns + upgradedAmount * upgradedEarns;
+
+
 // Initialize variables with values from localStorage or default if not set
 let coins = parseInt(localStorage.getItem('coins')) || 333;  // Default to 230 if no value is stored
 let income = parseInt(localStorage.getItem('income')) || 0;  // Default to 0 if no value is stored
 let losses = parseInt(localStorage.getItem('losses')) || 0;  // Default to 0 if no value is stored
-let auto = 0;     // Auto Earnings (this value isn't stored in localStorage)
 
 
 // Function to toggle visibility of an element
@@ -35,7 +55,6 @@ async function hashPassword(password) {
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
-
 
 updateDashboard();
 
