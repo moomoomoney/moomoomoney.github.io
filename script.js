@@ -1,6 +1,5 @@
-// AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE    AUTO EARN CODE   
 // Amount of Auto Earn Options owned
-let cowsAmount = 0;
+let cowsAmount = parseInt(localStorage.getItem('cowsAmount')) || 0;  // Initialize from localStorage or default to 0
 let cattleAmount = 0;
 let bullAmount = 0;
 let upgradedAmount = 0;  
@@ -9,21 +8,94 @@ let upgradedAmount = 0;
 let cowEarns = 1;
 let cattleEarns = 5;
 let bullEarns = 100;
-let upgradedEarns = 4;  
+let upgradedEarns = 4;
 
-document.getElementsByClassName("cowsAmount")[0].innerHTML = "You own: " + cowsAmount + " cows";
-document.getElementsByClassName("cattleAmount")[0].innerHTML = "You own: " + cattleAmount + " M³";
-document.getElementsByClassName("bullAmount")[0].innerHTML = "You own: " + bullAmount + " M³";
-document.getElementsByClassName("upgradedAmount")[0].innerHTML = "You own: " + upgradedAmount + " M³";
-
-let auto = cowsAmount * cowEarns + cattleAmount * cattleEarns + bullAmount * bullEarns + upgradedAmount * upgradedEarns;
-
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Display amounts from localStorage or defaults
+  updateDashboard();
+});
 
 // Initialize variables with values from localStorage or default if not set
-let coins = parseInt(localStorage.getItem('coins')) || 333;  // Default to 230 if no value is stored
-let income = parseInt(localStorage.getItem('income')) || 0;  // Default to 0 if no value is stored
-let losses = parseInt(localStorage.getItem('losses')) || 0;  // Default to 0 if no value is stored
+let coins = parseInt(localStorage.getItem('coins')) || 333;
+let income = parseInt(localStorage.getItem('income')) || 0;
+let losses = parseInt(localStorage.getItem('losses')) || 0;
 
+// Add Auto Earn coins
+function calculateDailyEarnings() {
+  return (
+    cowsAmount * cowEarns +
+    cattleAmount * cattleEarns +
+    bullAmount * bullEarns +
+    upgradedAmount * upgradedEarns
+  );
+}
+
+// Function to apply auto earnings once per day
+function applyAutoEarnings() {
+  const lastEarned = localStorage.getItem('lastEarned');
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+
+  if (!lastEarned || today > new Date(parseInt(lastEarned)).getTime()) {
+    const dailyEarnings = calculateDailyEarnings();
+    coins += dailyEarnings;
+    localStorage.setItem('coins', coins);
+    localStorage.setItem('lastEarned', today.toString());
+    updateDashboard();
+    console.log(`Auto earnings of ${dailyEarnings} M³ applied.`);
+  }
+}
+
+// Call applyAutoEarnings on page load
+document.addEventListener('DOMContentLoaded', () => {
+  applyAutoEarnings();
+  updateDashboard();
+});
+
+// CHANGE COWS AMOUNT
+// Add Password Modal for Cows Change
+function changeCows() {
+  openModalForCows();
+}
+
+// Open Modal for Changing Cows
+function openModalForCows() {
+  document.getElementById("passwordModalForCows").style.display = "block";
+  document.getElementById("errorMessageForCows").style.display = "none"; // Hide error message initially
+}
+
+// Close Modal for Changing Cows
+function closeModalForCows() {
+  document.getElementById("passwordModalForCows").style.display = "none";
+  document.getElementById("modalPasswordForCows").value = ""; // Clear the input
+  document.getElementById("errorMessageForCows").style.display = "none"; // Hide error message on close
+}
+
+// Function to handle password submission for cows change
+async function submitPasswordForCows() {
+  const password = document.getElementById("modalPasswordForCows").value;
+  const hashedPassword = await hashPassword(password);
+
+  if (hashedPassword !== correctPassword) {
+    document.getElementById("errorMessageForCows").style.display = "block"; // Show error message
+    wrongPassword();  
+    return;
+  }
+
+  // If password is correct, allow change of cows
+  closeModalForCows();
+  const changeCowsBy = parseInt(document.getElementsByClassName("addCows")[0].value);
+  if (isNaN(changeCowsBy)) {
+    alert("Please enter a valid number.");
+    return;
+  }
+  const previousCowsAmount = cowsAmount;
+  cowsAmount += changeCowsBy;
+  localStorage.setItem('cowsAmount', cowsAmount); // Save updated cowsAmount to localStorage
+  alert(`Cows amount has been changed from ${previousCowsAmount} to ${cowsAmount}.`);
+  document.getElementsByClassName("addCows")[0].value = "";
+  updateDashboard();
+}
 
 // Function to toggle visibility of an element
 function reveal(id) {
@@ -38,10 +110,49 @@ function refresh() {
 
 // Function to update the display on the page
 function updateDashboard() {
-  document.getElementsByClassName("coins")[0].innerHTML = coins + " M³";
-  document.getElementsByClassName("income")[0].innerHTML = income + " M³";
-  document.getElementsByClassName("losses")[0].innerHTML = losses + " M³";
-  document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
+  // Update the display for cows, cattle, bull, etc.
+  const cowDisplayElement = document.getElementsByClassName("cowsAmount")[0];
+  if (cowDisplayElement) {
+    cowDisplayElement.innerHTML = `You own: ${cowsAmount} cows`;
+  }
+
+  const cattleDisplayElement = document.getElementsByClassName("cattleAmount")[0];
+  if (cattleDisplayElement) {
+    cattleDisplayElement.innerHTML = `You own: ${cattleAmount} M³`;
+  }
+
+  const bullDisplayElement = document.getElementsByClassName("bullAmount")[0];
+  if (bullDisplayElement) {
+    bullDisplayElement.innerHTML = `You own: ${bullAmount} M³`;
+  }
+
+  const upgradedDisplayElement = document.getElementsByClassName("upgradedAmount")[0];
+  if (upgradedDisplayElement) {
+    upgradedDisplayElement.innerHTML = `You own: ${upgradedAmount} M³`;
+  }
+
+  const coinsDisplayElement = document.getElementsByClassName("coins")[0];
+  if (coinsDisplayElement) {
+    coinsDisplayElement.innerHTML = `${coins} M³`;
+  }
+
+  const incomeDisplayElement = document.getElementsByClassName("income")[0];
+  if (incomeDisplayElement) {
+    incomeDisplayElement.innerHTML = `${income} M³`;
+  }
+
+  const lossesDisplayElement = document.getElementsByClassName("losses")[0];
+  if (lossesDisplayElement) {
+    lossesDisplayElement.innerHTML = `${losses} M³`;
+  }
+
+  const autoDisplayElement = document.getElementsByClassName("auto")[0];
+  if (autoDisplayElement) {
+    autoDisplayElement.innerHTML = `${calculateDailyEarnings()} M³`; // Correct the auto earnings
+  }
+
+  // Update redeem coupon display
+  updateRedeemDisplay();
 }
 
 // Store the already hashed password
@@ -56,7 +167,6 @@ async function hashPassword(password) {
   return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
-updateDashboard();
 
 // Function to add income
 function addIncome(amount) {
@@ -72,7 +182,6 @@ function addLosses(amount) {
   updateDashboard();
 }
 
-
 // Function to reset income and losses
 function resetDailyValues() {
   income = 0;
@@ -84,20 +193,25 @@ function resetDailyValues() {
 
 // Function to check if the reset is needed and perform it
 function checkAndResetDailyValues() {
-  const lastReset = localStorage.getItem('lastReset'); // Get the last reset time
+  const lastReset = localStorage.getItem('lastReset');
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
 
   if (!lastReset || today > new Date(parseInt(lastReset)).getTime()) {
-    // Perform reset if there's no last reset or the last reset was on a previous day
     resetDailyValues();
-    localStorage.setItem('lastReset', today.toString()); // Store the current day's timestamp
+    localStorage.setItem('lastReset', today.toString());
   }
 }
 
-// Call this function on page load or app startup
 checkAndResetDailyValues();
 
+// // Update the redeem display whenever coins or coupons change
+// function updateDashboard() {
+//   document.getElementsByClassName("coins")[0].innerHTML = coins + " M³";
+//   document.getElementsByClassName("income")[0].innerHTML = income + " M³";
+//   document.getElementsByClassName("losses")[0].innerHTML = losses + " M³";
+//   document.getElementsByClassName("auto")[0].innerHTML = calculateDailyEarnings() + " M³";  // Correcting the auto earnings display
+// }
 
 // Show Modal for Coins
 function openModal() {
@@ -413,16 +527,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateRedeemDisplay();
 });
 
-// Update the redeem display whenever coins or coupons change
-function updateDashboard() {
-  document.getElementsByClassName("coins")[0].innerHTML = coins + " M³";
-  document.getElementsByClassName("income")[0].innerHTML = income + " M³";
-  document.getElementsByClassName("losses")[0].innerHTML = losses + " M³";
-  document.getElementsByClassName("auto")[0].innerHTML = auto + " M³";
-
-  // Update redeem coupon display
-  updateRedeemDisplay();
-}
 
 // Login function to validate username and password
 function login(event) {

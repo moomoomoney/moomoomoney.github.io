@@ -18,18 +18,18 @@
       </a>
     </div>
     <div>
-        <a href="./audioky.html">
-          <button class="logout">Audioky</button>
-        </a>
-      </div>
+      <a href="./audioky.html">
+        <button class="logout">Audioky</button>
+      </a>
+    </div>
     <div>
       <a href="./control.html">
         <button class="logout">Control</button>
       </a>
     </div>
     <div>
-        <button class="logout" onclick="refresh()">Refresh</button>
-      </div>
+      <button class="logout" onclick="refresh()">Refresh</button>
+    </div>
   </div>
 
   <h1 class="center">Auto Earn</h1>
@@ -56,7 +56,7 @@
         /></a>
       </p>
     </div>
-    <!--Avaiable Coins-->
+    <!--Available Coins-->
     <div class="grid-item">
       <p class="coins"></p>
     </div>
@@ -74,7 +74,9 @@
     </div>
   </div>
 
-  <h3 class="center">See <a href="purchase.html">Purchase</a> for Auto Earn Options!</h3>
+  <h3 class="center">
+    See <a href="purchase.html">Purchase</a> for Auto Earn Options!
+  </h3>
 
   <!-- Earn Options -->
   <div class="earn-display">
@@ -93,25 +95,127 @@
     </div>
     <!-- Earn Item Description -->
     <div class="earn-item">
-        Earns 1 M³ per day  <br />
+      Earns 1 M³ per day
       <p class="cowsAmount"></p>
-      <button>Change</button>
+      <input
+        class="addCows"
+        id="addCows"
+        placeholder="# Cows"
+        type="number"
+        maxlength="2"
+      />
+      <button class="changeBtn" onclick="changeCows()">Change</button>
     </div>
     <div class="earn-item">
-        Earns 5 M³ per day  <br />
-        <p class="cattleAmount"></p>
-        <button>Change</button>
+      Earns 5 M³ per day
+      <p class="cattleAmount"></p>
+      <input
+        class="addCows"
+        id="addCattle"
+        placeholder="# Cattle"
+        type="number"
+        maxlength="2"
+      />
+      <button class="changeBtn" onclick="changeCattle()">Change</button>
     </div>
     <div class="earn-item">
-        Earns 100 M³ per day  <br />
+      Earns 100 M³ per day
       <p class="bullAmount"></p>
-      <button>Change</button>
+      <input
+        class="addCows"
+        id="addBull"
+        placeholder="# Bull"
+        type="number"
+        maxlength="2"
+      />
+      <button class="changeBtn" onclick="changeBull()">Change</button>
     </div>
     <div class="earn-item">
-        Upgrade your cow for 200 M³, but only earn 4 M³ per day <br>
-        <p class="upgradedAmount"></p>
-        <button>Change</button>
+      Earns 4 M³ per day
+      <p class="upgradedAmount"></p>
+      <input
+        class="addCows"
+        id="addUpgraded"
+        placeholder="# Upgraded"
+        type="number"
+        maxlength="2"
+      />
+      <button class="changeBtn" onclick="changeUpgraded()">Change</button>
     </div>
   </div>
+
+  <!-- Password Modal for Cows -->
+  <div
+    id="passwordModalForCows"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
+  >
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
+    >
+      <label for="modalPassword">Enter password to change cows:</label>
+      <input type="password" id="modalPasswordForCows" />
+      <button onclick="submitPasswordForCows()">Submit</button>
+      <button onclick="closeModalForCows()">Cancel</button>
+      <div id="errorMessageForCows" style="color: red; display: none">
+        Well, now that you figured out the password, do you still remember it?
+        Type it again.
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Modal for Cattle -->
+  <div
+    id="passwordModalForCattle"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
+  >
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
+    >
+      <label for="modalPasswordForCattle">Enter password to change cattle:</label>
+      <input type="password" id="modalPasswordForCattle" />
+      <button onclick="submitPasswordForCattle()">Submit</button>
+      <button onclick="closeModalForCattle()">Cancel</button>
+      <div id="errorMessageForCattle" style="color: red; display: none">
+        Incorrect password. Please try again.
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Modal for Bull -->
+  <div
+    id="passwordModalForBull"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
+  >
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
+    >
+      <label for="modalPasswordForBull">Enter password to change bull:</label>
+      <input type="password" id="modalPasswordForBull" />
+      <button onclick="submitPasswordForBull()">Submit</button>
+      <button onclick="closeModalForBull()">Cancel</button>
+      <div id="errorMessageForBull" style="color: red; display: none">
+        Incorrect password. Please try again.
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Modal for Upgraded Cow -->
+  <div
+    id="passwordModalForUpgradedCow"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
+  >
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
+    >
+      <label for="modalPasswordForUpgradedCow">Enter password to change upgraded cow:</label>
+      <input type="password" id="modalPasswordForUpgradedCow" />
+      <button onclick="submitPasswordForUpgradedCow()">Submit</button>
+      <button onclick="closeModalForUpgradedCow()">Cancel</button>
+      <div id="errorMessageForUpgradedCow" style="color: red; display: none">
+        Incorrect password. Please try again.
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </html>
