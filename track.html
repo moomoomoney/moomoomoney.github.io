@@ -1,140 +1,175 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
-    <title>Track</title>
-  </head>
-  <body>
-    <div class="flex-container">
-      <div>
-        <a href="./index.html">
-          <button class="logout">Log Out</button>
-        </a>
-      </div>
-      <div>
-          <a href="./audioky.html">
-            <button class="logout">Audioky</button>
-          </a>
-        </div>
-      <div>
-        <a href="./control.html">
-          <button class="logout">Control</button>
-        </a>
-      </div>
-      <div>
-          <button class="logout" onclick="refresh()">Refresh</button>
-        </div>
-    </div>
-    
 
-    <h1 class="center">Track</h1>
-    <a href="./world.html">
-      <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
-    </a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <title>Track</title>
+</head>
 
-    <!--Account Dashboard-->
-    <div class="grid-display">
-      <div class="grid-item">
-        <p class="grid-title">Available Coins</p>
-      </div>
-      <div class="grid-item">
-        <p class="grid-title">Today's Income</p>
-      </div>
-      <div class="grid-item">
-        <p class="grid-title">Today's Losses</p>
-      </div>
-      <div class="grid-item">
-        <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>
-      </div>
-      <!--Avaiable Coins-->
-      <div class="grid-item">
-        <p class="coins"></p>
-      </div>
-      <!--Income-->
-      <div class="grid-item">
-        <p class="income"></p>
-      </div>
-      <!--Losses-->
-      <div class="grid-item">
-        <p class="losses"></p>
-      </div>
-      <!--Auto Earn-->
-      <div class="grid-item">
-        <p class="auto"></p>
-      </div>
+<body>
+  <div class="flex-container">
+    <div>
+      <a href="./index.html">
+        <button class="logout">Log Out</button>
+      </a>
     </div>
+    <div>
+      <a href="./audioky.html">
+        <button class="logout">Audioky</button>
+      </a>
+    </div>
+    <div>
+      <a href="./control.html">
+        <button class="logout">Control</button>
+      </a>
+    </div>
+    <div>
+      <button class="logout" onclick="refresh()">Refresh</button>
+    </div>
+  </div>
+
+
+  <h1 class="center">Track</h1>
+  <a href="./world.html">
+    <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+  </a>
+
+  <!--Account Dashboard-->
+  <div class="grid-display">
+    <div class="grid-item">
+      <p class="grid-title">Available Coins</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-title">Today's Income</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-title">Today's Losses</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20"
+            height="20" /></a></p>
+    </div>
+    <!--Avaiable Coins-->
+    <div class="grid-item">
+      <p class="coins"></p>
+    </div>
+    <!--Income-->
+    <div class="grid-item">
+      <p class="income"></p>
+    </div>
+    <!--Losses-->
+    <div class="grid-item">
+      <p class="losses"></p>
+    </div>
+    <!--Auto Earn-->
+    <div class="grid-item">
+      <p class="auto"></p>
+    </div>
+  </div>
 
   <!--Navbar-->
   <div class="navbar">
     <a href="./earn.html">Earn</a>
-    <a href="./redeem.html" >Redeem</a>
+    <a href="./redeem.html">Redeem</a>
     <a href="./track.html" class="active">Track</a>
   </div>
 
+  <h2 class="center">Goal: <span class="coins"></span> / 250 <span id="status-icon"></span> </h2>
+
+  <button class="dropdownTitle" onclick="reveal('table')">
+    <h3 class="heading"><b>Tracking Table</b></h3>
+  </button>
+  <div class="dropdownText" id="table" style="display: none">
     <!-- Money Tracker -->
     <div class="table-container">
-        <table class="table">
-            <tr>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Purpose/Reason</th>
-            </tr>
-            <tr class="header">
-              <td><b>SEPTEMBER</td>
-              <td>55 M³</td>
-              <td>Monthly Earnings</td>
-            </tr>
-            <tr class="header">
-              <td><b>OCTOBER</td>
-              <td>150 M³</td>
-              <td>Monthly earnings</td>
-            </tr>
-            <tr class="header">
-              <td><b>NOVEMBER</td>
-              <td>52 M³</td>
-              <td>Monthly earnings</td>
-            </tr>
-            <tr class="header">
-              <td><b>DECEMBER</td>
-              <td>50 M³</td>
-              <td>Monthly earnings</td>
-            </tr>
-            <tr class="header">
-              <td><b>PREVIOUS TOTAL</td>
-              <td>312 M³</td>
-              <td>Total earnings</td>
-            </tr>
-            <tbody id="tracker-table-body">
-                <!-- Dynamic rows will be inserted here -->
-            </tbody>
-        </table>
+      <table class="table">
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Purpose/Reason</th>
+        </tr>
+        <tr class="header">
+          <td><b>SEPTEMBER</td>
+          <td>55 M³</td>
+          <td>Monthly Earnings</td>
+        </tr>
+        <tr class="header">
+          <td><b>OCTOBER</td>
+          <td>150 M³</td>
+          <td>Monthly earnings</td>
+        </tr>
+        <tr class="header">
+          <td><b>NOVEMBER</td>
+          <td>52 M³</td>
+          <td>Monthly earnings</td>
+        </tr>
+        <tr class="header">
+          <td><b>DECEMBER</td>
+          <td>50 M³</td>
+          <td>Monthly earnings</td>
+        </tr>
+        <tr class="header">
+          <td><b>PREVIOUS TOTAL</td>
+          <td>312 M³</td>
+          <td>Total earnings</td>
+        </tr>
+        <tbody id="tracker-table-body">
+          <!-- Dynamic rows will be inserted here -->
+        </tbody>
+      </table>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-    <script>
-      // Function to update the tracker table with data from localStorage
-      function updateTracker() {
-        const trackerTable = document.getElementById('tracker-table-body');
-        const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Retrieve coins from localStorage
+      const coins = localStorage.getItem('coins') || 0;
 
-        trackerTable.innerHTML = ''; // Clear existing rows
+      // Update all elements with the class "coins"
+      const coinsElements = document.querySelectorAll('.coins');
+      coinsElements.forEach(el => {
+        el.textContent = coins;
+      });
+    });
 
-        coinsData.forEach(entry => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
+    // Get the status icon element
+    const statusIcon = document.getElementById('status-icon');
+
+    // Check if coins are greater than 250
+    if (coins > 250) {
+      statusIcon.textContent = '✔️'; // Checkmark
+      statusIcon.style.color = 'green'; // Optional styling
+    } else {
+      statusIcon.textContent = '❌'; // X mark
+      statusIcon.style.color = 'red'; // Optional styling
+    }
+
+    // Function to update the tracker table with data from localStorage
+    function updateTracker() {
+      const trackerTable = document.getElementById('tracker-table-body');
+      const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
+
+      trackerTable.innerHTML = ''; // Clear existing rows
+
+      coinsData.forEach(entry => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
             <td>${entry.date}</td>
             <td>${entry.amount} M³</td>
             <td>${entry.reason}</td>
           `;
-          trackerTable.appendChild(row);
-        });
-      }
+        trackerTable.appendChild(row);
+      });
+    }
 
-      // Call the function to populate the table on page load
-      updateTracker();
-    </script>
-  </body>
+    // Call the function to populate the table on page load
+    updateTracker();
+  </script>
+</body>
+
 </html>

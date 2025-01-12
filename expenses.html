@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
+    />
+    <title>Job</title>
+  </head>
+  <div class="flex-container">
+    <div>
+      <a href="./index.html">
+        <button class="logout">Log Out</button>
+      </a>
+    </div>
+    <div>
+        <a href="./audioky.html">
+          <button class="logout">Audioky</button>
+        </a>
+      </div>
+    <div>
+      <a href="./control.html">
+        <button class="logout">Control</button>
+      </a>
+    </div>
+    <div>
+        <button class="logout" onclick="refresh()">Refresh</button>
+      </div>
+  </div>
+  <h1 class="center">Jobs</h1>
+  <a href="./home.html">
+    <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+  </a>
+
+  <!--Account Dashboard-->
+  <div class="grid-display">
+    <div class="grid-item">
+      <p class="grid-title">Available Coins</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-title">Today's Income</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-title">Today's Losses</p>
+    </div>
+    <div class="grid-item">
+      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>  
+    </div>
+    <!--Avaiable Coins-->
+    <div class="grid-item">
+      <p class="coins"></p>
+    </div>
+    <!--Income-->
+    <div class="grid-item">
+      <p class="income"></p>
+    </div>
+    <!--Losses-->
+    <div class="grid-item">
+      <p class="losses"></p>
+    </div>
+    <!--Auto Earn-->
+    <div class="grid-item">
+      <p class="auto"></p>
+    </div>
+  </div>
+<!--Navbar-->
+  <div class="navbar">
+    <a href="./world.html" >World</a>
+    <a href="./job.html">Job</a>
+    <a href="./expenses.html" class="active" >Expenses</a>
+    <a href="./land.html">Land</a>
+    <a href="./purchase.html">Purchase</a>
+  </div>
+<br>
+
+
+
+<div class="dropwdown">
+  <!-- DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES    -->
+<button class="dropdownTitle" onclick="reveal('daily')">
+  <h2 class="heading"><b>Daily Expenses</b></h2>
+</button>
+<div class="dropdownText" id="daily" style="display: none">
+  <div class="earn-display">
+    <!-- Earn Item Title -->
+    <div class="earn-item">
+      <p class="earn-title">
+         Food
+          <div class="subtitle">0 M³ / day
+          </div>
+      </p> 
+    </div>
+    <div class="earn-item">
+      <p class="earn-title">
+         Water
+          <div class="subtitle">0 M³ / day</div>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p class="earn-title">
+        Market Rent
+          <div class="subtitle"> 0 M³ / day</div>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p class="earn-title">
+          Insurance
+          <div class="subtitle">0 M³ / day</div>
+      </p>
+    </div>
+    <!-- Earn Item Description -->
+    <div class="earn-item">
+      <p>
+        <b>No Plan Chosen</b> <br>
+         - Basic <br>
+         - Standard <br>
+         - Plus <br>
+         - Premium <br>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p> 
+        <b>No Water Chosen</b> <br>
+        - Market <br>
+        - Spring <br>
+        - River <br>
+        - Lake <br>
+      </p>
+    </div>
+    <div class="earn-item">
+      <p>         <b>No Water Chosen</b> <br>
+        Rent market stalls to sell products.
+    </p>
+    </div>
+    <div class="earn-item">
+      <p>        <b>No Insurance Chosen</b> <br>
+        - Health Lvl 1 <br>
+        - Health Lvl 2 <br>
+        - Health Lvl 3 <br>
+        - Property Lvl 1 <br>
+        - Property Lvl 2 <br>
+        - Property Lvl 3 <br>
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+</div>
+<div class="dropwdown">
+    <!-- OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES    -->
+  <button class="dropdownTitle" onclick="reveal('other')">
+    <h2 class="heading"><b>Other Expenses</b></h2>
+  </button>
+  <div class="dropdownText" id="other" style="display: none">
+    <div class="earn-display">
+      <!-- Earn Item Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+           Tax
+            <div class="subtitle">10% / month
+            </div>
+        </p> 
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+           School
+            <div class="subtitle">0 M³ / day</div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Cow Insurance
+            <div class="subtitle"> 0 M³ / day</div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+            Subscriptions
+            <div class="subtitle">0 M³ / day</div>
+        </p>
+      </div>
+      <!-- Earn Item Description -->
+      <div class="earn-item">
+        <p>
+          10% of your money per month. Includes 1st property.
+        </p>
+      </div>
+      <div class="earn-item">
+        <p> 
+          <b>No School Chosen</b> <br>
+            Attend various schools, like trade school, university, or be an apprentice to gain knowledge.
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>         <b>No Insurance Chosen</b> <br>
+            - Lvl 1 <br>
+            - Lvl 2 <br>
+            - Lvl 3 <br>
+      </p>
+      </div>
+      <div class="earn-item">
+        <p>        <b>No Subscriptions Chosen</b> <br>
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  </div>
+
+
+<script src="script.js"></script>
+</html>
