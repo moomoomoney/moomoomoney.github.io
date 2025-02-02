@@ -78,7 +78,7 @@
     <a href="./track.html" class="active">Track</a>
   </div>
 
-  <h2 class="center">Goal: <span class="coins"></span> / 250 <span id="status-icon"></span> </h2>
+  <h2 class="center">Goal: <span class="coins"></span> / 300 <span id="status-icon"></span> </h2>
 
   <button class="dropdownTitle" onclick="reveal('table')">
     <h3 class="heading"><b>Tracking Table</b></h3>
@@ -113,8 +113,13 @@
           <td>Monthly earnings</td>
         </tr>
         <tr class="header">
+          <td><b>JANUARY</td>
+          <td>190 M³</td>
+          <td>Monthly earnings</td>
+        </tr>
+        <tr class="header">
           <td><b>PREVIOUS TOTAL</td>
-          <td>312 M³</td>
+          <td>502 M³</td>
           <td>Total earnings</td>
         </tr>
         <tbody id="tracker-table-body">
@@ -141,7 +146,7 @@
     const statusIcon = document.getElementById('status-icon');
 
     // Check if coins are greater than 250
-    if (coins > 250) {
+    if (coins > 300) {
       statusIcon.textContent = '✔️'; // Checkmark
       statusIcon.style.color = 'green'; // Optional styling
     } else {
