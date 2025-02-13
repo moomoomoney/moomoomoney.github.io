@@ -75,7 +75,7 @@
     <a href="./expenses.html" >Expenses</a>
     <a href="./purchase.html">Purchase</a>
   </div>
-<h1 class="center">Current Land: None Owned</h1>
+<h1 class="center">Current Land: Small Farm</h1>
 
 <button class="dropdownTitle" onclick="reveal('living')">
   <h3 class="heading"><b>Living Arangement</b></h3>
@@ -87,7 +87,7 @@
     <div class="two-item">
       <p class="two-title">
         <h2>Tent</h2>
-        <p class="center">You live in a tent on land provided by ICOF.</p>
+        <p class="center">Despite owning land, you currently live in a tent on land provided by ICOF.</p>
         <img src="tent.png" alt="tent" width="400"  class="img" style="float: left; margin-left: 100px;"/>
       </p> 
     </div>
@@ -108,8 +108,131 @@
       </p>
     </div>
 </div>
+</div>
+<br><br>
+
+<button class="dropdownTitle" onclick="reveal('myland')">
+  <h3 class="heading"><b>Inside Your Land</b></h3>
+</button>
+<div class="dropdownText" id="myland" style="display: none">
+
+  <div class="one-display">
+    <!-- Title -->
+    <div class="one-item">
+      <br>
+        <h2>Map</h2>
+        <br>
+        <pre class="hut">
+             :===:
+         :=======:
+       :=========:                 
+      :============:
+     ===+++++++====:
+     :=============:
+      :###%%%%###:
+      :===%%%%===:
+      :===%%%%===: 
+      :===%%%%===:
+      :============:
+        </pre> 
+        <button class="hutBtn" onclick="infoModalHut()">Hut</button>
+      
+        
+        <table style="position: absolute; top: 137%; left: 80%; transform: translateX(-50%); z-index: 900;">
+          <tbody>
+            <tr>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">1</button></td>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">2</button></td>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">3</button> </td>
+            </tr>
+            <tr>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">4</button></td>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">5</button></td>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">6</button> </td>
+            </tr>
+            <tr>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">7</button></td>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">8</button></td>
+              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">9</button> </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Barn -->
+       <img src="barn.jpg" alt="hut" width="300" class="img" style="position: absolute; top: 135%; left: 30%; transform: translateX(-50%); z-index: 900;"/>
+       <button onclick="infoModalBarn()" style="width: 15%; height: 32%; background-color: transparent; position: absolute; color: transparent;  top: 137%; left: 30%; transform: translateX(-50%); z-index: 910;"></button>
+
+       <!-- Grass -->
+       <img src="grass.jpg" alt="hut" width="850" height="280" class="img" style="position: absolute; top: 135%; left: 45%; transform: translateX(-50%); z-index: 700;"/>
+       <button onclick="infoModalGrass()" style="width: 30%; height: 35%; background-color: transparent; position: absolute; color: transparent;  top: 136%; left: 55%; transform: translateX(-50%); z-index: 900;"></button>
+
+    </div>
+    </div>
+
+<!-- Info Modal Hut -->
+<div id="InfoModalHut" class="modal" style="z-index: 1000;">
+  <div class="modal-content" style="z-index: 1000;  width: 50%;" >
+    <span class="closebtn" onclick="document.getElementById('InfoModalHut').style.display='none';">&times;</span>
+    <h1 class="center">Your Hut</h1>
+    <div class="alert">
+      <strong>Warning:</strong> Your house has not been occupied in a long time, and has fallen into a state of disrepair.Your house is full of cobwebs. Cleaning will cost you <b>10 M³</b> and this cost will only increase the longer you wait.
+    </div>
+    <br>
+    <h2>Furniture</h2>
+    <ul>
+      <li>Bed</li>
+      <li>Table</li>
+      <li>Stools</li>
+      <li>Shelf and Cabinet</li>
+      <li>Fireplace</li>
+      <li>Cooking Supplies</li>
+      <li>Water basin</li>
+      <li>Toilet</li>
+    </ul>
+    <img src="hut.jpg" alt="hut" width="400" class="img" style="position: absolute; top: 50%; left: 70%; transform: translateX(-50%); z-index: 1000;"/>
+  </div>
+</div>
+
+<!-- Info Modal Empty Plot -->
+<div id="infoModalEmptyPlot" class="modal" style=" z-index: 900;">
+  <div class="modal-content"style=" width: 50%; z-index: 1000;">
+    <span class="closebtn" onclick="document.getElementById('infoModalEmptyPlot').style.display='none';">&times;</span>
+    <h1 class="center">This Plot of Land</h1>
+    <div class="alert">
+      <strong>Warning:</strong> Your farmalnds have not been used in a long time, and is overgrown with weeds. Weeding and restoring will cost you <b>20 M³</b> and this cost will only increase the longer you wait.
+     </div>
+    <p class="center">Your land is empty! Buy plants at the <a href="market.html">Market</a>!</p>
+  </div>
+</div>
+
+<!-- Info Modal Barn -->
+<div id="infoModalBarn" class="modal" style=" z-index: 900;">
+  <div class="modal-content"style=" width: 50%; z-index: 1000;">
+    <span class="closebtn" onclick="document.getElementById('infoModalBarn').style.display='none';">&times;</span>
+    <h1 class="center">Your Barn</h1>
+    <div class="alert">
+    <strong>Warning:</strong> Your barn has not been used in a long time, and has fallen into a state of disrepair. Your barn is full of cobwebs and certain repairs are needed. Cleaning and fixing will cost you <b>10 M³</b> and this cost will only increase the longer you wait.
+   </div>
+    <p class="center">Your barn is empty! Buy animals at the <a href="market.html">Market</a>!</p>
+  </div>
+</div>
+
+<!-- Info Modal Grass -->
+<div id="infoModalGrass" class="modal" style=" z-index: 900;">
+  <div class="modal-content"style=" width: 50%; z-index: 1000;">
+    <span class="closebtn" onclick="document.getElementById('infoModalGrass').style.display='none';">&times;</span>
+    <h1 class="center">Grassy Field</h1>
+    <div class="alert">
+      <strong>Warning:</strong> Your grassy field has not been used in a long time, and is overgrown with weeds. Weeding will cost you <b>10 M³</b> and this cost will only increase the longer you wait.
+     </div>
+    <p class="center">A piece of grassy field for cows to roam and eat. Grass enough for two cows. Buy better grass at the <a href="market.html">Market</a>!</p>
+  </div>
+</div>
+
+  
 
 
 
 <script src="script.js"></script>
+<script src="alt.js"></script>
 </html>

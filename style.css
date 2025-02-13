@@ -1,3 +1,67 @@
+table {
+  width: 250px;
+  height: 250px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th, td {
+  border: 1px solid white;
+  width: 33.33%; /* Divide table width evenly among 3 columns */
+  height: 33.33%; /* Divide table height evenly among 3 rows */
+  text-align: center;
+}
+
+td:not(:last-child) {
+  border-right: 10px solid white; 
+}
+
+.farmBtn {
+  height: 83.34px;
+  width: 83.2px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px;
+  border-radius: 5px;
+  width: 1200px; /* Optional: Set a fixed width for the modal */
+}
+
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+}
+
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
 .mapBtnMarket {
   position: absolute;
   top: 158%;
@@ -14,6 +78,18 @@
   top: 127.5%;
   left: 50%;
   width: 12%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: transparent;
+  z-index: 1000;
+}
+
+.hutBtn {
+  position: absolute;
+  top: 152%;
+  left: 9%;
+  width: 12%;
+  height: 35%;
   transform: translate(-50%, -50%);
   background-color: transparent;
   color: transparent;
@@ -168,6 +244,47 @@ body {
   column-gap: 20px;
 }
 
+.one-item {
+  background-color: #7cedc4;
+  border-color: #090909;
+  text-align: center;
+  font-size: 20px; 
+}
+
+.one-title {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 0px 10px;
+}
+
+.hut {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  white-space: pre;
+}
+
+.transparentBtn {
+  all: unset;
+  background-color: #7cedc4 !important; /* Override global background */
+  color: black !important; /* Override text color */
+  padding: 0px !important; /* Prevent excessive padding */
+  margin: 0px;
+  font-size: 16px !important; /* Fix invalid font-size */
+  border: none;
+  cursor: pointer;
+  width: auto !important; /* Prevent width restriction */
+}
+
+/* 1 Column Grid */
+.one-display {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Ensures 4 equal columns */
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  column-gap: 20px;
+}
 .two-item {
   background-color: #7cedc4;
   border-color: #090909;

@@ -528,16 +528,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Login function to validate username and password
-function login(event) {
-  event.preventDefault();
-
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  if (username === "Zhongjie" && password === "IsSmart") {
-    window.location.href = "home.html";
-  } else {
-    alert("Password or username incorrect.");
-  }
-}
