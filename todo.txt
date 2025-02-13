@@ -1,9 +1,3 @@
-- Land HTML update
-  * Farmland - 3x3 table with buttons for popup display modal
-  * Style the house
-  * USE IMAGE FOR HUT INSTEAD
-  * Barn stalls ASCII art
-  * Popup Modals
 - AutoEarn Finish
 - Festival page for in-website random number generator
 - Prestige Feature
