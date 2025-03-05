@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -121,10 +122,16 @@
         <td>Monthly earnings</td>
       </tr>
       <tr class="header">
+        <td><b>FEBRUARY</td>
+        <td>321 M³</td>
+        <td>Monthly earnings</td>
+      </tr>
+      <tr class="header">
         <td><b>PREVIOUS TOTAL</td>
-        <td>502 M³</td>
+        <td>823 M³</td>
         <td>Total earnings</td>
       </tr>
+
       <tbody id="tracker-table-body">
         <!-- Dynamic rows will be inserted here -->
       </tbody>
@@ -169,30 +176,6 @@
   </div>
 </div>
 
-
-  <script src="script.js"></script>
-  <script>
-    // Function to update the tracker table with data from localStorage
-    function updateTracker() {
-      const trackerTable = document.getElementById('tracker-table-body');
-      const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
-
-      trackerTable.innerHTML = ''; // Clear existing rows
-
-      coinsData.forEach(entry => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-              <td>${entry.date}</td>
-              <td>${entry.amount} M³</td>
-              <td>${entry.reason}</td>
-            `;
-        trackerTable.appendChild(row);
-      });
-    }
-
-    // Call the function to populate the table on page load
-    updateTracker();
-  </script>
 
   <!-- Password Modal for Coins -->
   <div id="passwordModal"
@@ -245,8 +228,33 @@ style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100
     <div id="errorMessageClear2" style="color: red; display: none;">Well, now that you figured out the password, do you still remember it? Type it again.</div>
   </div>
   </div>
-
-  <script src="script.js"></script>
   </body>
 
+
+  <script src="script.js"></script>
+  <script scr="control.js"></script>
+  <script src="autoearn.js"></script>
+
+  <script>
+    // Function to update the tracker table with data from localStorage
+    function updateTracker() {
+      const trackerTable = document.getElementById('tracker-table-body');
+      const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
+
+      trackerTable.innerHTML = ''; // Clear existing rows
+
+      coinsData.forEach(entry => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+              <td>${entry.date}</td>
+              <td>${entry.amount} M³</td>
+              <td>${entry.reason}</td>
+            `;
+        trackerTable.appendChild(row);
+      });
+    }
+
+    // Call the function to populate the table on page load
+    updateTracker();
+  </script>
 </html>
