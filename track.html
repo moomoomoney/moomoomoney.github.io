@@ -78,7 +78,7 @@
     <a href="./track.html" class="active">Track</a>
   </div>
 
-  <h2 class="center">Goal: <span class="coins"></span> / 300 <span id="status-icon"></span> </h2>
+  <h2 class="center">Goal: <span class="coins"></span> / 400 <span id="status-icon"></span> </h2>
 
   <button class="dropdownTitle" onclick="reveal('table')">
     <h3 class="heading"><b>Tracking Table</b></h3>
@@ -125,11 +125,18 @@
         <tbody id="tracker-table-body">
           <!-- Dynamic rows will be inserted here -->
         </tbody>
+        <tr class="header" id="autoEarnTrackRow">
+          <td><b>Auto Earnings (Total)</td>
+          <td><span id="totalAutoEarn"></span> M³</td>
+          <td><span id="whatAutoEarn"></span></td>
+        </tr>
       </table>
     </div>
   </div>
 
   <script src="script.js"></script>
+  <script src="autoearn.js"></script>
+  <script src="control.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Retrieve coins from localStorage
@@ -146,7 +153,7 @@
     const statusIcon = document.getElementById('status-icon');
 
     // Check if coins are greater than 250
-    if (coins > 300) {
+    if (coins > 400) {
       statusIcon.textContent = '✔️'; // Checkmark
       statusIcon.style.color = 'green'; // Optional styling
     } else {

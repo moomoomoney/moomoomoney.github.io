@@ -1,6 +1,6 @@
 table {
   width: 250px;
-  height: 250px;
+  height: 10px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -123,7 +123,7 @@ input[type="password"] {
 }
 
 .addCows {
-  width: 30%;
+  width: 35%;
   height: 52px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -404,13 +404,13 @@ button {
 .changeBtn {
   background-color: #04aa6d;
   color: white;
-  padding: 14px 20px;
+  padding: 16px 20px;
   margin-bottom: 20px;
   top: 0;
   border: none;
   cursor: pointer;
-  width: 35%;
-  font-size: 20px;
+  width: 25%;
+  font-size: 18px;
 }
 
 .controlButton {

@@ -78,6 +78,77 @@
     See <a href="purchase.html">Purchase</a> for Auto Earn Options!
   </h3>
 
+<!-- Earn Options -->
+<div class="earn-display">
+  <!-- Earn Item Title -->
+  <div class="earn-item">
+    <p class="earn-title">ICOF Salary</p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">Crops</p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">Insurance</p>
+  </div>
+  <div class="earn-item">
+    <p class="earn-title">Other Expenses</p>
+  </div>
+  <!-- Earn Item Description -->
+  <div class="earn-item">
+    You work as the Vice Chief Idiot <br>
+    You earn <span class="salary"></span> M³ per day
+ <br><br>
+    <input
+      class="addCows"
+      id="addSalary"
+      placeholder="Change pay"
+      type="number"
+      maxlength="2"
+    />
+    <button class="changeBtn" onclick="changeSalary()">Change</button>
+  </div>
+  <div class="earn-item">
+   You don't own any crops <br>
+   You crops earn <span class="cropsAmount"></span> M³ per day
+    <br><br>
+    <input
+      class="addCows"
+      id="addCrops"
+      placeholder="Change earnings"
+      type="number"
+      maxlength="2"
+    />
+    <button class="changeBtn" onclick="changeCrops()">Change</button>
+  </div>
+  <div class="earn-item">
+  You don't have any insurance plans. <br>
+  Your insurance plans cost <span class="insuranceAmount"></span> M³ per day
+    <br><br>
+    <input
+      class="addCows"
+      id="addInsurance"
+      placeholder="Insurance cost"
+      type="number"
+      maxlength="2"
+    />
+    <button class="changeBtn" onclick="changeInsurance()">Change</button>
+  </div>
+  <div class="earn-item">
+    You don't have any food/etc plans
+    Your other plans cost <span class="expenseAmount"></span> M³ per day
+    <br><br>
+    <input
+      class="addCows"
+      id="addExpenses"
+      placeholder="Expense cos"
+      type="number"
+      maxlength="2"
+    />
+    <button class="changeBtn" onclick="changeExpense()">Change</button>
+  </div>
+</div>
+<br>
+
   <!-- Earn Options -->
   <div class="earn-display">
     <!-- Earn Item Title -->
@@ -146,7 +217,7 @@
 <br>
 
 
-  <!-- Password Modal for Cows -->
+  <!-- Password Modal -->
   <div
     id="passwordModalForCows"
     style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
@@ -154,70 +225,17 @@
     <div
       style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
     >
-      <label for="modalPassword">Enter password to change cows:</label>
+      <label for="modalPassword">Enter password:</label>
       <input type="password" id="modalPasswordForCows" />
       <button onclick="submitPasswordForCows()">Submit</button>
       <button onclick="closeModalForCows()">Cancel</button>
       <div id="errorMessageForCows" style="color: red; display: none">
-        Well, now that you figured out the password, do you still remember it?
-        Type it again.
-      </div>
-    </div>
-  </div>
-
-  <!-- Password Modal for Cattle -->
-  <div
-    id="passwordModalForCattle"
-    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
-  >
-    <div
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
-    >
-      <label for="modalPasswordForCattle">Enter password to change cattle:</label>
-      <input type="password" id="modalPasswordForCattle" />
-      <button onclick="submitPasswordForCattle()">Submit</button>
-      <button onclick="closeModalForCattle()">Cancel</button>
-      <div id="errorMessageForCattle" style="color: red; display: none">
-        Incorrect password. Please try again.
-      </div>
-    </div>
-  </div>
-
-  <!-- Password Modal for Bull -->
-  <div
-    id="passwordModalForBull"
-    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
-  >
-    <div
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
-    >
-      <label for="modalPasswordForBull">Enter password to change bull:</label>
-      <input type="password" id="modalPasswordForBull" />
-      <button onclick="submitPasswordForBull()">Submit</button>
-      <button onclick="closeModalForBull()">Cancel</button>
-      <div id="errorMessageForBull" style="color: red; display: none">
-        Incorrect password. Please try again.
-      </div>
-    </div>
-  </div>
-
-  <!-- Password Modal for Upgraded Cow -->
-  <div
-    id="passwordModalForUpgradedCow"
-    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"
-  >
-    <div
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;"
-    >
-      <label for="modalPasswordForUpgradedCow">Enter password to change upgraded cow:</label>
-      <input type="password" id="modalPasswordForUpgradedCow" />
-      <button onclick="submitPasswordForUpgradedCow()">Submit</button>
-      <button onclick="closeModalForUpgradedCow()">Cancel</button>
-      <div id="errorMessageForUpgradedCow" style="color: red; display: none">
-        Incorrect password. Please try again.
+        Incorrect Password.
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
+  <script src="autoearn.js"></script>
+  <script src="control.js"></script>
 </html>
