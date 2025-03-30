@@ -106,6 +106,16 @@ td:not(:last-child) {
   font-size: 200%;
 }
 
+.prestige {
+  height: 50px;
+  border: 5px dashed black;
+  background-color: #7cedc4;
+  padding: 20px;
+  margin: 22px;
+  text-align: center;
+  font-size: 100%;
+}
+
 p {
   padding-left: 15px;
   padding-right: 15px;
