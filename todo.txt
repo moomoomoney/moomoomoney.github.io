@@ -1,5 +1,3 @@
-- Simpler JS v2.1
-- Prestige Feature v2.2
 - Update market for magical trees, new livestock, insurance, and land
 - Random pricing generating for all cows v2.3
 DO ABOVE BY SPRING BREAK

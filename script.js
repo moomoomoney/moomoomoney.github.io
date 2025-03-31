@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 // Initialize variables with values from localStorage or default if not set
 let coins = parseInt(localStorage.getItem('coins')) || 0;
+let prestige = parseInt(localStorage.getItem('prestige')) || 0;
+localStorage.setItem('prestige', prestige);
 let income = parseInt(localStorage.getItem('income'));
 let losses = parseInt(localStorage.getItem('losses'));
 let autoearn = calculateDailyEarnings();
@@ -319,6 +321,7 @@ async function submitPasswordForCows() {
 // Function to update the display on the page
 function updateDashboard() {
   updateAutoEarnTable();
+  updatePrestigeDisplay();
   // Update the display for cows, cattle, bull, etc.
   const cowDisplayElement = document.getElementsByClassName("cowsAmount")[0];
   if (cowDisplayElement) {
@@ -546,26 +549,8 @@ window.onload = function() {
 
 // Evil things happen when you enter the wrong password!!!!
  function wrongPassword() {
-
-  // // Keep prompting until valid input or user cancels
-  // while (true) {
-  //   userInput = prompt("Your password is INCORRECT. You have been reported. Please enter the correct password to close this alert.");
-
-  //   // If the user cancels, display alert and loop again
-  //   if (userInput === null) {
-  //     alert("Nice try :( You must enter the correct password. There is no way out of it!!!!");
-  //     continue;  // Continue asking for input
-  //   }
-
-  //   // If input is correct, store the correct password flag and exit loop
-  //   if (userInput.trim() === correctPassword) {
-  //     localStorage.setItem('passwordCorrect', 'true');  // Store flag in localStorage
-  //     alert("Correct password! Access granted.");
-  //     break;  // Exit loop on correct password
-  //   } else {
-  //     alert("PASSWORD INCORRECT! Try again.");
-  //   }
-  // }
+  let wrongPassword = document.getElementById("wrongPassword");
+  wrongPassword.style.display = "block";
 }
 
 // COUPONS COUPONS REDEEM COUPONS !!!
@@ -656,3 +641,30 @@ document.addEventListener('DOMContentLoaded', () => {
   updateDashboard();
   updateRedeemDisplay();
 });
+
+// PRESTIGE
+function addPrestige() {
+  console.log("Adding Prestige");
+  const addPrestigeBy = parseInt(document.getElementsByClassName("addPrestige")[0].value);
+  prestige += addPrestigeBy;
+  localStorage.setItem('prestige', prestige);
+  updatePrestigeDisplay();
+  updateDashboard();
+}
+
+// PRESTIGE
+function clearPrestige() {
+  prestige = 0;
+  localStorage.setItem('prestige', prestige);
+  updateDashboard();
+  updatePrestigeDisplay()
+}
+
+function updatePrestigeDisplay() {
+  const prestigeBox = document.querySelector('.prestige');
+  // Update the redeem box content
+  prestigeBox.innerHTML = `
+    You have:
+    <b>${prestige} Prestige</b>
+  `;
+}
