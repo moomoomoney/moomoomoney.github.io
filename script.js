@@ -141,21 +141,6 @@ document.getElementById("arenaPrice").innerHTML = `(${arenaPrice} M³)`;
 console.log("Prices Loaded");
 }
 
-// // Function to schedule update exactly at midnight
-// function scheduleMidnightUpdate() {
-// const now = new Date();
-// const midnight = new Date();
-// midnight.setDate(midnight.getDate() + 1); // Move to the next day
-// midnight.setHours(0, 0, 0, 0); // Set to next midnight
-// const timeUntilMidnight = midnight - now;
-
-// // Schedule the price update at midnight
-// setTimeout(() => {
-//     updatePrices();
-//     scheduleMidnightUpdate(); // Re-schedule for the next day
-// }, timeUntilMidnight);
-// }
-
 // Login function to validate username and password
 function login(event) {
   event.preventDefault();
@@ -218,6 +203,7 @@ function applyAutoEarnings() {
     totalAutoEarn += autoearn;
     localStorage.setItem("totalAutoEarn", totalAutoEarn);
     whatAutoEarn = getAutoEarningsDescription();
+    localStorage.setItem('whatAutoEarn', whatAutoEarn);  
     updateAutoEarnTable();
     updateTracker(); 
     updateDashboard();
@@ -259,6 +245,9 @@ function getAutoEarningsDescription() {
   return description;
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadPricesFromLocalStorage();
+});
 
 window.onload = function() {
   loadPricesFromLocalStorage();
@@ -275,84 +264,26 @@ let changeWhat; // Variable amount to be changed (ie. what is in cowsAmount)
 let changeWhatBy; // Amount to be changed by (ie. 5)
 let changeName; // Name of the variable to be changed (ie. "cowsAmount")
 
-// CHANGE COWS AMOUNT
-// Add Password Modal for Cows Change
-function changeCows() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addCows").value);
-  changeWhat = cowsAmount;
-  changeName = "cowsAmount";
-  document.getElementById("addCows").value = "";
-  console.log(changeWhat);
-  console.log(changeWhatBy);
-  console.log(changeName);
-}
+// CHANGE AUTOEARN AMOUNT
+function changeAutoEarn(inputId, variableName, variableRef) {
+  openModalForCows(); // Open the modal for password validation
+  const inputValue = parseInt(document.getElementById(inputId).value);
 
-function changeSalary() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addSalary").value);
-  document.getElementById("addCrops").value = "";
-  changeWhat = salary;
-  changeName = "salary";
-}
+  if (isNaN(inputValue)) {
+    alert("Please enter a valid number.");
+    return;
+  }
 
-function changeCrops() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addCrops").value);
-  document.getElementById("addCrops").value = "";
-  changeWhat = cropsAmount;
-  changeName = "cropsAmount";
-}
+  changeWhatBy = inputValue; // Amount to change by
+  changeWhat = variableRef; // Reference to the variable being changed
+  changeName = variableName; // Name of the variable for localStorage
 
-function changeInsurance() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addInsurance").value);
-  document.getElementById("addInsurance").value = "";
-  changeWhat = insuranceAmount;
-  changeName = "insuranceAmount";
-}
-
-function changeExpense() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addExpenses").value);
-  document.getElementById("addExpenses").value = "";
-  changeWhat = expenseAmount;
-  changeName = "expenseAmount";
-}
-
-function changeCattle() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addCattle").value);
-  document.getElementById("addCattle").value = "";
-  changeWhat = cattleAmount;
-  changeName = "cattleAmount";
-}
-
-function changeBull() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addBull").value);
-  document.getElementById("addBull").value = "";
-  changeWhat = bullAmount;
-  changeName = "bullAmount";
-}
-
-function changeUpgraded() {
-  openModalForCows();
-  changeWhatBy = parseInt(document.getElementById("addUpgraded").value);
-  document.getElementById("addUpgraded").value = "";
-  changeWhat = upgradedAmount;
-  changeName = "upgradedAmount";
+  document.getElementById(inputId).value = ""; // Clear the input field
 }
 
 // Open Modal for Changing Auto Earn
 function openModalForCows() {
   document.getElementById("passwordModalForCows").style.display = "block";
-  // const changeWhatBy = parseInt(document.getElementsByClassName("addCows")[0].value);
-  // const changeWhat = cowsAmount;
-  // if (isNaN(changeCowsBy)) {
-  //   alert("Please enter a valid number.");
-  //   closeModalForCows();
-  // }
 }
 
 // Close Modal for Changing Auto Earn
@@ -373,7 +304,6 @@ async function submitPasswordForCows() {
   }
 
   closeModalForCows();
-  // const changeCowsBy = parseInt(document.getElementsByClassName("addCows")[0].value);
 
   const previousAmount = changeWhat;
   changeWhat += changeWhatBy;
@@ -384,13 +314,7 @@ async function submitPasswordForCows() {
 
   alert(`${changeName} has been changed from ${previousAmount} to ${changeWhat}.`);
   refresh();
-  // const previousSalaryAmount = salaryAmount;
-  // salary += changeSalaryBy;
-  // localStorage.setItem('salaryAmount', salaryAmount); // Save updated cowsAmount to localStorage
-  // alert(`Cows amount has been changed from ${previousSalaryAmount} to ${cowsalaryAmountsAmount}.`);
-  // document.getElementsByClassName("salaryAmount")[0].value = "";
 }
-
 
 // Function to update the display on the page
 function updateDashboard() {
@@ -509,16 +433,10 @@ function checkAndResetDailyValues() {
 
 checkAndResetDailyValues();
 
-// // Update the redeem display whenever coins or coupons change
-// function updateDashboard() {
-//   document.getElementsByClassName("coins")[0].innerHTML = coins + " M³";
-//   document.getElementsByClassName("income")[0].innerHTML = income + " M³";
-//   document.getElementsByClassName("losses")[0].innerHTML = losses + " M³";
-//   document.getElementsByClassName("auto")[0].innerHTML = calculateDailyEarnings() + " M³";  // Correcting the auto earnings display
-// }
-
 // Show Modal for Coins
-function openModal() {
+function openModal(operation) {
+  let whatToDo = operation;
+  localStorage.setItem('whatToDo', whatToDo); 
   document.getElementById("passwordModal").style.display = "block";
   document.getElementById("errorMessage").style.display = "none"; // Hide error message initially
 }
@@ -530,8 +448,6 @@ function closeModal() {
   document.getElementById("errorMessage").style.display = "none"; // Hide error message on close
 }
 
-
-
 // Function to handle password submission for coins
 async function submitPassword() {
   const password = document.getElementById("modalPassword").value;
@@ -542,9 +458,31 @@ async function submitPassword() {
     wrongPassword();
     return;
   }
-
-  // If password is correct, add coins
+  let whatToDo = localStorage.getItem('whatToDo');
+  if (whatToDo === "addCoins") {
+    addCoins();
+  }
+  if (whatToDo === "clearCoins") {
+      clearCoins();
+  }
+  if (whatToDo === "addCoupon") {
+      addCoupon();
+  }
+  if (whatToDo === "clearCoupons") {
+      clearCoupons();
+  }
+  if (whatToDo === "addPrestige") {
+      addPrestige();
+  }
+  if (whatToDo === "clearPrestige") {
+      clearPrestige();
+  }
   closeModal();
+}
+
+// ADD COINS
+function addCoins() {
+  
   const addCoinsBy = parseInt(document.getElementsByClassName("addCoins")[0].value);
   const reason = document.getElementsByClassName("addReason")[0].value;
 
@@ -588,57 +526,23 @@ async function submitPassword() {
   updateTracker();
 }
 
-// ADD COINS
-function addCoins() {
-  openModal();
-}
-
-
-// Show Modal for Clearing Coins
-function openModalClear() {
-  document.getElementById("passwordModalClear").style.display = "block";
-  document.getElementById("errorMessageClear").style.display = "none"; // Hide error message initially
-}
-
-// Close modal for Clear Coins
-function closeModalClear() {
-  document.getElementById("passwordModalClear").style.display = "none";
-  document.getElementById("modalPasswordClear").value = ""; // Clear the input
-  document.getElementById("errorMessageClear").style.display = "none"; // Hide error message on close
-}
-
 // Check for password
 function clearCoins() {
-  openModalClear();
+    // Clear the coinsData in localStorage
+    localStorage.setItem('coinsData', JSON.stringify([]));
+
+    // Update the tracker table to remove all rows
+    const trackerTable = document.getElementById('tracker-table-body');
+    trackerTable.innerHTML = '';
+  
+    // Update the dashboard
+    updateDashboard();
 }
-
-// Function to handle password submission for clearing coins
-async function submitPasswordClear() {
-  const passwordClear = document.getElementById("modalPasswordClear").value;
-  const hashedPassword = await hashPassword(passwordClear);
-
-  if (hashedPassword !== correctPassword) {
-    document.getElementById("errorMessageClear").style.display = "block"; // Show error message
-    wrongPassword();
-    return;
-  }
-
-  // If password is correct, clear coins
-  closeModalClear();
-
-  // Clear the coinsData in localStorage
-  localStorage.setItem('coinsData', JSON.stringify([]));
-
-  // Update the tracker table to remove all rows
-  const trackerTable = document.getElementById('tracker-table-body');
-  trackerTable.innerHTML = '';
-
-  // Update the dashboard
-  updateDashboard();
-}
-
-// Attach clearCoins function to the "Clear" button
-document.querySelector(".controlButton[onclick='clearCoins()']").addEventListener("click", clearCoins);
+// Ensure coupon tracker table updates on page load
+window.onload = function() {
+  console.log("Window loaded, running updateCouponTracker()");
+  updateCouponTracker();
+};
 
 // Evil things happen when you enter the wrong password!!!!
  function wrongPassword() {
@@ -664,13 +568,11 @@ document.querySelector(".controlButton[onclick='clearCoins()']").addEventListene
   // }
 }
 
-
 // COUPONS COUPONS REDEEM COUPONS !!!
 
 // Function to update the redeem coupon display
 function updateRedeemDisplay() {
   const redeemBox = document.querySelector('.box');
-  console.log(372, redeemBox);
   const couponsData = JSON.parse(localStorage.getItem('couponsData')) || [];
   const totalRedeemed = couponsData.reduce((sum, coupon) => sum + coupon.amount, 0);
 
@@ -681,53 +583,11 @@ function updateRedeemDisplay() {
   `;
 }
 
- // Function to open the modal for coupons
- function openModal2() {
-  document.getElementById("passwordModal2").style.display = "block";
-  document.getElementById("errorMessage2").style.display = "none"; // Hide error message initially
-}
-
-// Function to close the modal for coupons
-function closeModal2() {
-  document.getElementById("passwordModal2").style.display = "none";
-  document.getElementById("modalPassword2").value = ""; // Clear the input
-  document.getElementById("errorMessage2").style.display = "none"; // Hide error message on close
-}
-
 // Function to add a coupon entry
 function addCoupon() {
   const amountInput = document.querySelector('.add-coins-container input[placeholder="Amount"]');
   const reasonInput = document.querySelector('.add-coins-container input[placeholder="Use"]');
-  const amountCoupon = parseInt(amountInput.value, 10); // Renamed variable
-  const reason = reasonInput.value.trim();
-
-  // Validate inputs
-  if (!amountCoupon || !reason) {
-    alert('Please enter a valid amount and reason.');
-    return;
-  }
-
-  openModal2();
-
-}
-
-
-// Function to handle password submission for coupons
-async function submitPasswordCoupons() {
-  const passwordCoupons = document.getElementById("modalPassword2").value;
-  const hashedPassword = await hashPassword(passwordCoupons);
-
-  // Check if the password is correct
-  if (hashedPassword !== correctPassword) {
-    document.getElementById("errorMessage2").style.display = "block"; // Show error message
-    wrongPassword();
-    return;
-  }
-
-  // If password is correct, proceed with coupon addition
-  const amountInput = document.querySelector('.add-coins-container input[placeholder="Amount"]');
-  const reasonInput = document.querySelector('.add-coins-container input[placeholder="Use"]');
-  const amountCoupon = parseInt(amountInput.value, 10);
+  const amountCoupon = parseInt(amountInput.value, 10); 
   const reason = reasonInput.value.trim();
 
   // Validate inputs
@@ -758,14 +618,14 @@ async function submitPasswordCoupons() {
 
   // Update the coupon tracker table
   updateCouponTracker();
-  closeModal2();
+
 }
 
 // Function to update the coupon tracker table
 function updateCouponTracker() {
   const trackerTable = document.getElementById('coupon-tracker-table-body');
   const couponsData = JSON.parse(localStorage.getItem('couponsData')) || [];
-
+  console.log("Coupons Data Loaded from localStorage:", couponsData);
   // Clear existing table rows
   trackerTable.innerHTML = '';
 
@@ -779,50 +639,16 @@ function updateCouponTracker() {
     `;
     trackerTable.appendChild(row);
   });
-}
-
-// Ensure coupon tracker table updates on page load
-document.addEventListener('DOMContentLoaded', () => {
-  updateCouponTracker();
-});
-
-// Show Modal for Clearing Coupons
-function openModalClear2() {
-  document.getElementById("passwordModalClear2").style.display = "block";
-  document.getElementById("errorMessageClear2").style.display = "none"; // Hide error message initially
-}
-
-// Close modal for Clear Coupons
-function closeModalClear2() {
-  document.getElementById("passwordModalClear2").style.display = "none";
-  document.getElementById("modalPasswordClear2").value = ""; // Clear the input
-  document.getElementById("errorMessageClear2").style.display = "none"; // Hide error message on close
+  console.log("2 Coupons Data Loaded from localStorage:", couponsData);
 }
 
 // Function to clear all coupons
 function clearCoupons() {
-  openModalClear2();
-}
+    // Clear coupon data in localStorage
+    localStorage.setItem('couponsData', JSON.stringify([]));
 
-// Function to handle password submission for clearing coupons
-async function submitPasswordClear2() {
-  const passwordClear2 = document.getElementById("modalPasswordClear2").value;
-  const hashedPassword = await hashPassword(passwordClear2);
-
-  if (hashedPassword !== correctPassword) {
-    document.getElementById("errorMessageClear2").style.display = "block"; // Show error message
-    wrongPassword();
-    return;
-  }
-
-  // If password is correct, clear coupons
-  closeModalClear2();
-
-  // Clear coupon data in localStorage
-  localStorage.setItem('couponsData', JSON.stringify([]));
-
-  // Clear the tracker table
-  updateCouponTracker();
+    // Clear the tracker table
+    updateCouponTracker();
 }
 
 // Ensure displays are updated on page load
@@ -830,5 +656,3 @@ document.addEventListener('DOMContentLoaded', () => {
   updateDashboard();
   updateRedeemDisplay();
 });
-
-

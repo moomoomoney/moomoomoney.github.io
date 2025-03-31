@@ -1,6 +1,11 @@
-- Prestige Feature v2.1
+- Simpler JS v2.1
+- Prestige Feature v2.2
 - Update market for magical trees, new livestock, insurance, and land
-- Random pricing generating for all cows v2.2
-- Festival page for in-website random number generator v2.3
-- Improve CSS styling  v2.4
+- Random pricing generating for all cows v2.3
+DO ABOVE BY SPRING BREAK
+- New layering on HTML v2.4
+- Hack prevention v2.5
+- Festival page for in-website random number generator v2.6
+- Improve CSS styling  v2.7
+DO ABOVE BY JUNE 10
 - Database storage v3.0

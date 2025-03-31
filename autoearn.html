@@ -105,7 +105,7 @@
       type="number"
       maxlength="2"
     />
-    <button class="changeBtn" onclick="changeSalary()">Change</button>
+    <button class="changeBtn" onclick="changeAutoEarn('addSalary', 'salary', salary)">Change</button>
   </div>
   <div class="earn-item">
    You don't own any crops <br>
@@ -118,7 +118,7 @@
       type="number"
       maxlength="2"
     />
-    <button class="changeBtn" onclick="changeCrops()">Change</button>
+    <button class="changeBtn" onclick="changeAutoEarn('addCrops', 'cropsAmount', cropsAmount)">Change</button>
   </div>
   <div class="earn-item">
   You don't have any insurance plans. <br>
@@ -131,7 +131,7 @@
       type="number"
       maxlength="2"
     />
-    <button class="changeBtn" onclick="changeInsurance()">Change</button>
+    <button class="changeBtn" onclick="changeAutoEarn('addInsurance', 'insuranceAmount', insuranceAmount)">Change</button>
   </div>
   <div class="earn-item">
     You don't have any food/etc plans
@@ -144,7 +144,7 @@
       type="number"
       maxlength="2"
     />
-    <button class="changeBtn" onclick="changeExpense()">Change</button>
+    <button class="changeBtn" onclick="changeAutoEarn('addExpenses', 'expenseAmount', expenseAmount)">Change</button>
   </div>
 </div>
 <br>
@@ -175,7 +175,7 @@
         type="number"
         maxlength="2"
       />
-      <button class="changeBtn" onclick="changeCows()">Change</button>
+      <button class="changeBtn" onclick="changeAutoEarn('addCows', 'cowsAmount', cowsAmount)">Change</button>
     </div>
     <div class="earn-item">
       Earns 5 M³ per day
@@ -187,7 +187,7 @@
         type="number"
         maxlength="2"
       />
-      <button class="changeBtn" onclick="changeCattle()">Change</button>
+      <button class="changeBtn" onclick="changeAutoEarn('addCattle', 'cattleAmount', cattleAmount)">Change</button>
     </div>
     <div class="earn-item">
       Earns 100 M³ per day
@@ -199,7 +199,7 @@
         type="number"
         maxlength="2"
       />
-      <button class="changeBtn" onclick="changeBull()">Change</button>
+      <button class="changeBtn" onclick="changeAutoEarn('addBull', 'bullAmount', bullAmount)">Change</button>
     </div>
     <div class="earn-item">
       Earns 4 M³ per day
@@ -211,7 +211,7 @@
         type="number"
         maxlength="2"
       />
-      <button class="changeBtn" onclick="changeUpgraded()">Change</button>
+      <button class="changeBtn" onclick="changeAutoEarn('addUpgraded', 'upgradedAmount', upgradedAmount)">Change</button>
     </div>
   </div>
 <br>
