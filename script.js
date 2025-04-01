@@ -320,32 +320,6 @@ async function submitPasswordForCows() {
 
 // Function to update the display on the page
 function updateDashboard() {
-  updateAutoEarnTable();
-  updatePrestigeDisplay();
-  // Update the display for cows, cattle, bull, etc.
-  const cowDisplayElement = document.getElementsByClassName("cowsAmount")[0];
-  if (cowDisplayElement) {
-    cowDisplayElement.innerHTML = `You own: ${cowsAmount} M³`;
-  }
-  const salaryDisplayElement = document.getElementsByClassName("salary")[0];
-  if (salaryDisplayElement) {
-    salaryDisplayElement.innerHTML = salary;
-  }
-
-  const cropDisplayElement = document.getElementsByClassName("cropsAmount")[0];
-  if (cropDisplayElement) {
-    cropDisplayElement.innerHTML = cropsAmount;
-  }
-
-  const insuranceDisplayElement = document.getElementsByClassName("insuranceAmount")[0];
-  if (insuranceDisplayElement) {
-    insuranceDisplayElement.innerHTML = insuranceAmount;
-  }
-
-  const expenseDisplayElement = document.getElementsByClassName("expenseAmount")[0];
-  if (expenseDisplayElement) {
-    expenseDisplayElement.innerHTML = expenseAmount;
-  }
 
   const cattleDisplayElement = document.getElementsByClassName("cattleAmount")[0];
   if (cattleDisplayElement) {
@@ -379,8 +353,35 @@ function updateDashboard() {
 
   const autoDisplayElement = document.getElementsByClassName("auto")[0];
   if (autoDisplayElement) {
-    autoDisplayElement.innerHTML = `${autoearn} M³`; // Correct the auto earnings
+    autoDisplayElement.innerHTML = `${autoearn} M³`; 
   }
+  
+  // Update the display for cows, cattle, bull, etc.
+  const cowDisplayElement = document.getElementsByClassName("cowsAmount")[0];
+  if (cowDisplayElement) {
+    cowDisplayElement.innerHTML = `You own: ${cowsAmount} M³`;
+  }
+  const salaryDisplayElement = document.getElementsByClassName("salary")[0];
+  if (salaryDisplayElement) {
+    salaryDisplayElement.innerHTML = salary;
+  }
+
+  const cropDisplayElement = document.getElementsByClassName("cropsAmount")[0];
+  if (cropDisplayElement) {
+    cropDisplayElement.innerHTML = cropsAmount;
+  }
+
+  const insuranceDisplayElement = document.getElementsByClassName("insuranceAmount")[0];
+  if (insuranceDisplayElement) {
+    insuranceDisplayElement.innerHTML = insuranceAmount;
+  }
+
+  const expenseDisplayElement = document.getElementsByClassName("expenseAmount")[0];
+  if (expenseDisplayElement) {
+    expenseDisplayElement.innerHTML = expenseAmount;
+  }
+  updatePrestigeDisplay();
+  updateAutoEarnTable();
 
   // Update redeem coupon display
   updateRedeemDisplay();
