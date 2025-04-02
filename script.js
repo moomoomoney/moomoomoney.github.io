@@ -70,36 +70,42 @@ function infoModalGrass() {
 }
 
 
-// Generate Cow Price
+// Generate PRICES
 function generateCowPrice() {
-  console.log("Cow PRICE GENERATED");
   return Math.random() < 0.25 ? 100 : Math.floor(Math.random() * (150 - 90 + 1)) + 90;
   }
-  
-  // Generate Cattle Price
   function generateCattlePrice() {
-  console.log("Cattle PRICE GENERATED");
   return Math.random() < 0.25 ? 400 : Math.floor(Math.random() * (450 - 350 + 1)) + 350;
   }
-  
-  // Generate Bull Price
   function generateBullPrice() {
-  console.log("Bull PRICE GENERATED");
   return Math.random() < 0.25 ? 750 : Math.floor(Math.random() * (850 - 600 + 1)) + 600;
   }
-  
-  // Generate Bull Price
   function generateArenaPrice() {
-  console.log("Arena PRICE GENERATED");
   return Math.random() < 0.25 ? 2000 : Math.floor(Math.random() * (2250 - 1800 + 1)) + 1800;
 }
+  function generateSheepPrice() {
+    return Math.random() < 0.25 ? 150 : Math.floor(Math.random() * (125 - 250 + 1)) + 250;
+  }
+  function generateHorsePrice() {
+    return Math.random() < 0.25 ? 400 : Math.floor(Math.random() * (200 - 1000 + 1)) + 1000;
+  }
+  function generateChickenPrice() {
+    return Math.random() < 0.25 ? 150 : Math.floor(Math.random() * (80 - 200 + 1)) + 200;
+  }
+  function generatePigPrice() {
+    return Math.random() < 0.25 ? 150 : Math.floor(Math.random() * (125 - 250 + 1)) + 250;
+  }
+  function generateSmallTreePrice() {
+    return Math.random() < 0.25 ? 200 : Math.floor(Math.random() * (180 - 300 + 1)) + 300;
+  }
+  function generateMediumTreePrice() {
+    return Math.random() < 0.25 ? 400 : Math.floor(Math.random() * (370 - 600 + 1)) + 600;
+  }
+  function generateLargeTreePrice() {
+    return Math.random() < 0.25 ? 750 : Math.floor(Math.random() * (600 - 1100 + 1)) + 1100;
+  }
 
-if (
-  !localStorage.getItem('cowPrice') ||
-  !localStorage.getItem('cattlePrice') ||
-  !localStorage.getItem('bullPrice') ||
-  !localStorage.getItem('arenaPrice')
-) {
+if (!localStorage.getItem('cowPrice') || !localStorage.getItem('cattlePrice') || !localStorage.getItem('bullPrice') || !localStorage.getItem('sheepPrice') ||!localStorage.getItem('horsePrice') || !localStorage.getItem('chickenPrice') || !localStorage.getItem('pigPrice') || !localStorage.getItem('smallTreePrice')  || !localStorage.getItem('largeTreePrice') || !localStorage.getItem('mediumTreePrice') || !localStorage.getItem('arenaPrice')) {
   updatePrices();
 }
 
@@ -110,22 +116,27 @@ const cowPrice = generateCowPrice();
 const cattlePrice = generateCattlePrice();
 const bullPrice = generateBullPrice();
 const arenaPrice = generateArenaPrice();
-
-console.log(`Generated New Prices: Cow: ${cowPrice}, Cattle: ${cattlePrice}, Bull: ${bullPrice}, Arena: ${arenaPrice}`);
+const sheepPrice = generateSheepPrice();
+const horsePrice = generateHorsePrice();
+const chickenPrice = generateChickenPrice();
+const pigPrice = generateChickenPrice();
+const smallTreePrice = generateSmallTreePrice();
+const mediumTreePrice = generateMediumTreePrice();
+const largeTreePrice = generateLargeTreePrice();
 
 // Save to localStorage
 localStorage.setItem("cowPrice", cowPrice);
 localStorage.setItem("cattlePrice", cattlePrice);
 localStorage.setItem("bullPrice", bullPrice);
 localStorage.setItem("arenaPrice", arenaPrice);
-console.log("SAVED TO LOCAL STORAGE");
-
-// Update the UI
-document.getElementById("cowPrice").innerHTML = `(${cowPrice} M³)`;
-document.getElementById("cattlePrice").innerHTML = `(${cattlePrice} M³)`;
-document.getElementById("bullPrice").innerHTML = `(${bullPrice} M³)`;
-document.getElementById("arenaPrice").innerHTML = `(${arenaPrice} M³)`;
-console.log("Prices updated and UI refreshed.");
+localStorage.setItem("sheepPrice", sheepPrice);
+localStorage.setItem("horsePrice", horsePrice);
+localStorage.setItem("chickenPrice", chickenPrice);
+localStorage.setItem("pigPrice", pigPrice);
+localStorage.setItem("smallTreePrice", smallTreePrice);
+localStorage.setItem("mediumTreePrice", mediumTreePrice);
+localStorage.setItem("largeTreePrice", largeTreePrice);
+loadPricesFromLocalStorage();
 }
 
 // Function to load prices from localStorage (defaulting to 0 if not found)
@@ -134,13 +145,26 @@ function loadPricesFromLocalStorage() {
   const cattlePrice = parseInt(localStorage.getItem("cattlePrice")) || 400;
   const bullPrice = parseInt(localStorage.getItem("bullPrice")) || 750;
   const arenaPrice = parseInt(localStorage.getItem("arenaPrice")) || 2000;
+  const sheepPrice = parseInt(localStorage.getItem("sheepPrice")) || 150;
+  const horsePrice = parseInt(localStorage.getItem("horsePrice")) || 400;
+  const chickenPrice = parseInt(localStorage.getItem("chickenPrice")) || 150;
+  const pigPrice = parseInt(localStorage.getItem("pigPrice")) || 150;
+  const smallTreePrice = parseInt(localStorage.getItem("smallTreePrice")) || 200;
+  const mediumTreePrice = parseInt(localStorage.getItem("mediumTreePrice")) || 400;
+  const largeTreePrice = parseInt(localStorage.getItem("largeTreePrice")) || 750;
 
 // Update the UI with the loaded prices
 document.getElementById("cowPrice").innerHTML = `(${cowPrice} M³)`;
 document.getElementById("cattlePrice").innerHTML = `(${cattlePrice} M³)`;
 document.getElementById("bullPrice").innerHTML = `(${bullPrice} M³)`;
 document.getElementById("arenaPrice").innerHTML = `(${arenaPrice} M³)`;
-console.log("Prices Loaded");
+document.getElementById("sheepPrice").innerHTML = `(${sheepPrice} M³)`;
+document.getElementById("horsePrice").innerHTML = `(${horsePrice} M³)`;
+document.getElementById("chickenPrice").innerHTML = `(${chickenPrice} M³)`;
+document.getElementById("pigPrice").innerHTML = `(${pigPrice} M³)`;
+document.getElementById("smallTreePrice").innerHTML = `(${smallTreePrice} M³)`;
+document.getElementById("mediumTreePrice").innerHTML = `(${mediumTreePrice} M³)`;
+document.getElementById("largeTreePrice").innerHTML = `(${largeTreePrice} M³)`;
 }
 
 // Login function to validate username and password
@@ -208,9 +232,9 @@ function applyAutoEarnings() {
     localStorage.setItem('whatAutoEarn', whatAutoEarn);  
     updateAutoEarnTable();
     updateTracker(); 
+    updatePrices();
     updateDashboard();
     reload();
-    updatePrices();
     console.log(`Prices updated, or at least UpdatePrices called`)
   }
 }

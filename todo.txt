@@ -1,4 +1,3 @@
-- Update market for magical trees, new livestock, insurance, and land
 - Random pricing generating for all cows v2.3
 DO ABOVE BY SPRING BREAK
 - New layering on HTML v2.4
