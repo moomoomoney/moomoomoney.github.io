@@ -344,7 +344,7 @@ async function submitPasswordForCows() {
 
 // Function to update the display on the page
 function updateDashboard() {
-
+  updateAutoEarnTable();
   const cattleDisplayElement = document.getElementsByClassName("cattleAmount")[0];
   if (cattleDisplayElement) {
     cattleDisplayElement.innerHTML = `You own: ${cattleAmount} M³`;
@@ -405,7 +405,6 @@ function updateDashboard() {
     expenseDisplayElement.innerHTML = expenseAmount;
   }
   updatePrestigeDisplay();
-  updateAutoEarnTable();
 
   // Update redeem coupon display
   updateRedeemDisplay();
