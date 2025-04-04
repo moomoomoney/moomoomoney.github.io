@@ -630,6 +630,48 @@
 <br>
 </div>
 <script src="script.js"></script>
+
+<script>
+  function handleMissedMidnights() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); // Start of today
+    const lastExecution =
+      parseInt(localStorage.getItem("lastMidnightExecution")) || 0;
+
+    // Calculate how many days have passed since the last execution
+    const daysMissed = Math.floor(
+      (today - lastExecution) / (1000 * 60 * 60 * 24)
+    );
+
+    if (daysMissed > 0) {
+      console.log(`Missed ${daysMissed} midnights. Applying updates...`);
+      updatePrices(); // Update prices
+      localStorage.setItem("lastMidnightExecution", today); // Update the last execution time
+    } else {
+      console.log("No missed midnights. Everything is up to date.");
+    }
+  }
+
+  function checkForMidnight() {
+    const now = new Date();
+    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); // Next midnight
+    const timeUntilMidnight = (midnight - now) / 1000; // Time until midnight in seconds
+
+    // Check if the current time is within 50 seconds of midnight
+    if (timeUntilMidnight <= 30 && timeUntilMidnight >= 0) {
+      console.log("It's within 30 seconds of midnight! Running updates...");
+      updatePrices(); // Update prices
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); // Start of today
+      localStorage.setItem("lastMidnightExecution", today); // Update the last execution time
+    }
+  }
+
+  // Handle missed midnights when the page is loaded
+  handleMissedMidnights();
+
+  // Run the check every second
+  setInterval(checkForMidnight, 1000); // Check every 1 second
+</script>
 <script src="control.js"></script>
 <script src="autoearn.js"></script>
 </html>

@@ -215,27 +215,45 @@ window.location.reload();
 
 // Function to apply auto earnings once per day and update the tracker table
 function applyAutoEarnings() {
-  const lastEarned = localStorage.getItem('lastEarned');
+  const lastEarned = localStorage.getItem('lastEarned'); // Get the last earned date from localStorage
   const now = new Date();
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-  console.log(`Its midnight!!! MIDNIGHT`);
-  if (!lastEarned || today > new Date(parseInt(lastEarned)).getTime()) {
-    const dailyEarnings = calculateDailyEarnings();
-    coins += dailyEarnings;
-    localStorage.setItem('coins', coins);
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); // Get today's date (start of the day)
+
+  if (!lastEarned) {
+    // If no lastEarned date exists, initialize it for the first time
+    console.log("First-time setup for auto earnings.");
     localStorage.setItem('lastEarned', today.toString());
-    console.log(`Auto earnings of ${dailyEarnings} M³ applied.`);
-    totalAutoEarn = parseInt(localStorage.getItem('totalAutoEarn'));
-    totalAutoEarn += autoearn;
+    return;
+  }
+
+  const lastEarnedDate = new Date(parseInt(lastEarned));
+  const daysMissed = Math.floor((today - lastEarnedDate.getTime()) / (1000 * 60 * 60 * 24)); // Calculate the number of missed days
+
+  if (daysMissed > 0) {
+    console.log(`Applying earnings for ${daysMissed} missed days.`);
+    const dailyEarnings = calculateDailyEarnings();
+    coins += dailyEarnings * daysMissed; // Add earnings for all missed days
+    localStorage.setItem('coins', coins); // Update coins in localStorage
+    localStorage.setItem('lastEarned', today.toString()); // Update lastEarned to today
+    console.log(`Auto earnings of ${dailyEarnings * daysMissed} M³ applied.`);
+
+    // Update other relevant data
+    totalAutoEarn = parseInt(localStorage.getItem('totalAutoEarn')) || 0;
+    totalAutoEarn += autoearn * daysMissed; // Add auto earnings for missed days
     localStorage.setItem("totalAutoEarn", totalAutoEarn);
+
     whatAutoEarn = getAutoEarningsDescription();
-    localStorage.setItem('whatAutoEarn', whatAutoEarn);  
+    localStorage.setItem('whatAutoEarn', whatAutoEarn);
+
+    // Update the UI
     updateAutoEarnTable();
-    updateTracker(); 
+    updateTracker();
+    console.log("Calling updatePrices...");
     updatePrices();
     updateDashboard();
-    reload();
-    console.log(`Prices updated, or at least UpdatePrices called`)
+    console.log(`Prices updated, or at least UpdatePrices called`);
+  } else {
+    console.log("Earnings already applied for today.");
   }
 }
 
@@ -483,6 +501,7 @@ async function submitPassword() {
   if (hashedPassword !== correctPassword) {
     document.getElementById("errorMessage").style.display = "block"; // Show error message
     wrongPassword();
+    document.getElementById("modalPassword").value = "";
     return;
   }
   let whatToDo = localStorage.getItem('whatToDo');
@@ -571,10 +590,51 @@ window.onload = function() {
   updateCouponTracker();
 };
 
+if (localStorage.getItem('wrongPassword') === null) {
+  localStorage.setItem('wrongPassword', false);
+}
+
+function checkWrongPassword() {
+  isWrongPassword = localStorage.getItem('wrongPassword');
+  if (isWrongPassword === "true") {
+    let BigBadBox = document.getElementById("BigBadBox");
+    BigBadBox.style.display = "block";
+    const passwordModal = document.getElementById("passwordModal2");
+    passwordModal.style.display = "block";
+  }
+}
+setInterval(checkWrongPassword, 500);
+
 // Evil things happen when you enter the wrong password!!!!
- function wrongPassword() {
-  let wrongPassword = document.getElementById("wrongPassword");
-  wrongPassword.style.display = "block";
+function wrongPassword() {
+  isWrongPassword = true; // Use the renamed variable
+  localStorage.setItem('wrongPassword', isWrongPassword);
+  document.getElementById("passwordModal2").style.display = "block";
+}
+
+async function submitPasswordWrong() {
+  const passwordInput = document.getElementById("modalPasswordWrong").value; // Get the entered password
+  const hashedPassword = await hashPassword(passwordInput); // Use passwordInput here
+  if (hashedPassword === correctPassword) {
+    // Password is correct
+    console.log("Password is correct!");
+    document.getElementById("modalPasswordWrong").value = "";
+    localStorage.setItem('wrongPassword', false); // Set isWrongPassword to false
+    const BigBadBox = document.getElementById("BigBadBox");
+    const passwordModal = document.getElementById("passwordModal2");
+
+    if (BigBadBox) {
+      BigBadBox.style.display = "none"; // Hide the BigBadBox
+    }
+    if (passwordModal) {
+      passwordModal.style.display = "none"; // Close the modal
+    }
+  } else {
+    // Password is incorrect
+    console.log("Password is incorrect. Try again.");
+    alert("Incorrect password. Please try again."); // Alert the user
+    document.getElementById("modalPasswordWrong").value = ""; // Clear the input field
+  }
 }
 
 // COUPONS COUPONS REDEEM COUPONS !!!
