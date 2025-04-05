@@ -17,7 +17,8 @@ let insuranceAmount = parseInt(localStorage.getItem('insuranceAmount')) || 0;
 localStorage.setItem('insuranceAmount', insuranceAmount); 
 let expenseAmount = parseInt(localStorage.getItem('expenseAmount')) || 0;
 localStorage.setItem('expenseAmount', expenseAmount);  
-let whatAutoEarn = "No Auto Earn";
+whatAutoEarn = getAutoEarningsDescription();
+localStorage.setItem('whatAutoEarn', whatAutoEarn);
 
 // Cow Earning rules
 let cowEarns = 1;
@@ -242,9 +243,6 @@ function applyAutoEarnings() {
     totalAutoEarn += autoearn * daysMissed; // Add auto earnings for missed days
     localStorage.setItem("totalAutoEarn", totalAutoEarn);
 
-    whatAutoEarn = getAutoEarningsDescription();
-    localStorage.setItem('whatAutoEarn', whatAutoEarn);
-
     // Update the UI
     updateAutoEarnTable();
     updateTracker();
@@ -258,7 +256,6 @@ function applyAutoEarnings() {
 }
 
 function updateAutoEarnTable() {
-  console.log(`tracker table updated`);
   const AutoEarnTableElement = document.getElementById("totalAutoEarn");
   if (AutoEarnTableElement) {
     AutoEarnTableElement.innerHTML = totalAutoEarn;
@@ -267,6 +264,7 @@ function updateAutoEarnTable() {
   if (AutoEarnTableDescription) {
     AutoEarnTableDescription.innerHTML = whatAutoEarn;
   }
+  console.log(`tracker table updated`);
 }
 
 // Function to generate a dynamic description for whatAutoEarn

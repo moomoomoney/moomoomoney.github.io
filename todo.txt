@@ -1,6 +1,6 @@
-- New layering on HTML v2.5
-- Break down JS file v2.6
-- Festival page for in-website random number generator v2.7
-- Improve CSS styling  v2.8
+- New layering on HTML v2.4
+- Break down JS file v2.5
+- Festival page for in-website random number generator v2.6
 DO ABOVE BY JUNE 10
+- Improve CSS styling  v2.7
 - SQL storage v3.0
