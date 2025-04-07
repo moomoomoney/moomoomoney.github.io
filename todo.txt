@@ -1,5 +1,5 @@
-- New layering on HTML v2.4
-- Break down JS file v2.5
+- Break down JS file v2.4
+- New layering on HTML v2.5 (transform property CSS)
 - Festival page for in-website random number generator v2.6
 DO ABOVE BY JUNE 10
 - Improve CSS styling  v2.7
