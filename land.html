@@ -77,40 +77,6 @@
   </div>
 <h1 class="center">Current Land: Small Farm</h1>
 
-<button class="dropdownTitle" onclick="reveal('living')">
-  <h3 class="heading"><b>Living Arangement</b></h3>
-</button>
-<div class="dropdownText" id="living" style="display: none">
-
-  <div class="two-display">
-    <!-- Title -->
-    <div class="two-item">
-      <p class="two-title">
-        <h2>Tent</h2>
-        <p class="center">Despite owning land, you currently live in a tent on land provided by ICOF.</p>
-        <img src="tent.png" alt="tent" width="400"  class="img" style="float: left; margin-left: 100px;"/>
-      </p> 
-    </div>
-    <div class="two-item">
-      <p class="two-title">
-        <h2>Inside</h2>
-        <ul style="text-align:left; margin-left: 350px;">
-          <li>Bed</li>
-          <li>Desk</li>
-          <li>Chair</li>
-          <li>Closet</li>
-          <li>Lamp</li>
-          <li>Candle</li>
-          <li>Clothes</li>
-          <li>Articles of Idiocy</li>
-
-        </ul>
-      </p>
-    </div>
-</div>
-</div>
-<br><br>
-
 <button class="dropdownTitle" onclick="reveal('myland')">
   <h3 class="heading"><b>Inside Your Land</b></h3>
 </button>
@@ -121,57 +87,45 @@
     <div class="one-item">
       <br>
         <h2>Map</h2>
-        <br>
+        <br><br><br>
+         <!-- Hut -->
+         <button onclick="infoModal('infoModalHut')" ><img src="hut.jpg" alt="hut" width="300" class="img" style="position: absolute;top: 120%; left: 2%; width: 12%; height: 300px; width:auto; background-color: transparent;color: transparent; z-index: 900;"/></button>
         <pre class="hut">
-             :===:
-         :=======:
-       :=========:                 
-      :============:
-     ===+++++++====:
-     :=============:
-      :###%%%%###:
-      :===%%%%===:
-      :===%%%%===: 
-      :===%%%%===:
-      :============:
-        </pre> 
-        <button class="hutBtn" onclick="infoModalHut()">Hut</button>
+        </pre>
         
-        <table style="position: absolute; top: 137%; left: 80%; transform: translateX(-50%); z-index: 900;">
+        <table style="position: absolute; top: 124%; left: 80%; transform: translateX(-50%); z-index: 900;">
           <tbody>
             <tr>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">1</button></td>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">2</button></td>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">3</button> </td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">1</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">2</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">3</button> </td>
             </tr>
             <tr>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">4</button></td>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">5</button></td>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">6</button> </td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">4</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">5</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">6</button> </td>
             </tr>
             <tr>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">7</button></td>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">8</button></td>
-              <td><button class="farmBtn" onclick="infoModalEmptyPlot()">9</button> </td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">7</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">8</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">9</button> </td>
             </tr>
           </tbody>
         </table>
 
         <!-- Barn -->
-       <img src="barn.jpg" alt="hut" width="300" class="img" style="position: absolute; top: 135%; left: 30%; transform: translateX(-50%); z-index: 900;"/>
-       <button onclick="infoModalBarn()" style="width: 15%; height: 32%; background-color: transparent; position: absolute; color: transparent;  top: 137%; left: 30%; transform: translateX(-50%); z-index: 910;"></button>
+        <button onclick="infoModal('infoModalBarn')" ><img src="barn.jpg" alt="hut" width="300" class="img" style="position: absolute; top: 125%; left: 30%; transform: translateX(-50%); z-index: 900;"/></button>
 
        <!-- Grass -->
-       <img src="grass.jpg" alt="hut" width="850" height="280" class="img" style="position: absolute; top: 135%; left: 45%; transform: translateX(-50%); z-index: 700;"/>
-       <button onclick="infoModalGrass()" style="width: 30%; height: 35%; background-color: transparent; position: absolute; color: transparent;  top: 136%; left: 55%; transform: translateX(-50%); z-index: 900;"></button>
-
+       <button onclick="infoModal('infoModalGrass')"><img src="grass.jpg" alt="hut" width="850" height="280" class="img" style="position: absolute; top: 124%; left: 45%; transform: translateX(-50%); z-index: 700;"/></button>
+       <br><br><br><br>
     </div>
     </div>
 
 <!-- Info Modal Hut -->
-<div id="InfoModalHut" class="modal" style="z-index: 1000;">
+<div id="infoModalHut" class="modal" style="z-index: 1000;">
   <div class="modal-content" style="z-index: 1000;  width: 50%;" >
-    <span class="closebtn" onclick="document.getElementById('InfoModalHut').style.display='none';">&times;</span>
+    <span class="closebtn" onclick="document.getElementById('infoModalHut').style.display='none';">&times;</span>
     <h1 class="center">Your Hut</h1>
     <!-- <div class="alert">
       <strong>Warning:</strong> Your house has not been occupied in a long time, and has fallen into a state of disrepair.Your house is full of cobwebs. Cleaning will cost you <b>30 M³</b> and this cost will only increase the longer you wait.
@@ -188,7 +142,7 @@
       <li>Water basin</li>
       <li>Toilet</li>
     </ul>
-    <img src="hut.jpg" alt="hut" width="400" class="img" style="position: absolute; top: 50%; left: 70%; transform: translateX(-50%); z-index: 1000;"/>
+    <img src="hut.jpg" alt="hut" width="400" class="img" style="position: absolute; top: 23%; left: 70%; transform: translateX(-50%); z-index: 1000;"/>
   </div>
 </div>
 
@@ -206,14 +160,43 @@
 
 <!-- Info Modal Barn -->
 <div id="infoModalBarn" class="modal" style=" z-index: 900;">
-  <div class="modal-content"style=" width: 50%; z-index: 1000;">
+  <div class="modal-content"style=" width: 70%; z-index: 1000;">
     <span class="closebtn" onclick="document.getElementById('infoModalBarn').style.display='none';">&times;</span>
     <h1 class="center">Your Barn</h1>
     <!-- <div class="alert">
     <strong>Warning:</strong> Your barn has not been used in a long time, and has fallen into a state of disrepair. Your barn is full of cobwebs and certain repairs are needed. Cleaning and fixing will cost you <b>40 M³</b> and this cost will only increase the longer you wait.
    </div> -->
-    <p class="center">Your barn is empty! Buy animals at the <a href="market.html">Market</a>!</p>
+    <p class="center">You have one horse! Your barn is 1/3 full.
+    <div class="three-display">
+      <div class="three-item">
+        <p class="three-title">Horse #1</p>
+      </div>
+      <div class="three-item">
+        <p class="three-title">Empty</p>
+      </div>
+      <div class="three-item">
+        <p class="three-title">Empty</p>
+      </div>
+      <!--Avaiable Coins-->
+      <div class="three-item">
+        <b>Lvl 3 Horse: </b>Average adult horse <br>
+        You use this horse for transportation. <br>
+        <b>Age: </b>10/25 years<br>
+        <b>Health: </b> 100%<br>
+        <b>Happiness: </b> 100%<br>
+        <b>Water: </b>1/1 buckets<br>
+        <b>Food: </b> Average<br><br>
+      </div>
+      <!--Income-->
+      <div class="three-item">
+        Buy an animal at the <a href="market.html">Market</a>!
+      </div>
+      <!--Losses-->
+      <div class="three-item">
+        Buy an animal at the <a href="market.html">Market</a>!
+      </div>
   </div>
+</div>
 </div>
 
 <!-- Info Modal Grass -->
@@ -224,7 +207,7 @@
     <!-- <div class="alert">
       <strong>Warning:</strong> Your grassy field has not been used in a long time, and is overgrown with weeds. Weeding will cost you <b>40 M³</b> and this cost will only increase the longer you wait.
      </div> -->
-    <p class="center">A piece of grassy field for cows to roam and eat. Grass enough for two cows. Buy better grass at the <a href="market.html">Market</a>!</p>
+    <p class="center">A piece of grassy field for animals to roam and eat. Grass enough for two cows/horses. Buy better grass at the <a href="market.html">Market</a>!</p>
   </div>
 </div>
 
@@ -239,7 +222,5 @@
     <button onclick="submitPasswordWrong()">Submit</button>
   </div>
 </div>
-<script src="script.js"></script>
-<script src="autoearn.js"></script>
-<script src="control.js"></script>
+<script type="module" src="script.js"></script>
 </html>

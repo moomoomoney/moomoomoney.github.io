@@ -1,6 +1,7 @@
 - Break down JS file v2.4
-- New layering on HTML v2.5 (transform property CSS)
-- Festival page for in-website random number generator v2.6
+- Random event generation (Robbery, famine, sickness, etc) and changing price generation to be increase/decrease randomly + include autoearnings in Incomev2.5
+- New layering on HTML v2.6 (transform property CSS)
+- Festival page for in-website random number generator v2.7
 DO ABOVE BY JUNE 10
-- Improve CSS styling  v2.7
+- Improve CSS styling  v2.8
 - SQL storage v3.0

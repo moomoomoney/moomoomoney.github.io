@@ -138,14 +138,12 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
-  <script src="autoearn.js"></script>
-  <script src="control.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Retrieve coins from localStorage
-      const coins = localStorage.getItem('coins') || 0;
+  <script type="module" src="script.js"></script>
+  <script type="module" src="control.js"></script>
 
+  <script>
+    let coins = localStorage.getItem('coins') || 0;
+    document.addEventListener('DOMContentLoaded', () => {
       // Update all elements with the class "coins"
       const coinsElements = document.querySelectorAll('.coins');
       coinsElements.forEach(el => {
