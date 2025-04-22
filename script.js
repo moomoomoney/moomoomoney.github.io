@@ -248,7 +248,9 @@ function applyAutoEarnings() {
     updateAutoEarnTable();
     updateTracker();
     console.log("Calling updatePrices...");
-    updatePrices();
+    if (window.location.pathname.endsWith("market.html")) {
+      updatePrices();
+  }
     updateDashboard();
     console.log(`Prices updated, or at least UpdatePrices called`);
   } else {

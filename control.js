@@ -1,14 +1,12 @@
 import { updateAutoEarnTable, correctPassword, hashPassword, reveal} from './script.js';
-console.log("Control.js loaded");
-
 window.reveal = reveal;
-
 // Initialize variables with values from localStorage or default if not set
 let coins = parseInt(localStorage.getItem('coins')) || 0;
+localStorage.setItem('coins', coins);
 let prestige = parseInt(localStorage.getItem('prestige')) || 0;
 localStorage.setItem('prestige', prestige);
-let income = parseInt(localStorage.getItem('income'));
-let losses = parseInt(localStorage.getItem('losses'));
+let income = parseInt(localStorage.getItem('income')) || 0;
+let losses = parseInt(localStorage.getItem('losses')) || 0;
 let autoearn = parseInt(localStorage.getItem('autoearn')) || 0;
 
 // Function to update the display on the page
@@ -83,21 +81,22 @@ checkAndResetDailyValues();
 // Modal-related functions
 function openModal(operation) {
     let whatToDo = operation;
+    
+    // Validate inputs before proceeding
+    const addInput = document.getElementsByClassName(operation)[0];
+    const addReasonInput = document.getElementsByClassName("addReason")[0];
 
-    // Validate input fields for the specified operation
-    const elements = document.getElementsByClassName(whatToDo);
-    if (elements.length === 0) {
-        console.warn(`No input fields found with class name "${whatToDo}".`);
+    // Check if the inputs exist in the DOM
+    if (!addInput) {
+        console.error("Required input fields not found.");
+        alert("Amount required");
+        return;
     }
-    for (let i = 0; i < elements.length; i++) {
-        if (elements[i].tagName === "INPUT" || elements[i].tagName === "TEXTAREA") {
-            const value = elements[i].value.trim(); // Get the trimmed value of the input
-            if (value === "" || isNaN(value)) {
-                console.error(`Invalid input in field with class "${whatToDo}".`);
-                alert("Please enter a valid value before proceeding."); // Show an alert to the user
-                return; // Stop execution and prevent the modal from opening
-            }
-        }
+    // Validate the addCoins input
+    const addValue = parseInt(addInput.value);
+    if (isNaN(addValue) || addValue === 0) {
+        alert("Please enter a valid number that isn't 0.");
+        return;
     }
 
     // Proceed to open the modal if all inputs are valid
@@ -105,21 +104,6 @@ function openModal(operation) {
     console.log(whatToDo);
     document.getElementById("passwordModal").style.display = "block";
     document.getElementById("errorMessage").style.display = "none"; 
-
-    // Clear input fields for the specified operation
-    for (let i = 0; i < elements.length; i++) {
-        if (elements[i].tagName === "INPUT" || elements[i].tagName === "TEXTAREA") {
-            elements[i].value = ""; // Clear the input field
-        }
-    }
-
-    // Clear input fields for 'addReason'
-    const addReasonElements = document.getElementsByClassName('addReason');
-    for (let i = 0; i < addReasonElements.length; i++) {
-        if (addReasonElements[i].tagName === "INPUT" || addReasonElements[i].tagName === "TEXTAREA") {
-            addReasonElements[i].value = ""; // Clear the input field
-        }
-    }
 }
 
 function closeModal() {
@@ -135,9 +119,8 @@ window.closeModal = closeModal;
 function addCoins() {
     const addCoinsBy = parseInt(document.getElementsByClassName("addCoins")[0].value);
     const reason = document.getElementsByClassName("addReason")[0].value;
-  
+
     coins += addCoinsBy;
-  
     if (addCoinsBy > 0) {
       addIncome(addCoinsBy);
     } else {
@@ -260,6 +243,8 @@ function addPrestige() {
     localStorage.setItem('prestige', prestige);
     updatePrestigeDisplay();
     updateDashboard();
+    document.getElementsByClassName("addPrestige")[0].value = "";
+    document.getElementsByClassName("addReason")[2].value = "";
 }
 
 function clearPrestige() {
