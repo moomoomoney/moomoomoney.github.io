@@ -1,4 +1,4 @@
-import {updateDashboard, wrongPassword, coins, openModal, closeModal, getCoins, setCoins, isWrongPassword} from './control.js';
+import {updateDashboard, wrongPassword, coins, income, losses, openModal, closeModal, getCoins, setCoins, isWrongPassword} from './control.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   // Display amounts from localStorage or defaults
@@ -243,6 +243,14 @@ function applyAutoEarnings() {
     totalAutoEarn = parseInt(localStorage.getItem('totalAutoEarn')) || 0;
     totalAutoEarn += autoearn * daysMissed; // Add auto earnings for missed days
     localStorage.setItem("totalAutoEarn", totalAutoEarn);
+    if (autoearn > 0) {
+    income += autoearn;
+    localStorage.setItem("income", income);
+    }
+    if (autoearn < 0) {
+      losses += autoearn; 
+      localStorage.setItem("losses", losses)
+    }
 
     // Update the UI
     updateAutoEarnTable();

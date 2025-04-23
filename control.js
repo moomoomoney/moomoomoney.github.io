@@ -270,8 +270,6 @@ function updatePrestigeDisplay() {
 // Ensure displays are updated on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateDashboard();
-    updateRedeemDisplay();
-    updatePrestigeDisplay();
 });
 
 // Password-related functions
@@ -339,6 +337,7 @@ async function submitPasswordWrong() {
       document.getElementById("modalPasswordWrong").value = ""; // Clear the input field
     }
 }
+window.submitPasswordWrong = submitPasswordWrong;
 
 if (localStorage.getItem('wrongPassword') === null) {
     localStorage.setItem('wrongPassword', false);
@@ -362,4 +361,4 @@ export function setCoins(value) {
     coins = value;
     localStorage.setItem('coins', coins); // Update localStorage
 }
-export {updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword};
+export {updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, losses};

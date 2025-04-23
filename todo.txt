@@ -1,4 +1,4 @@
-- Random event generation (Robbery, famine, sickness, etc) and changing price generation to be increase/decrease randomly + include autoearnings in Incomev2.5
+- Random event generation (Robbery, famine, sickness, etc) and changing price generation to be increase/decrease randomly
 - New layering on HTML v2.6 (transform property CSS)
 - Festival page for in-website random number generator v2.7
 DO ABOVE BY JUNE 10
