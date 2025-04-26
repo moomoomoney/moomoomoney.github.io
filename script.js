@@ -71,101 +71,78 @@ function infoModal(name) {
 }
 window.infoModal = infoModal;
 
-// Generate PRICES
-function generateCowPrice() {
-  return Math.random() < 0.25 ? 100 : Math.floor(Math.random() * (150 - 90 + 1)) + 90;
+// Parent function to generate or adjust prices
+function generatePrice(itemKey, basePrice, minPrice, maxPrice) {
+  // Retrieve the current price from localStorage
+  let currentPrice = parseInt(localStorage.getItem(itemKey));
+
+  if (isNaN(currentPrice)) {
+    // If the item doesn't exist in localStorage, generate an initial price
+    const initialPrice = Math.random() < 0.25 ? basePrice : Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
+    localStorage.setItem(itemKey, initialPrice); // Save the initial price to localStorage
+    return initialPrice;
+  } else {
+    // 25% chance the price stays the same
+    if (Math.random() < 0.25) {
+      return currentPrice; 
+    }
+    // Adjust the price daily by ±100, ensuring it stays within bounds
+    const adjustment = Math.floor(Math.random() * 201) - 100; 
+    const newPrice = currentPrice + adjustment;
+    const boundedPrice = Math.max(minPrice, Math.min(maxPrice, newPrice)); // Ensure it stays within bounds
+    localStorage.setItem(itemKey, boundedPrice); 
+    return boundedPrice;
   }
-  function generateCattlePrice() {
-  return Math.random() < 0.25 ? 400 : Math.floor(Math.random() * (450 - 350 + 1)) + 350;
-  }
-  function generateBullPrice() {
-  return Math.random() < 0.25 ? 750 : Math.floor(Math.random() * (850 - 600 + 1)) + 600;
-  }
-  function generateArenaPrice() {
-  return Math.random() < 0.25 ? 2000 : Math.floor(Math.random() * (2250 - 1800 + 1)) + 1800;
 }
-  function generateSheepPrice() {
-    return Math.random() < 0.25 ? 150 : Math.floor(Math.random() * (125 - 250 + 1)) + 250;
-  }
-  function generateHorsePrice() {
-    return Math.random() < 0.25 ? 400 : Math.floor(Math.random() * (200 - 1000 + 1)) + 1000;
-  }
-  function generateChickenPrice() {
-    return Math.random() < 0.25 ? 150 : Math.floor(Math.random() * (80 - 200 + 1)) + 200;
-  }
-  function generatePigPrice() {
-    return Math.random() < 0.25 ? 150 : Math.floor(Math.random() * (125 - 250 + 1)) + 250;
-  }
-  function generateSmallTreePrice() {
-    return Math.random() < 0.25 ? 200 : Math.floor(Math.random() * (180 - 300 + 1)) + 300;
-  }
-  function generateMediumTreePrice() {
-    return Math.random() < 0.25 ? 400 : Math.floor(Math.random() * (370 - 600 + 1)) + 600;
-  }
-  function generateLargeTreePrice() {
-    return Math.random() < 0.25 ? 750 : Math.floor(Math.random() * (600 - 1100 + 1)) + 1100;
-  }
+
+// Generate PRICES
+function generateAllPrices() {
+  generatePrice('cowPrice', 100, 90, 150);
+  generatePrice('cattlePrice', 400, 350, 450);
+  generatePrice('bullPrice', 750, 600, 850);
+  generatePrice('arenaPrice', 2000, 1800, 2250);
+  generatePrice('sheepPrice', 150, 125, 250);
+  generatePrice('horsePrice', 400, 1000, 2000);
+  generatePrice('chickenPrice', 150, 80, 200);
+  generatePrice('pigPrice', 150, 125, 250);
+  generatePrice('smallTreePrice', 200, 180, 300);
+  generatePrice('mediumTreePrice', 400, 370, 600);
+  generatePrice('largeTreePrice', 750, 600, 1100);
+}
 
 if (!localStorage.getItem('cowPrice') || !localStorage.getItem('cattlePrice') || !localStorage.getItem('bullPrice') || !localStorage.getItem('sheepPrice') ||!localStorage.getItem('horsePrice') || !localStorage.getItem('chickenPrice') || !localStorage.getItem('pigPrice') || !localStorage.getItem('smallTreePrice')  || !localStorage.getItem('largeTreePrice') || !localStorage.getItem('mediumTreePrice') || !localStorage.getItem('arenaPrice')) {
   updatePrices();
 }
 
 // Function to update prices and save to localStorage
-function updatePrices() {
-// Generate new prices for each category
-const cowPrice = generateCowPrice();
-const cattlePrice = generateCattlePrice();
-const bullPrice = generateBullPrice();
-const arenaPrice = generateArenaPrice();
-const sheepPrice = generateSheepPrice();
-const horsePrice = generateHorsePrice();
-const chickenPrice = generateChickenPrice();
-const pigPrice = generateChickenPrice();
-const smallTreePrice = generateSmallTreePrice();
-const mediumTreePrice = generateMediumTreePrice();
-const largeTreePrice = generateLargeTreePrice();
-
-// Save to localStorage
-localStorage.setItem("cowPrice", cowPrice);
-localStorage.setItem("cattlePrice", cattlePrice);
-localStorage.setItem("bullPrice", bullPrice);
-localStorage.setItem("arenaPrice", arenaPrice);
-localStorage.setItem("sheepPrice", sheepPrice);
-localStorage.setItem("horsePrice", horsePrice);
-localStorage.setItem("chickenPrice", chickenPrice);
-localStorage.setItem("pigPrice", pigPrice);
-localStorage.setItem("smallTreePrice", smallTreePrice);
-localStorage.setItem("mediumTreePrice", mediumTreePrice);
-localStorage.setItem("largeTreePrice", largeTreePrice);
-loadPricesFromLocalStorage();
+export function updatePrices() {
+  generateAllPrices();
+  loadPricesFromLocalStorage();
 }
+window.updatePrices = updatePrices; 
 
-// Function to load prices from localStorage (defaulting to 0 if not found)
 function loadPricesFromLocalStorage() {
-  const cowPrice = parseInt(localStorage.getItem("cowPrice")) || 100;
-  const cattlePrice = parseInt(localStorage.getItem("cattlePrice")) || 400;
-  const bullPrice = parseInt(localStorage.getItem("bullPrice")) || 750;
-  const arenaPrice = parseInt(localStorage.getItem("arenaPrice")) || 2000;
-  const sheepPrice = parseInt(localStorage.getItem("sheepPrice")) || 150;
-  const horsePrice = parseInt(localStorage.getItem("horsePrice")) || 400;
-  const chickenPrice = parseInt(localStorage.getItem("chickenPrice")) || 150;
-  const pigPrice = parseInt(localStorage.getItem("pigPrice")) || 150;
-  const smallTreePrice = parseInt(localStorage.getItem("smallTreePrice")) || 200;
-  const mediumTreePrice = parseInt(localStorage.getItem("mediumTreePrice")) || 400;
-  const largeTreePrice = parseInt(localStorage.getItem("largeTreePrice")) || 750;
+  const priceMapping = {
+    cowPrice: "cowPrice",
+    cattlePrice: "cattlePrice",
+    bullPrice: "bullPrice",
+    arenaPrice: "arenaPrice",
+    sheepPrice: "sheepPrice",
+    horsePrice: "horsePrice",
+    chickenPrice: "chickenPrice",
+    pigPrice: "pigPrice",
+    smallTreePrice: "smallTreePrice",
+    mediumTreePrice: "mediumTreePrice",
+    largeTreePrice: "largeTreePrice",
+  };
 
-// Update the UI with the loaded prices
-document.getElementById("cowPrice").innerHTML = `(${cowPrice} M³)`;
-document.getElementById("cattlePrice").innerHTML = `(${cattlePrice} M³)`;
-document.getElementById("bullPrice").innerHTML = `(${bullPrice} M³)`;
-document.getElementById("arenaPrice").innerHTML = `(${arenaPrice} M³)`;
-document.getElementById("sheepPrice").innerHTML = `(${sheepPrice} M³)`;
-document.getElementById("horsePrice").innerHTML = `(${horsePrice} M³)`;
-document.getElementById("chickenPrice").innerHTML = `(${chickenPrice} M³)`;
-document.getElementById("pigPrice").innerHTML = `(${pigPrice} M³)`;
-document.getElementById("smallTreePrice").innerHTML = `(${smallTreePrice} M³)`;
-document.getElementById("mediumTreePrice").innerHTML = `(${mediumTreePrice} M³)`;
-document.getElementById("largeTreePrice").innerHTML = `(${largeTreePrice} M³)`;
+  Object.keys(priceMapping).forEach((key) => {
+    const price = parseInt(localStorage.getItem(key)) || 0; // Default to 0 if not found
+    const element = document.getElementById(key);
+    if (element) {
+      element.innerHTML = `(${price} M³)`;
+    }
+  });
 }
 
 // Login function to validate username and password
@@ -281,7 +258,6 @@ function updateAutoEarnTable() {
 // Function to generate a dynamic description for whatAutoEarn
 function getAutoEarningsDescription() {
   let description = '';
-
   // Dynamically add descriptions based on values greater than 0
   if (cowsAmount > 0) description += `Cows earn: ${cowsAmount} M³/day;`;
   if (cropsAmount > 0) description += `Crops earn: ${cropsAmount} M³/day; `;
@@ -304,7 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   applyAutoEarnings();
 });
-
 
 let changeWhat; // Variable amount to be changed (ie. what is in cowsAmount)
 let changeWhatBy; // Amount to be changed by (ie. 5)
@@ -348,9 +323,7 @@ async function submitPasswordForCows() {
     wrongPassword();  
     return;
   }
-
   closeModalForCows();
-
   const previousAmount = changeWhat;
   changeWhat += changeWhatBy;
   console.log(`previousAmount ${previousAmount} `);
@@ -366,45 +339,25 @@ window.submitPasswordForCows = submitPasswordForCows;
 // Function to update the display on the page
 function updateAutoEarnDashboard() {
   updateDashboard();
-  updateAutoEarnTable();
-  const cattleDisplayElement = document.getElementsByClassName("cattleAmount")[0];
-  if (cattleDisplayElement) {
-    cattleDisplayElement.innerHTML = `You own: ${cattleAmount} M³`;
-  }
-
-  const bullDisplayElement = document.getElementsByClassName("bullAmount")[0];
-  if (bullDisplayElement) {
-    bullDisplayElement.innerHTML = `You own: ${bullAmount} M³`;
-  }
-
-  const upgradedDisplayElement = document.getElementsByClassName("upgradedAmount")[0];
-  if (upgradedDisplayElement) {
-    upgradedDisplayElement.innerHTML = `You own: ${upgradedAmount} M³`;
-  }
-  // Update the display for cows, cattle, bull, etc.
-  const cowDisplayElement = document.getElementsByClassName("cowsAmount")[0];
-  if (cowDisplayElement) {
-    cowDisplayElement.innerHTML = `You own: ${cowsAmount} M³`;
-  }
-  const salaryDisplayElement = document.getElementsByClassName("salary")[0];
-  if (salaryDisplayElement) {
-    salaryDisplayElement.innerHTML = salary;
-  }
-
-  const cropDisplayElement = document.getElementsByClassName("cropsAmount")[0];
-  if (cropDisplayElement) {
-    cropDisplayElement.innerHTML = cropsAmount;
-  }
-
-  const insuranceDisplayElement = document.getElementsByClassName("insuranceAmount")[0];
-  if (insuranceDisplayElement) {
-    insuranceDisplayElement.innerHTML = insuranceAmount;
-  }
-
-  const expenseDisplayElement = document.getElementsByClassName("expenseAmount")[0];
-  if (expenseDisplayElement) {
-    expenseDisplayElement.innerHTML = expenseAmount;
-  }
+  updateAutoEarnTable();// Mapping of class names to their corresponding values
+  const displayMapping = {
+    cattleAmount: `You own: ${cattleAmount} M³`,
+    bullAmount: `You own: ${bullAmount} M³`,
+    upgradedAmount: `You own: ${upgradedAmount} M³`,
+    cowsAmount: `You own: ${cowsAmount} M³`,
+    salary: salary,
+    cropsAmount: cropsAmount,
+    insuranceAmount: insuranceAmount,
+    expenseAmount: expenseAmount,
+  };
+  
+  // Iterate through the mapping and update the elements
+  Object.entries(displayMapping).forEach(([className, content]) => {
+    const element = document.getElementsByClassName(className)[0];
+    if (element) {
+      element.innerHTML = content;
+    }
+  });
 }
 
 // Store the already hashed password
@@ -422,4 +375,24 @@ async function hashPassword(password) {
 window.openModal = openModal;
 window.closeModal = closeModal;
 
-export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, hashPassword, reveal};
+// Load the header dynamically
+function loadHeader() {
+  fetch('./header.html')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to load header');
+      }
+      return response.text();
+    })
+    .then((html) => {
+      document.getElementById('header-placeholder').innerHTML = html;
+    })
+    .catch((error) => {
+      console.error('Error loading header:', error);
+    });
+}
+
+// Call the function to load the header
+loadHeader();
+window.loadHeader = loadHeader;
+export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, hashPassword, reveal, loadHeader};

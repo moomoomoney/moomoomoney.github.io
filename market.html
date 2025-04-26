@@ -11,26 +11,7 @@
     />
     <title>Market</title>
   </head>
-  <div class="flex-container">
-    <div>
-      <a href="./index.html">
-        <button class="logout">Log Out</button>
-      </a>
-    </div>
-    <div>
-        <a href="./audioky.html">
-          <button class="logout">Audioky</button>
-        </a>
-      </div>
-    <div>
-      <a href="./control.html">
-        <button class="logout">Control</button>
-      </a>
-    </div>
-    <div>
-        <button class="logout" onclick="refresh()">Refresh</button>
-      </div>
-  </div>
+  <div id="header-placeholder"></div>
   <h1 class="center">Welcome to the Market!</h1>
   <a href="./home.html">
     <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
@@ -631,7 +612,9 @@
 </div>
 <script type="module" src="control.js"></script>
 <script type="module" src="script.js"></script>
-<script>
+<script type="module">
+  import { updatePrices } from './script.js';
+
   function handleMissedMidnights() {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); // Start of today
@@ -645,6 +628,7 @@
 
     if (daysMissed > 0) {
       console.log(`Missed ${daysMissed} midnights. Applying updates...`);
+      console.log(window.updatePrices); 
       updatePrices(); // Update prices
       localStorage.setItem("lastMidnightExecution", today); // Update the last execution time
     } else {
