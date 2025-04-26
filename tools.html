@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="icon" type="image/x-icon"
     href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
-  <title>CONTROL SYSTEM</title>
+  <title>Tools</title>
 </head>
 
 <body>
@@ -55,9 +55,26 @@
     <button class="dropdownTitle" onclick="reveal('trainGeneration')">
       <h2 class="center">Train Generation</h2>
     </button>
-    <div class="dropdownText" id="trainGeneration" style="display: none">
-      <br>
-      <button style="display: block; margin: 0 auto;" onclick="generateTrain()">Generate!</button>
+    <div class="dropdownText" id="trainGeneration" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 200px;">
+      <form onsubmit="generateTrain()" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+        <p>Exclude Trains:</p>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <input type="checkbox" id="express" name="express" value="express">
+          <label for="express">Express</label>
+        </div>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <input type="checkbox" id="xpress" name="xpress" value="xpress">
+          <label for="xpress">Xpress</label>
+        </div>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <input type="checkbox" id="intercity" name="intercity" value="intercity">
+          <label for="intercity">Intercity</label>
+        </div>
+        <br>
+        <input type="submit" value="Generate Train">
+      </form>
+    </div>
+
     </div>
   </div>
 
@@ -67,25 +84,46 @@
 
   <script>
     function generateTrain() {
-      let train = Math.floor(Math.random() * 8);
-      if (train === 1) {
-        alert("LOCAL towards RIGHT");
-      } else if (train === 2) {
-        alert("LOCAL towards LEFT");
-      } else if (train === 3) {
-        alert("EXPRESS towards RIGHT");
-      } else if (train === 4) {
-        alert("EXPRESS towards LEFT");
-      } else if (train === 5) {
-        alert("XPRESS towards RIGHT");
-      } else if (train === 6) {
-        alert("XPRESS towards LEFT");
-      } else if (train === 7) {
-        alert("INTERCITY towards RIGHT");
-      } else {
-        alert("INTERCITY towards LEFT");
+      event.preventDefault();
+      const excludedTrains = {
+      express: document.getElementById("express").checked,
+      xpress: document.getElementById("xpress").checked,
+      intercity: document.getElementById("intercity").checked,
+    };
+
+    let train;
+    let validTrain = false;
+
+    while (!validTrain) {
+      train = Math.floor(Math.random() * 8 + 1);
+      if (
+        (train === 3 || train === 4) && excludedTrains.express ||
+        (train === 5 || train === 6) && excludedTrains.xpress ||
+        (train === 7 || train === 8) && excludedTrains.intercity
+      ) {
+        continue;
       }
+      validTrain = true;
     }
+
+    if (train === 1) {
+      alert("LOCAL towards RIGHT");
+    } else if (train === 2) {
+      alert("LOCAL towards LEFT");
+    } else if (train === 3) {
+      alert("EXPRESS towards RIGHT");
+    } else if (train === 4) {
+      alert("EXPRESS towards LEFT");
+    } else if (train === 5) {
+      alert("XPRESS towards RIGHT");
+    } else if (train === 6) {
+      alert("XPRESS towards LEFT");
+    } else if (train === 7) {
+      alert("INTERCITY towards RIGHT");
+    } else if (train === 8) {
+      alert("INTERCITY towards LEFT");
+    }
+  }
   </script>
 
 </body>
