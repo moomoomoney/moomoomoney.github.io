@@ -81,10 +81,17 @@ checkAndResetDailyValues();
 // Modal-related functions
 function openModal(operation) {
     let whatToDo = operation;
-    
+
+    // Only validate inputs for specific actions
+    if (!["addCoins", "addPrestige", "addCoupon"].includes(whatToDo)) {
+        localStorage.setItem('whatToDo', whatToDo);
+        document.getElementById("passwordModal").style.display = "block";
+        document.getElementById("errorMessage").style.display = "none";
+        return;
+    }
+
     // Validate inputs before proceeding
     const addInput = document.getElementsByClassName(operation)[0];
-    const addReasonInput = document.getElementsByClassName("addReason")[0];
 
     // Check if the inputs exist in the DOM
     if (!addInput) {
