@@ -17,45 +17,14 @@
   <a href="./home.html">
     <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
   </a>
-
-  <!-- Account Dashboard -->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Auto Earning
-        <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20" height="20" /></a>
-      </p>
-    </div>
-
-    <!-- Data Fields -->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <div class="grid-item">
-      <p class="auto"></p>
-    </div>
-  </div>
+  <br>
 
   <!-- Train Generation -->
   <div class="dropdown">
     <button class="dropdownTitle" onclick="reveal('trainGeneration')">
       <h2 class="center">Train Generation</h2>
     </button>
-    <div class="dropdownText" id="trainGeneration" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 200px;">
+    <div class="dropdownText" id="trainGeneration" style="display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 200px;">
       <form onsubmit="generateTrain()" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
         <p>Exclude Trains:</p>
         <div style="display: flex; align-items: center; gap: 5px;">
@@ -107,21 +76,21 @@
     }
 
     if (train === 1) {
-      alert("LOCAL towards RIGHT");
+      alert("LOCAL towards COUNTERCLOCKWISE");
     } else if (train === 2) {
-      alert("LOCAL towards LEFT");
+      alert("LOCAL towards CLOCKWISE");
     } else if (train === 3) {
-      alert("EXPRESS towards RIGHT");
+      alert("EXPRESS towards COUNTERCLOCKWISE");
     } else if (train === 4) {
-      alert("EXPRESS towards LEFT");
+      alert("EXPRESS towards CLOCKWISE");
     } else if (train === 5) {
-      alert("XPRESS towards RIGHT");
+      alert("XPRESS towards COUNTERCLOCKWISE");
     } else if (train === 6) {
-      alert("XPRESS towards LEFT");
+      alert("XPRESS towards CLOCKWISE");
     } else if (train === 7) {
-      alert("INTERCITY towards RIGHT");
+      alert("INTERCITY towards COUNTERCLOCKWISE");
     } else if (train === 8) {
-      alert("INTERCITY towards LEFT");
+      alert("INTERCITY towards CLOCKWISE");
     }
   }
   </script>
