@@ -539,3 +539,67 @@ input[type="number"].addCoins {
     width: 20%;
   }
 }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .dropdownText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    height: auto; /* Allow height to adjust dynamically */
+    min-height: 150px; /* Reduce minimum height for smaller screens */
+  }
+
+  form {
+    width: 90%; /* Make the form take up most of the screen width */
+  }
+
+  form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensure the div spans the form width */
+    margin-bottom: 10px; /* Add spacing between rows */
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.2); /* Make checkboxes slightly larger for touch devices */
+  }
+
+  label {
+    font-size: 16px; /* Adjust label font size for readability */
+  }
+
+  input[type="submit"] {
+    width: 100%; /* Make the submit button full-width */
+    padding: 12px; /* Add padding for easier tapping */
+    font-size: 18px; /* Adjust font size for readability */
+  }
+
+    /* Buttons */
+    button, .changeBtn, .logout, .login, .add-coins-container button {
+      width: 100%; /* Make buttons full-width */
+      padding: 12px; /* Add padding for easier tapping */
+      font-size: 18px; /* Adjust font size for readability */
+      margin-bottom: 10px; /* Add spacing between buttons */
+    }
+  
+    /* Input Boxes */
+    input[type="text"], input[type="password"], input[type="number"], .add-coins-container input {
+      width: 100%; /* Make input boxes full-width */
+      padding: 12px; /* Add padding for easier tapping */
+      font-size: 16px; /* Adjust font size for readability */
+      margin-bottom: 10px; /* Add spacing between input fields */
+    }
+  
+    /* Submit Buttons */
+    input[type="submit"] {
+      width: 100%; /* Make submit buttons full-width */
+      padding: 12px; /* Add padding for easier tapping */
+      font-size: 18px; /* Adjust font size for readability */
+    }
+}
