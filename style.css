@@ -496,8 +496,7 @@ input[type="number"].addCoins {
   font-size: 20px;
 }
 
-/* ... (existing CSS) */
-
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   /* For smaller screens */
   .box, .grid-item, .earn-item, .two-item {
