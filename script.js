@@ -1,4 +1,5 @@
-import {updateDashboard, wrongPassword, coins, income, losses, openModal, closeModal, getCoins, setCoins, isWrongPassword} from './control.js';
+import {updateDashboard, wrongPassword, coins, income, losses, openModal, closeModal, getCoins, setCoins, isWrongPassword, totalEarned} from './control.js';
+import {triggerRandomEvent} from './chance.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
   // Display amounts from localStorage or defaults
@@ -18,6 +19,10 @@ let bullAmount = parseInt(localStorage.getItem('bullAmount')) ;
 localStorage.setItem('bullAmount', bullAmount); 
 let upgradedAmount = parseInt(localStorage.getItem('upgradedAmount'));
 localStorage.setItem('upgradedAmount', upgradedAmount); 
+let chickenAmount = parseInt(localStorage.getItem('chickenAmount')) ;
+localStorage.setItem('chickenAmount', chickenAmount); 
+let pigAmount = parseInt(localStorage.getItem('pigAmount')) ;
+localStorage.setItem('pigAmount', pigAmount); 
 let salary = parseInt(localStorage.getItem('salary')) ;
 localStorage.setItem('salary', salary); 
 let cropsAmount = parseInt(localStorage.getItem('cropsAmount')) ;
@@ -28,6 +33,10 @@ let expenseAmount = parseInt(localStorage.getItem('expenseAmount'));
 localStorage.setItem('expenseAmount', expenseAmount);  
 let whatAutoEarn = getAutoEarningsDescription();
 localStorage.setItem('whatAutoEarn', whatAutoEarn);
+let horseAmount = parseInt(localStorage.getItem('horseAmount')) || 0;
+localStorage.setItem('horseAmount', horseAmount); 
+let sheepAmount = parseInt(localStorage.getItem('sheepAmount')) || 0;
+localStorage.setItem('sheepAmount', sheepAmount); 
 window.cowsAmount = cowsAmount;
 window.cattleAmount = cattleAmount;
 window.bullAmount = bullAmount;
@@ -252,6 +261,10 @@ function updateAutoEarnTable() {
   if (AutoEarnTableDescription) {
     AutoEarnTableDescription.innerHTML = whatAutoEarn;
   }
+  const totalEarnedAmount = document.getElementById("totalAmountEarned");
+  if (totalEarnedAmount) {
+    totalEarnedAmount.innerHTML = totalEarned + totalAutoEarn;
+  }
   console.log(`tracker table updated`);
 }
 
@@ -375,142 +388,6 @@ async function hashPassword(password) {
 window.openModal = openModal;
 window.closeModal = closeModal;
 
-// Define random events and their effects
-const randomEvents = [
-  {
-    name: "Robbery",
-    description: "You were robbed! Lost 10% of your coins.",
-    effect: () => {
-      const coins = getCoins();
-      const loss = Math.floor(coins * 0.1);
-      setCoins(coins - loss);
-      alert(`Robbery! You lost ${loss} M³.`);
-    },
-  },
-  {
-    name: "Famine",
-    description: "A famine occurred! Lost 20% of your crops.",
-    effect: () => {
-      const loss = Math.floor(cropsAmount * 0.2);
-      cropsAmount -= loss;
-      localStorage.setItem("cropsAmount", cropsAmount);
-      alert(`Famine! You lost ${loss} crops.`);
-    },
-  },
-  {
-    name: "Sickness",
-    description: "Sickness struck your animals! Lost 10% of your cattle.",
-    effect: () => {
-      const loss = Math.floor(cattleAmount * 0.1);
-      cattleAmount -= loss;
-      localStorage.setItem("cattleAmount", cattleAmount);
-      alert(`Sickness! You lost ${loss} cattle.`);
-    },
-  },
-  {
-    name: "Injury",
-    description: "You got injured! Lost 5% of your salary.",
-    effect: () => {
-      const loss = Math.floor(salary * 0.05);
-      salary -= loss;
-      localStorage.setItem("salary", salary);
-      alert(`Injury! You lost ${loss} M³ from your salary.`);
-    },
-  },
-  {
-    name: "Animal Sickness",
-    description: "Your animals got sick! Lost 15% of your bulls.",
-    effect: () => {
-      const loss = Math.floor(bullAmount * 0.15);
-      bullAmount -= loss;
-      localStorage.setItem("bullAmount", bullAmount);
-      alert(`Animal Sickness! You lost ${loss} bulls.`);
-    },
-  },
-  {
-    name: "Market Price Increase",
-    description: "Market prices increased! Your assets are worth more.",
-    effect: () => {
-      generateAllPrices(); // Regenerate prices
-      alert("Market prices increased! Check the market for new prices.");
-    },
-  },
-  {
-    name: "Market Price Decrease",
-    description: "Market prices decreased! Your assets are worth less.",
-    effect: () => {
-      generateAllPrices(); // Regenerate prices
-      alert("Market prices decreased! Check the market for new prices.");
-    },
-  },
-  {
-    name: "Harvest",
-    description: "You had a great harvest! Gained 20% more crops.",
-    effect: () => {
-      const gain = Math.floor(cropsAmount * 0.2);
-      cropsAmount += gain;
-      localStorage.setItem("cropsAmount", cropsAmount);
-      alert(`Harvest! You gained ${gain} crops.`);
-    },
-  },
-  {
-    name: "Finding Money",
-    description: "You found some money! Gained 100 M³.",
-    effect: () => {
-      const gain = 100;
-      setCoins(getCoins() + gain);
-      alert(`You found money! Gained ${gain} M³.`);
-    },
-  },
-  {
-    name: "Finding Redeem Coupon",
-    description: "You found a redeem coupon! Gained 50 M³.",
-    effect: () => {
-      const gain = 50;
-      setCoins(getCoins() + gain);
-      alert(`You found a redeem coupon! Gained ${gain} M³.`);
-    },
-  },
-  {
-    name: "Gaining Prestige",
-    description: "You gained prestige! Your salary increased by 10%.",
-    effect: () => {
-      const gain = Math.floor(salary * 0.1);
-      salary += gain;
-      localStorage.setItem("salary", salary);
-      alert(`Gaining Prestige! Your salary increased by ${gain} M³.`);
-    },
-  },
-];
-
-// Trigger a random event with a 1% chance
-function triggerRandomEvent() {
-  const chance = Math.random(); // Generates a random number between 0 and 1
-  if (chance > 0.01) {
-    console.log("No event triggered. Chance was greater than 1%.");
-    return; // Exit the function if the chance is greater than 1%
-  }
-
-  const randomIndex = Math.floor(Math.random() * randomEvents.length);
-  const event = randomEvents[randomIndex];
-  console.log(`Event Triggered: ${event.name}`);
-  alert(event.description);
-  event.effect();
-}
-
-// Example: Trigger a random event once per day
-document.addEventListener("DOMContentLoaded", () => {
-  const lastEventDate = localStorage.getItem("lastEventDate");
-  const today = new Date().toDateString();
-
-  if (lastEventDate !== today) {
-    triggerRandomEvent();
-    localStorage.setItem("lastEventDate", today);
-  }
-});
-
-window.triggerRandomEvent = triggerRandomEvent;
-
 // Load the header dynamically
 function loadHeader() {
   fetch('./header.html')
@@ -531,4 +408,4 @@ function loadHeader() {
 // Call the function to load the header
 loadHeader();
 window.loadHeader = loadHeader;
-export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, hashPassword, reveal, loadHeader};
+export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, hashPassword, reveal, loadHeader, cowsAmount, cattleAmount, bullAmount, horseAmount, upgradedAmount, sheepAmount, pigAmount, chickenAmount, salary, cropsAmount};

@@ -8,6 +8,8 @@ localStorage.setItem('prestige', prestige);
 let income = parseInt(localStorage.getItem('income')) || 0;
 let losses = parseInt(localStorage.getItem('losses')) || 0;
 let autoearn = parseInt(localStorage.getItem('autoearn')) || 0;
+let totalEarned = parseInt(localStorage.getItem('totalEarned')) || 0;
+window.totalEarned = totalEarned;
 
 // Function to update the display on the page
 function updateDashboard() {
@@ -38,6 +40,9 @@ function updateDashboard() {
     if (currentPage.endsWith("control.html") || currentPage.endsWith("redeem.html")) {
        updateRedeemDisplay();
     }
+    if (currentPage.endsWith("control.html")) {
+      updateCouponTracker();
+   }
 }
   
 // Function to add income
@@ -130,6 +135,8 @@ function addCoins() {
     coins += addCoinsBy;
     if (addCoinsBy > 0) {
       addIncome(addCoinsBy);
+      totalEarned += addCoinsBy;
+      localStorage.setItem('totalEarned', totalEarned);
     } else {
       let lostCoinsBy = addCoinsBy * -1;
       addLosses(lostCoinsBy);
@@ -158,13 +165,13 @@ function addCoins() {
 function clearCoins() {
     // Clear the coinsData in localStorage
     localStorage.setItem('coinsData', JSON.stringify([]));
-  
+
     // Update the tracker table to remove all rows
     const trackerTable = document.getElementById('tracker-table-body');
     trackerTable.innerHTML = '';
   
-    let totalAutoEarn2 = parseInt(localStorage.getItem('totalAutoEarn')) || 0;
-    localStorage.setItem('totalAutoEarn', totalAutoEarn2);
+    let totalAutoEarnReset = 0;
+    localStorage.setItem('totalAutoEarn', totalAutoEarnReset);
     // Update the dashboard
     updateDashboard();
 }
@@ -368,4 +375,4 @@ export function setCoins(value) {
     coins = value;
     localStorage.setItem('coins', coins); // Update localStorage
 }
-export {updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, losses};
+export {updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, losses, totalEarned};
