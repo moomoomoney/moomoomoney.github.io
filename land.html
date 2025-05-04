@@ -57,7 +57,9 @@
     <a href="./purchase.html">Purchase</a>
   </div>
 <h1 class="center">Current Land: Small Farm</h1>
-<h3 class="center">Value: 700 M³</h3>
+<p class="center"><b>Value:</b> 750 M³ <br>
+  <b>Water Use:</b> 3 buckets / day
+</p>
 
 <button class="dropdownTitle" onclick="reveal('myland')">
   <h3 class="heading"><b>Inside Your Land</b></h3>
@@ -78,7 +80,7 @@
         <table style="position: absolute; top: 124%; left: 80%; transform: translateX(-50%); z-index: 900;">
           <tbody>
             <tr>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">1</button></td>
+              <td><button class="farmBtn" onclick="infoModal('infoModalWheat1')">(1)</button></td>
               <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">2</button></td>
               <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">3</button> </td>
             </tr>
@@ -130,13 +132,27 @@
 
 <!-- Info Modal Empty Plot -->
 <div id="infoModalEmptyPlot" class="modal" style=" z-index: 900;">
-  <div class="modal-content"style=" width: 50%; z-index: 1000;">
+  <div class="modal-content"style=" width: 30%; z-index: 1000;">
     <span class="closebtn" onclick="document.getElementById('infoModalEmptyPlot').style.display='none';">&times;</span>
     <h1 class="center">This Plot of Land</h1>
     <!-- <div class="alert">
       <strong>Warning:</strong> Your farmalnds have not been used in a long time, and is overgrown with weeds. Weeding and restoring will cost you <b>60 M³</b> and this cost will only increase the longer you wait.
      </div> -->
     <p class="center">Your land is empty! Buy plants at the <a href="market.html">Market</a>!</p>
+  </div>
+</div>
+
+<!-- Info Modal Wheat -->
+<div id="infoModalWheat1" class="modal" style=" z-index: 900;">
+  <div class="modal-content"style=" width: 30%; z-index: 1000;">
+    <span class="closebtn" onclick="document.getElementById('infoModalWheat1').style.display='none';">&times;</span>
+    <h1 class="center">Wheat</h1>
+    <p class="center">
+      <b>Dies: </b>June 3, 2025<br>
+      <b>Condition: </b> 100%<br>
+      <b>Water: </b>2/2 buckets<br>
+      <b>Earns: </b> 3 M³ / day (Sold to StateFarm)<br><br>
+    </p>
   </div>
 </div>
 
