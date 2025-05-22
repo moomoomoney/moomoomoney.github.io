@@ -1,5 +1,5 @@
-import {coins, income, losses, getCoins, setCoins} from './control.js';
-import {correctPassword, hashPassword, cowsAmount, cattleAmount, bullAmount, horseAmount, upgradedAmount, sheepAmount, pigAmount, chickenAmount, salary, cropsAmount} from './script.js';
+import {coins, income, losses, prestige, getCoins, setCoins, wrongPassword, checkWrongPassword, passwordCorrect, submitPasswordWrong, hashPassword, openModal, closeModal, isWrongPassword} from './control.js';
+import {correctPassword, cowsAmount, cattleAmount, bullAmount, horseAmount, upgradedAmount, sheepAmount, pigAmount, chickenAmount, salary, cropsAmount} from './script.js';
 // Define random events and their effects
 const randomEvents = [
     {
@@ -133,32 +133,79 @@ const randomEvents = [
     },
   ];
   
+  let randomEventMessage;
   // Trigger a random event with a 1% chance
   function triggerRandomEvent() {
     const chance = Math.random(); // Generates a random number between 0 and 1
-    if (chance > 0.01) {
+    if (chance > 1 ) { // Testing only, change to 0.01 for actual use
       console.log("No event triggered. Chance was greater than 1%.");
       return; // Exit the function if the chance is greater than 1%
     }
-  
     const randomIndex = Math.floor(Math.random() * randomEvents.length);
     const event = randomEvents[randomIndex];
     console.log(`Event Triggered: ${event.name}`);
-    alert(event.description);
-    event.effect();
+    displayEventMessage();
+    // Alert event in HTML
+    randomEventMessage = event.description;
+    localStorage.setItem("randomEventMessage", randomEventMessage);
+    document.getElementById("randomEventMessage").innerText = randomEventMessage;
   }
-  
-  // Example: Trigger a random event once per day
-  document.addEventListener("DOMContentLoaded", () => {
-    const lastEventDate = localStorage.getItem("lastEventDate");
-    const today = new Date().toDateString();
-  
-    if (lastEventDate !== today) {
-      triggerRandomEvent();
-      localStorage.setItem("lastEventDate", today);
+
+function applyEffect() {
+    openModal(); // Open the modal for password input
+
+    const interval = setInterval(() => {
+        const passwordCorrect = localStorage.getItem('passwordCorrect') === "true";
+        const wrongPassword = localStorage.getItem('wrongPassword') === "true";
+
+        if (passwordCorrect) {
+            clearInterval(interval); // Stop the interval
+            console.log("Password is correct. Applying Effect...");
+            document.getElementById("alert").style.display = "none"; // Hide the alert
+
+            // Retrieve the random event and apply its effect
+            const randomEventMessage = localStorage.getItem("randomEventMessage");
+            const event = randomEvents.find(e => e.description === randomEventMessage);
+            if (event && typeof event.effect === "function") {
+                event.effect(); // Apply the effect of the event
+            } else {
+                console.error("No matching event found or effect is not a function.");
+            }
+        } else if (wrongPassword) {
+            clearInterval(interval); // Stop the interval
+            console.log("Password is incorrect. Action canceled.");
+            document.getElementById("errorMessage").style.display = "block"; // Show error message
+        }
+    }, 100); // Check every 100ms
+}
+
+function displayEventMessage() {
+    const message = localStorage.getItem("randomEventMessage");
+    if (message) {
+    document.getElementById("alert").style.display = "block"; // Show the alert element
+    document.getElementById("randomEventMessage").innerText = message;
     }
-  });
+  }
+
+function cancelEvent() {
+    openModal(); // Open the modal for password input
+    // Check is password is correct
+    const interval = setInterval(() => {
+        const passwordCorrect = localStorage.getItem('passwordCorrect') === "true"; 
+        if (passwordCorrect) { 
+            clearInterval(interval); // Stop the interval
+            console.log("Password is correct. Proceeding...");
+            document.getElementById("alert").style.display = "none"; // Hide the alert
+        } else if (localStorage.getItem('wrongPassword') === "true") { 
+            clearInterval(interval); // Stop the interval
+            console.log("Password is incorrect. Action canceled.");
+        }
+    }, 100); // Check every 100ms
+}
+
+window.displayEventMessage = displayEventMessage;
+window.cancelEvent = cancelEvent;
+window.applyEffect = applyEffect;
+window.triggerRandomEvent = triggerRandomEvent;
   
-  window.triggerRandomEvent = triggerRandomEvent;
-  
-  export {triggerRandomEvent};
+export {triggerRandomEvent};

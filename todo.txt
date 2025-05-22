@@ -1,7 +1,5 @@
 - Random event generation (Robbery, famine, sickness, etc) v2.5
-- New layering on HTML v2.6 (transform property CSS)
-DO ABOVE BEFORE MAY
-- Festival page for in-website random number generator v2.7
-DO ABOVE BY JUNE 10
-- Improve CSS styling  v2.8
+DO ABOVE BY JUNE
+- Festival page for in-website random number generator v2.6
+- Improve CSS styling  v2.7
 - SQL storage v3.0

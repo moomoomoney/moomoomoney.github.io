@@ -18,11 +18,16 @@ table {
 
 th, td {
   border: 1px solid white;
-  width: 33.33%; /* Divide table width evenly among 3 columns */
-  height: 33.33%; /* Divide table height evenly among 3 rows */
   text-align: center;
 }
 
+td:first-child, th:first-child {
+  width: 25%; /* Set the width of the first column to 20% */
+}
+
+td:nth-child(2), th:nth-child(2) {
+  width: 15%; /* Set the width of the second column to 10% */
+}
 td:not(:last-child) {
   border-right: 10px solid white; 
 }
@@ -74,6 +79,22 @@ td:not(:last-child) {
   border-radius: 5px;
 }
 
+/* The close button */
+.closeAlert {
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closeAlert:hover {
+  color: black;
+}
 
 .mapBtnMarket {
   position: absolute;
@@ -429,6 +450,18 @@ button {
   cursor: pointer;
   width: 20%;
   font-size: 20px;
+}
+
+.alertButton {
+  background-color: #04aa6d;
+  color: white;
+  padding: 13px 10px 13px 10px;
+  border-radius: 3px;
+  top: 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  font-size: 19px;
 }
 
 .changeBtn {

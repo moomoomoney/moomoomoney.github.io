@@ -10,7 +10,7 @@ let losses = parseInt(localStorage.getItem('losses')) || 0;
 let autoearn = parseInt(localStorage.getItem('autoearn')) || 0;
 let totalEarned = parseInt(localStorage.getItem('totalEarned')) || 0;
 window.totalEarned = totalEarned;
-
+let passwordCorrect = false;
 // Function to update the display on the page
 function updateDashboard() {
     updateAutoEarnTable();  
@@ -86,7 +86,8 @@ checkAndResetDailyValues();
 // Modal-related functions
 function openModal(operation) {
     let whatToDo = operation;
-
+    let passwordCorrect = false; 
+    localStorage.setItem('passwordCorrect', passwordCorrect);
     // Only validate inputs for specific actions
     if (!["addCoins", "addPrestige", "addCoupon"].includes(whatToDo)) {
         localStorage.setItem('whatToDo', whatToDo);
@@ -316,6 +317,10 @@ async function submitPassword() {
     if (whatToDo === "clearPrestige") {
         clearPrestige();
     }
+    else {
+      let passwordCorrect = true; 
+      localStorage.setItem('passwordCorrect', passwordCorrect);
+    }
     closeModal();
 }
 window.submitPassword = submitPassword;
@@ -375,4 +380,4 @@ export function setCoins(value) {
     coins = value;
     localStorage.setItem('coins', coins); // Update localStorage
 }
-export {updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, losses, totalEarned};
+export {updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, prestige, losses, totalEarned, passwordCorrect};

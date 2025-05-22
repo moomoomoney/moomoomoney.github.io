@@ -11,25 +11,25 @@ let totalAutoEarn = parseInt(localStorage.getItem('totalAutoEarn')) || 0;
 localStorage.setItem('totalAutoEarn', totalAutoEarn);  
 
 // Amount of Auto Earn Options owned
-let cowsAmount = parseInt(localStorage.getItem('cowsAmount'));  
+let cowsAmount = parseInt(localStorage.getItem('cowsAmount')) || 0;  
 localStorage.setItem('cowsAmount', cowsAmount); 
-let cattleAmount = parseInt(localStorage.getItem('cattleAmount'));
+let cattleAmount = parseInt(localStorage.getItem('cattleAmount')) || 0;
 localStorage.setItem('cattleAmount', cattleAmount); 
-let bullAmount = parseInt(localStorage.getItem('bullAmount')) ;
+let bullAmount = parseInt(localStorage.getItem('bullAmount'))|| 0 ;
 localStorage.setItem('bullAmount', bullAmount); 
-let upgradedAmount = parseInt(localStorage.getItem('upgradedAmount'));
+let upgradedAmount = parseInt(localStorage.getItem('upgradedAmount')) || 0;
 localStorage.setItem('upgradedAmount', upgradedAmount); 
-let chickenAmount = parseInt(localStorage.getItem('chickenAmount')) ;
+let chickenAmount = parseInt(localStorage.getItem('chickenAmount')) || 0;
 localStorage.setItem('chickenAmount', chickenAmount); 
-let pigAmount = parseInt(localStorage.getItem('pigAmount')) ;
+let pigAmount = parseInt(localStorage.getItem('pigAmount')) || 0;
 localStorage.setItem('pigAmount', pigAmount); 
-let salary = parseInt(localStorage.getItem('salary')) ;
+let salary = parseInt(localStorage.getItem('salary')) || 0;
 localStorage.setItem('salary', salary); 
-let cropsAmount = parseInt(localStorage.getItem('cropsAmount')) ;
+let cropsAmount = parseInt(localStorage.getItem('cropsAmount')) || 0;
 localStorage.setItem('cropsAmount', cropsAmount); 
-let insuranceAmount = parseInt(localStorage.getItem('insuranceAmount'));
+let insuranceAmount = parseInt(localStorage.getItem('insuranceAmount'))|| 0;
 localStorage.setItem('insuranceAmount', insuranceAmount); 
-let expenseAmount = parseInt(localStorage.getItem('expenseAmount'));
+let expenseAmount = parseInt(localStorage.getItem('expenseAmount'))|| 0;
 localStorage.setItem('expenseAmount', expenseAmount);  
 let whatAutoEarn = getAutoEarningsDescription();
 localStorage.setItem('whatAutoEarn', whatAutoEarn);
@@ -272,12 +272,12 @@ function updateAutoEarnTable() {
 function getAutoEarningsDescription() {
   let description = '';
   // Dynamically add descriptions based on values greater than 0
-  if (cowsAmount > 0) description += `Cows earn: ${cowsAmount} M³/day;`;
+  if (cowsAmount > 0) description += `Cows earn: ${cowsAmount} M³/day; `;
   if (cropsAmount > 0) description += `Crops earn: ${cropsAmount} M³/day; `;
   if (cattleAmount > 0) description += `Cattle earn: ${cattleAmount} M³/day; `;
   if (bullAmount > 0) description += `Bulls earn: ${bullAmount} M³/day; `;
   if (upgradedAmount > 0) description += `Upgraded animals earn: ${upgradedAmount} M³/day; `;
-  if (salary > 0) description += `Salary earn: ${salary} M³/day; <br>`;
+  if (salary > 0) description += `Salary earn: ${salary} M³/day; `;
   if (insuranceAmount > 0) description += `Insurance earn: ${insuranceAmount} M³/day; `;
   if (expenseAmount > 0) description += `Expenses: ${expenseAmount} M³/day; `;
   if (description === '') {
