@@ -270,16 +270,10 @@ function clearPrestige() {
 }
 
 function updatePrestigeDisplay() {
-    if (prestige > 0) {
         prestigeBox.innerHTML = `
           You have:
           <b>${prestige} Prestige</b>
         `;
-    } else {
-        prestigeBox.innerHTML = `
-          You have no Prestige Points yet.
-        `;
-    }
 }
 
 // Ensure displays are updated on page load
