@@ -16,20 +16,26 @@ table {
   table-layout: fixed;
 }
 
-th, td {
+th,
+td {
   border: 1px solid white;
   text-align: center;
 }
 
-td:first-child, th:first-child {
-  width: 25%; /* Set the width of the first column to 20% */
+td:first-child,
+th:first-child {
+  width: 25%;
+  /* Set the width of the first column to 20% */
 }
 
-td:nth-child(2), th:nth-child(2) {
-  width: 15%; /* Set the width of the second column to 10% */
+td:nth-child(2),
+th:nth-child(2) {
+  width: 15%;
+  /* Set the width of the second column to 10% */
 }
+
 td:not(:last-child) {
-  border-right: 10px solid white; 
+  border-right: 10px solid white;
 }
 
 .farmBtn {
@@ -56,7 +62,8 @@ td:not(:last-child) {
   background-color: white;
   padding: 50px;
   border-radius: 5px;
-  width: 1200px; /* Optional: Set a fixed width for the modal */
+  width: 1200px;
+  /* Optional: Set a fixed width for the modal */
   z-index: 100;
 }
 
@@ -109,8 +116,8 @@ td:not(:last-child) {
 
 .mapBtnLand {
   position: absolute;
-  top: 127.5%;
-  left: 50%;
+  top: 56rem;
+  left: 35rem;
   width: 12%;
   transform: translate(-50%, -50%);
   background-color: transparent;
@@ -164,7 +171,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-.dropdownTitle{
+.dropdownTitle {
   background-color: #68e0b4;
   color: black;
   padding: 14px 20px;
@@ -176,7 +183,7 @@ input[type="password"] {
 }
 
 
-#dropdownText{
+#dropdownText {
   background-color: #7cedc4;
   color: black;
   padding: 14px 20px;
@@ -235,7 +242,8 @@ body {
 .subtitle {
   font-size: 25px;
 }
-.heading{
+
+.heading {
   margin-bottom: 5px;
   margin-top: 15px;
 }
@@ -244,8 +252,10 @@ body {
 /* EARN Dashboard Display */
 .earn-display {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Ensures 4 equal columns */
-  grid-auto-rows: minmax(100px, auto); /* Ensures rows grow with content */
+  grid-template-columns: repeat(4, 1fr);
+  /* Ensures 4 equal columns */
+  grid-auto-rows: minmax(100px, auto);
+  /* Ensures rows grow with content */
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
@@ -256,7 +266,7 @@ body {
   background-color: #7cedc4;
   border-color: #090909;
   text-align: center;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .earn-title {
@@ -268,20 +278,23 @@ body {
 /* 3 Column Grid */
 .three-display {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Ensures 3 equal columns */
-  grid-auto-rows: minmax(100px, auto); /* Ensures rows grow with content */
+  grid-template-columns: repeat(3, 1fr);
+  /* Ensures 3 equal columns */
+  grid-auto-rows: minmax(100px, auto);
+  /* Ensures rows grow with content */
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
   column-gap: 20px;
 }
+
 .three-item {
   background-color: #7cedc4;
   border-color: #090909;
   text-align: center;
-  font-size: 20px; 
+  font-size: 20px;
   margin-right: 1px;
-  margin-left: 1px; 
+  margin-left: 1px;
 }
 
 .three-title {
@@ -293,18 +306,21 @@ body {
 /* 2 Column Grid */
 .two-display {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Ensures 4 equal columns */
-  grid-auto-rows: minmax(100px, auto); /* Ensures rows grow with content */
+  grid-template-columns: repeat(2, 1fr);
+  /* Ensures 4 equal columns */
+  grid-auto-rows: minmax(100px, auto);
+  /* Ensures rows grow with content */
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
   column-gap: 20px;
 }
+
 .two-item {
   background-color: #7cedc4;
   border-color: #090909;
   text-align: center;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .two-title {
@@ -316,30 +332,37 @@ body {
 
 .transparentBtn {
   all: unset;
-  background-color: #7cedc4 !important; /* Override global background */
-  color: black !important; /* Override text color */
-  padding: 0px !important; /* Prevent excessive padding */
+  background-color: #7cedc4 !important;
+  /* Override global background */
+  color: black !important;
+  /* Override text color */
+  padding: 0px !important;
+  /* Prevent excessive padding */
   margin: 0px;
-  font-size: 16px !important; /* Fix invalid font-size */
+  font-size: 16px !important;
+  /* Fix invalid font-size */
   border: none;
   cursor: pointer;
-  width: auto !important; /* Prevent width restriction */
+  width: auto !important;
+  /* Prevent width restriction */
 }
 
 /* 1 Column Grid */
 .one-display {
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Ensures 4 equal columns */
+  grid-template-columns: repeat(1, 1fr);
+  /* Ensures 4 equal columns */
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
   column-gap: 20px;
 }
+
 .one-item {
   background-color: #7cedc4;
   border-color: #090909;
   text-align: center;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .one-title {
@@ -350,7 +373,7 @@ body {
 
 
 .info {
-  text-align: left; 
+  text-align: left;
   align-items: center;
   margin-left: 25%;
   margin-right: 100px;
@@ -363,18 +386,23 @@ body {
   justify-content: center;
   margin: 20px;
 }
+
 .table {
   border-collapse: collapse;
-  width: 80%; 
+  width: 80%;
 }
-.table th, .table td {
+
+.table th,
+.table td {
   border: 1px solid #000000;
   padding: 8px;
   text-align: left;
 }
+
 .table th {
   background-color: #7cedc4;
 }
+
 .header {
   background-color: #68e0b4;
 }
@@ -414,7 +442,7 @@ body {
   display: flex;
 }
 
-.flex-container > div {
+.flex-container>div {
   padding: 20px;
   flex-basis: 49%;
 }
@@ -497,24 +525,24 @@ input[type="number"].addCoins {
 
 /* Center the add coins section */
 .add-coins-container {
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px; 
+  margin-top: 50px;
 }
 
 /* Style the input field */
 .add-coins-container input {
-  width: 8%; 
+  width: 8%;
   padding: 12px 20px;
-  margin-right: 10px; 
+  margin-right: 10px;
   display: inline-block;
   border: 2px solid #6e6868;
   box-sizing: border-box;
   font-size: 20px;
   background-color: #7cedc4;
   border-radius: 5px;
-  text-align: center; 
+  text-align: center;
 }
 
 
@@ -525,20 +553,25 @@ input[type="number"].addCoins {
   padding: 14px 20px;
   border: none;
   cursor: pointer;
-  width: auto; 
+  width: auto;
   font-size: 20px;
 }
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
+
   /* For smaller screens */
-  .box, .grid-item, .earn-item, .two-item {
+  .box,
+  .grid-item,
+  .earn-item,
+  .two-item {
     margin: 10px;
     padding: 10px;
     font-size: 18px;
   }
 
-  .dropdownTitle, #dropdownText {
+  .dropdownTitle,
+  #dropdownText {
     font-size: 20px;
   }
 
@@ -547,10 +580,12 @@ input[type="number"].addCoins {
   }
 
   .grid-display {
-    grid-template-columns: 1fr; /* One column per row */
+    grid-template-columns: 1fr;
+    /* One column per row */
   }
 
-  .earn-display, .two-display {
+  .earn-display,
+  .two-display {
     grid-template-columns: 1fr;
   }
 
@@ -581,12 +616,15 @@ input[type="number"].addCoins {
     justify-content: center;
     text-align: center;
     padding: 10px;
-    height: auto; /* Allow height to adjust dynamically */
-    min-height: 150px; /* Reduce minimum height for smaller screens */
+    height: auto;
+    /* Allow height to adjust dynamically */
+    min-height: 150px;
+    /* Reduce minimum height for smaller screens */
   }
 
   form {
-    width: 90%; /* Make the form take up most of the screen width */
+    width: 90%;
+    /* Make the form take up most of the screen width */
   }
 
   form div {
@@ -594,44 +632,158 @@ input[type="number"].addCoins {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Ensure the div spans the form width */
-    margin-bottom: 10px; /* Add spacing between rows */
+    width: 100%;
+    /* Ensure the div spans the form width */
+    margin-bottom: 10px;
+    /* Add spacing between rows */
   }
 
   input[type="checkbox"] {
-    transform: scale(1.2); /* Make checkboxes slightly larger for touch devices */
+    transform: scale(1.2);
+    /* Make checkboxes slightly larger for touch devices */
   }
 
   label {
-    font-size: 16px; /* Adjust label font size for readability */
+    font-size: 16px;
+    /* Adjust label font size for readability */
   }
 
   input[type="submit"] {
-    width: 100%; /* Make the submit button full-width */
-    padding: 12px; /* Add padding for easier tapping */
-    font-size: 18px; /* Adjust font size for readability */
+    width: 100%;
+    /* Make the submit button full-width */
+    padding: 12px;
+    /* Add padding for easier tapping */
+    font-size: 18px;
+    /* Adjust font size for readability */
   }
 
-    /* Buttons */
-    button, .changeBtn, .logout, .login, .add-coins-container button {
-      width: 100%; /* Make buttons full-width */
-      padding: 12px; /* Add padding for easier tapping */
-      font-size: 18px; /* Adjust font size for readability */
-      margin-bottom: 10px; /* Add spacing between buttons */
-    }
-  
-    /* Input Boxes */
-    input[type="text"], input[type="password"], input[type="number"], .add-coins-container input {
-      width: 100%; /* Make input boxes full-width */
-      padding: 12px; /* Add padding for easier tapping */
-      font-size: 16px; /* Adjust font size for readability */
-      margin-bottom: 10px; /* Add spacing between input fields */
-    }
-  
-    /* Submit Buttons */
-    input[type="submit"] {
-      width: 100%; /* Make submit buttons full-width */
-      padding: 12px; /* Add padding for easier tapping */
-      font-size: 18px; /* Adjust font size for readability */
-    }
+  /* Buttons */
+  button,
+  .changeBtn,
+  .logout,
+  .login,
+  .add-coins-container button {
+    width: 100%;
+    /* Make buttons full-width */
+    padding: 12px;
+    /* Add padding for easier tapping */
+    font-size: 18px;
+    /* Adjust font size for readability */
+    margin-bottom: 10px;
+    /* Add spacing between buttons */
+  }
+
+  /* Input Boxes */
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  .add-coins-container input {
+    width: 100%;
+    /* Make input boxes full-width */
+    padding: 12px;
+    /* Add padding for easier tapping */
+    font-size: 16px;
+    /* Adjust font size for readability */
+    margin-bottom: 10px;
+    /* Add spacing between input fields */
+  }
+
+  /* Submit Buttons */
+  input[type="submit"] {
+    width: 100%;
+    /* Make submit buttons full-width */
+    padding: 12px;
+    /* Add padding for easier tapping */
+    font-size: 18px;
+    /* Adjust font size for readability */
+  }
+}
+
+/* Improved Land Map Layering and Positioning */
+.map-container {
+  position: relative;
+  width: 90vw;
+  max-width: 80rem;
+  height: 500px;
+  margin-left: 2em;
+  margin-right: 2em;
+  border: 7px solid #06d68a;
+  overflow: hidden;
+}
+
+.map-grass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.map-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 3;
+}
+
+.map-btn img {
+  width: 90px;
+  height: auto;
+  display: block;
+}
+
+.hut-btn {
+  left: 0rem;
+  top: 7rem;
+}
+
+.hut-btn img {
+  width: 350px;
+  height: auto;
+}
+
+.barn-btn {
+  left: 20rem;
+  top: 9rem;
+}
+
+.barn-btn img {
+  width: 300px;
+  height: auto;
+}
+
+.map-table {
+  position: absolute;
+  left: 58rem;
+  top: 13rem;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border: none;
+  table-layout: fixed;
+  width: 360px;
+  height: 360px;
+}
+
+.map-table td {
+  border: none;
+  padding: 2px;
+  width: 33.33%;
+  height: 33.33%;
+}
+
+.farmBtn {
+  width: 100%;
+  height: 100%;
+  font-size: 1.1em;
+  border-radius: 8px;
+  border: 2px solid #06d68a;
+  background: #04aa6d;
+  color: white;
+  cursor: pointer;
+  z-index: 5;
 }

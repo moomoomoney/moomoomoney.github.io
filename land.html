@@ -58,7 +58,7 @@
   </div>
 <h1 class="center">Current Land: Small Farm</h1>
 <p class="center"><b>Value:</b> 750 M³ <br>
-  <b>Water Use:</b> 3 buckets / day
+  <b>Water Use:</b> 1 buckets / day
 </p>
 
 <button class="dropdownTitle" onclick="reveal('myland')">
@@ -71,38 +71,39 @@
     <div class="one-item">
       <br>
         <h2>Map</h2>
+        <div class="map-container">
+          <!-- Grass background -->
+          <img src="grass.jpg" alt="grass" class="map-grass" />
+          <!-- Hut -->
+          <button class="map-btn hut-btn" onclick="infoModal('infoModalHut')">
+            <img src="hut.jpg" alt="hut" width="400px"/>
+          </button>
+          <!-- Barn -->
+          <button class="map-btn barn-btn" onclick="infoModal('infoModalBarn')">
+            <img src="barn.jpg" alt="barn" />
+          </button>
+          <!-- Farm Plots Table -->
+          <table class="map-table">
+            <tbody>
+              <tr>
+                <td><button class="farmBtn" onclick="infoModal('infoModalWheat1')">(1)</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">2</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">3</button></td>
+              </tr>
+              <tr>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">4</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">5</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">6</button></td>
+              </tr>
+              <tr>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">7</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">8</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">9</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <br><br><br>
-         <!-- Hut -->
-         <button onclick="infoModal('infoModalHut')" ><img src="hut.jpg" alt="hut" width="300" class="img" style="position: absolute;top: 120%; left: 2%; width: 12%; height: 300px; width:auto; background-color: transparent;color: transparent; z-index: 900;"/></button>
-        <pre class="hut">
-        </pre>
-        
-        <table style="position: absolute; top: 124%; left: 80%; transform: translateX(-50%); z-index: 900;">
-          <tbody>
-            <tr>
-              <td><button class="farmBtn" onclick="infoModal('infoModalWheat1')">(1)</button></td>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">2</button></td>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">3</button> </td>
-            </tr>
-            <tr>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">4</button></td>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">5</button></td>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">6</button> </td>
-            </tr>
-            <tr>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">7</button></td>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">8</button></td>
-              <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">9</button> </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Barn -->
-        <button onclick="infoModal('infoModalBarn')" ><img src="barn.jpg" alt="hut" width="300" class="img" style="position: absolute; top: 125%; left: 30%; transform: translateX(-50%); z-index: 900;"/></button>
-
-       <!-- Grass -->
-       <button onclick="infoModal('infoModalGrass')"><img src="grass.jpg" alt="hut" width="850" height="280" class="img" style="position: absolute; top: 124%; left: 45%; transform: translateX(-50%); z-index: 700;"/></button>
-       <br><br><br><br>
     </div>
     </div>
 
@@ -148,7 +149,7 @@
     <span class="closebtn" onclick="document.getElementById('infoModalWheat1').style.display='none';">&times;</span>
     <h1 class="center">Wheat</h1>
     <p class="center">
-      <b>Dies: </b>June 3, 2025<br>
+      <b>Dies: </b>Buy Wheat<br>
       <b>Condition: </b> 100%<br>
       <b>Water: </b>2/2 buckets<br>
       <b>Earns: </b> 3 M³ / day (Sold to StateFarm)<br><br>
@@ -179,8 +180,8 @@
       <div class="three-item">
         <b>Lvl 3 Horse: </b>Average adult horse <br>
         You use this horse for transportation. <br>
-        <b>Age: </b>11/25 years<br>
-        <b>Health: </b> 100%<br>
+        <b>Age: </b>12/25 years<br>
+        <b>Health: </b> 99%<br>
         <b>Happiness: </b> 100%<br>
         <b>Water: </b>1/1 buckets<br>
         <b>Food: </b> Grass + Basic Horse Food (Hay, Oats, Apples)<br><br>
