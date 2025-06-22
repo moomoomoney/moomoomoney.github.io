@@ -1,185 +1,185 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
-    />
-    <title>Market</title>
-  </head>
-  <div id="header-placeholder"></div>
-  <h1 class="center">Welcome to the Market!</h1>
-  <a href="./home.html">
-    <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
-  </a>
 
-  <!--Account Dashboard-->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>  
-    </div>
-    <!--Avaiable Coins-->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <!--Income-->
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <!--Losses-->
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <!--Auto Earn-->
-    <div class="grid-item">
-      <p class="auto"></p>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <title>Market</title>
+</head>
+<div id="header-placeholder"></div>
+<h1 class="center">Welcome to the Market!</h1>
+<a href="./home.html">
+  <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+</a>
+
+<!--Account Dashboard-->
+<div class="grid-display">
+  <div class="grid-item">
+    <p class="grid-title">Available Coins</p>
   </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Income</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Losses</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20"
+          height="20" /></a></p>
+  </div>
+  <!--Avaiable Coins-->
+  <div class="grid-item">
+    <p class="coins"></p>
+  </div>
+  <!--Income-->
+  <div class="grid-item">
+    <p class="income"></p>
+  </div>
+  <!--Losses-->
+  <div class="grid-item">
+    <p class="losses"></p>
+  </div>
+  <!--Auto Earn-->
+  <div class="grid-item">
+    <p class="auto"></p>
+  </div>
+</div>
 <!--Navbar-->
-  <div class="navbar">
-    <a href="./world.html" >World</a>
-    <a href="./map.html">Map</a>
-    <a href="./job.html" >Job</a>
-    <a href="./expenses.html" >Expenses</a>
-    <a href="./purchase.html">Purchase</a>
-  </div>
+<div class="navbar">
+  <a href="./world.html">World</a>
+  <a href="./map.html">Map</a>
+  <a href="./job.html">Job</a>
+  <a href="./expenses.html">Expenses</a>
+  <a href="./purchase.html">Purchase</a>
+</div>
 <br>
 
 <br>
 <br>
 <div class="dropwdown">
   <!-- sustenancesustenancesustenancesustenancesustenancesustenancesustenancesustenancesustenance -->
-<button class="dropdownTitle" onclick="reveal('sustenance')">
-  <h3 class="heading"><b>Food (per day)</b></h3>
-</button>
-<div class="dropdownText" id="sustenance" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Basic Food
+  <button class="dropdownTitle" onclick="reveal('sustenance')">
+    <h3 class="heading"><b>Food (per day)</b></h3>
+  </button>
+  <div class="dropdownText" id="sustenance" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Basic Food
         <div class="subtitle">(1 M³)</div>
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Standard Food
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Standard Food
         <div class="subtitle">(2 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-      Premium Food
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Premium Food
         <div class="subtitle">(5 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Ale
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Ale
         <div class="subtitle">(3 M³)</div>
-    </p>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+        <p>*Required to survive*
+          <br> Includes bread, porridge, bland vegetables, few meat
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>Better than basic food<br>
+          Includes soft bread, porridge, better vegetables, meat (beef, pork, chicken), and drink per day.
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>Best food option<br>
+          <br> Includes baked goods, porridge, fresh vegetables, premium meat (beef, pork, chicken, fish), spices and
+          ale.
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Ale / Apple Cider / Other drinks
+        </p>
+      </div>
+    </div>
   </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      <p>*Required to survive* 
-        <br> Includes bread, porridge, bland vegetables, few meat
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Better than basic food<br>
-      Includes soft bread, porridge, better vegetables, meat (beef, pork, chicken), and drink per day.
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Best food option<br>
-      <br> Includes baked goods, porridge, fresh vegetables, premium meat (beef, pork, chicken, fish), spices and ale.
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      Ale / Apple Cider / Other drinks
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 
 <div class="dropwdown">
-    <!-- COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS -->
+  <!-- COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS COWS -->
   <button class="dropdownTitle" onclick="reveal('dropped')">
     <h3 class="heading"><b>Cows</b></h3>
   </button>
   <div class="dropdownText" id="dropped" style="display: none">
-  <div class="earn-display">
-    <!-- Title -->
-    <div class="earn-item">
-      <p class="earn-title">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
           Upgrade Your Cow
-          <div class="subtitle">200 M³</div>
-      </p> 
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">
+        <div class="subtitle">200 M³</div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
           Cows
-          <div class="subtitle">
-            <p id="cowPrice"></p>
-          </div>
-      </p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">
+        <div class="subtitle">
+          <p id="cowPrice"></p>
+        </div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
           Cattles
-          <div class="subtitle">
-            <p id="cattlePrice"></p>
-          </div>
-      </p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">
+        <div class="subtitle">
+          <p id="cattlePrice"></p>
+        </div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
           Bulls
-          <div class="subtitle">
-            <p id="bullPrice"></p>
-          </div>
-      </p>
-    </div>
-    <!-- Description -->
-    <div class="earn-item">
-      <p>
-        Upgrade your cow so it can earn 3-5 M³ / day <br> 
-        Amount depends on the condition of your cow
-      </p>
-    </div>
-    <div class="earn-item">
-      <p>1 M³ /day <br>
+        <div class="subtitle">
+          <p id="bullPrice"></p>
+        </div>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          Upgrade your cow so it can earn 3-5 M³ / day <br>
+          Amount depends on the condition of your cow
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>1 M³ /day <br>
           *Required for bulls and cattle*
-      </p>
-    </div>
-    <div class="earn-item">
-      <p>5 M³ /day</p>
-    </div>
-    <div class="earn-item">
-      <p>100 M³ /day <br>
-          *Bull Arena <span id="arenaPrice"></span> and Bull Facilities/Services (250 M³ / bull) required* <br>  
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>5 M³ /day</p>
+      </div>
+      <div class="earn-item">
+        <p>100 M³ /day <br>
+          *Bull Arena <span id="arenaPrice"></span> and Bull Facilities/Services (250 M³ / bull) required* <br>
           Max: 3 bulls
-      </p>
+        </p>
+      </div>
     </div>
-  </div>
   </div>
   <br>
   <br>
@@ -188,429 +188,437 @@
 
 <div class="dropwdown">
   <!-- LIVESTOCK LIVESTOCK LIVESTOCK LIVESTOCK LIVESTOCK LIVESTOCK LIVESTOCK LIVESTOCK LIVESTOCK  -->
-<button class="dropdownTitle" onclick="reveal('Livestock')">
-  <h3 class="heading"><b>Livestock</b></h3>
-</button>
-<div class="dropdownText" id="Livestock" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Horse
-        <div class="subtitle"><p id="horsePrice"></p></div>
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Sheep
+  <button class="dropdownTitle" onclick="reveal('Livestock')">
+    <h3 class="heading"><b>Livestock</b></h3>
+  </button>
+  <div class="dropdownText" id="Livestock" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Horse
+        <div class="subtitle">
+          <p id="horsePrice"></p>
+        </div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Sheep
         <div class="subtitle">
           <p id="sheepPrice"></p>
         </div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Chicken and Rooster
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Chicken and Rooster
         <div class="subtitle">
           <p id="chickenPrice"></p>
         </div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Pig
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Pig
         <div class="subtitle">
           <p id="pigPrice"></p>
         </div>
-    </p>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          Horses are most commonly used for transportation. They can be ridden or used to pull wagons and carts.
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>3 M³ /day <br>
+          Sheep wool can be sold, and sheep can be used for meat.</p>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p><b>Chickens: </b>1 M³ /day
+        <p>Chicken lay eggs, while roosters' enable chicken to reproduce.</p>
+        Odd are male, even are female. <br>
+      </div>
+      <div class="earn-item">
+        <p>3 M³ /day <br>
+          Pigs can be sold for pork.
+        </p>
+      </div>
+    </div>
   </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      Horses are most commonly used for transportation. They can be ridden or used to pull wagons and carts. 
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>3 M³ /day <br>
-        Sheep wool can be sold, and sheep can be used for meat.</p>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p><b>Chickens: </b>1 M³ /day 
-    <p>Chicken lay eggs, while roosters' enable chicken to reproduce.</p>
-  Odd are male, even are female.   <br>
-  </div>
-  <div class="earn-item">
-    <p>3 M³ /day <br>
-        Pigs can be sold for pork.
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 
 <div class="dropwdown">
   <!-- CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS CROPS  -->
-<button class="dropdownTitle" onclick="reveal('crops')">
-  <h3 class="heading"><b>Crops (per plot)</b></h3>
-</button>
-<div class="dropdownText" id="crops" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Carrots
+  <button class="dropdownTitle" onclick="reveal('crops')">
+    <h3 class="heading"><b>Crops (per plot)</b></h3>
+  </button>
+  <div class="dropdownText" id="crops" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Carrots
         <div class="subtitle">(15 M³)</div>
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-      Beans
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Beans
         <div class="subtitle">(15 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Cabbage
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Cabbage
         <div class="subtitle">(25 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Onions
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Onions
         <div class="subtitle">(25 M³)</div>
-    </p>
-  </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 2 M³ / day<br> 
-      <b>Water Usage: </b> 1 Bucket / day
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 2 M³ / day<br> 
-      <b>Water Usage: </b> 1 Bucket / day
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 4 M³ / day<br> 
-      <b>Water Usage: </b> 1 Bucket / day
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 4 M³ / day<br> 
-      <b>Water Usage: </b> 1 Bucket / day
-    </p>
-  </div>
-</div>
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Wheat
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 2 M³ / day<br>
+          <b>Water Usage: </b> 1 Bucket / day
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 2 M³ / day<br>
+          <b>Water Usage: </b> 1 Bucket / day
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 4 M³ / day<br>
+          <b>Water Usage: </b> 1 Bucket / day
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 4 M³ / day<br>
+          <b>Water Usage: </b> 1 Bucket / day
+        </p>
+      </div>
+    </div>
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Wheat
         <div class="subtitle">(25 M³)</div>
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-      Corn
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Corn
         <div class="subtitle">(45 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Cotton
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Cotton
         <div class="subtitle">(100 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Soil
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Soil
         <div class="subtitle">(One Time Purchase)</div>
-    </p>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 6 M³ / day<br>
+          <b>Water Usage: </b> 2 Buckets / day
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 10 M³ / day<br>
+          <b>Water Usage: </b> 3 Buckets / day
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 20 M³ / day<br>
+          <b>Water Usage: </b> 5 Buckets / day
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Plus (20 M³): Enables plants to live 1.5 months <br>
+          Premium (45 M³): Enables plants to live 2 months
+        </p>
+      </div>
+    </div>
   </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 6 M³ / day<br> 
-      <b>Water Usage: </b> 2 Buckets / day
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 10 M³ / day<br> 
-      <b>Water Usage: </b> 3 Buckets / day
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 20 M³ / day<br> 
-      <b>Water Usage: </b> 5 Buckets / day
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      Plus (20 M³): Enables plants to live 1.5 months <br>
-      Premium (45 M³): Enables plants to live 2 months 
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 
 
 <div class="dropwdown">
   <!-- TREES TREES  TREES TREES  TREES TREES  TREES TREES  TREES TREES  TREES TREES  TREES TREES  TREES TREES  -->
-<button class="dropdownTitle" onclick="reveal('trees')">
-  <h3 class="heading"><b>Trees</b></h3>
-</button>
-<div class="dropdownText" id="trees" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Fruit Tree
+  <button class="dropdownTitle" onclick="reveal('trees')">
+    <h3 class="heading"><b>Trees</b></h3>
+  </button>
+  <div class="dropdownText" id="trees" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Fruit Tree
         <div class="subtitle">(75 M³)</div>
-    </p> 
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Small Magical Tree
+        <div class="subtitle">
+          <p id="smallTreePrice"></p>
+        </div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Medium Magical Tree
+        <div class="subtitle">
+          <p id="mediumTreePrice"></p>
+        </div>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Large Magical Tree
+        <div class="subtitle">
+          <p id="largeTreePrice"></p>
+        </div>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 10 M³ / day<br>
+          <b>Water Usage: </b> 3 Buckets / day <br>
+          <b>Land: </b> 1 Plot
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 20 M³ / day<br>
+          <b>Water Usage: </b> 6 Buckets / day<br>
+          <b>Land: </b> 2x2 Plots
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 50 M³ / day<br>
+          <b>Water Usage: </b> 10 Buckets / day<br>
+          <b>Land: </b> 3x3 Plots
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          <b>Earns: </b> 100 M³ / day<br>
+          <b>Water Usage: </b> 15 Buckets / day<br>
+          <b>Land: </b> 4x4 Plots
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="earn-item">
-    <p class="earn-title">
-      Small Magical Tree
-        <div class="subtitle"><p id="smallTreePrice"></p></div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Medium Magical Tree
-        <div class="subtitle"><p id="mediumTreePrice"></p></div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Large Magical Tree
-        <div class="subtitle"><p id="largeTreePrice"></p></div>
-    </p>
-  </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 10 M³ / day<br> 
-      <b>Water Usage: </b> 3 Buckets / day <br> 
-      <b>Land: </b> 1 Plot
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 20 M³ / day<br> 
-      <b>Water Usage: </b> 6 Buckets / day<br> 
-      <b>Land: </b> 2x2 Plots 
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 50 M³ / day<br> 
-      <b>Water Usage: </b> 10 Buckets / day<br> 
-      <b>Land: </b> 3x3 Plots
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Earns: </b> 100 M³ / day<br> 
-      <b>Water Usage: </b> 15 Buckets / day<br> 
-      <b>Land: </b> 4x4 Plots
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 
 <div class="dropwdown">
   <!-- WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS WEAPONS  -->
-<button class="dropdownTitle" onclick="reveal('WEAPONS')">
-  <h3 class="heading"><b>Weapons</b></h3>
-</button>
-<div class="dropdownText" id="WEAPONS" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Darts
+  <button class="dropdownTitle" onclick="reveal('WEAPONS')">
+    <h3 class="heading"><b>Weapons</b></h3>
+  </button>
+  <div class="dropdownText" id="WEAPONS" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Darts
         <div class="subtitle">(5 M³)</div>
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Bow and 5 Arrows
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Bow and 5 Arrows
         <div class="subtitle">(15 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Spear
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Spear
         <div class="subtitle">(50 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Sword
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Sword
         <div class="subtitle">(150 M³)</div>
-    </p>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          Five darts, useful for hiting short range targets
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Useful for long range targets
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>Fun to stab people with
+          <br> Stick + Rock
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>Metal sword <br>
+          Sharper, better than spears
+        </p>
+      </div>
+    </div>
   </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      Five darts, useful for hiting short range targets
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      Useful for long range targets
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Fun to stab people with 
-      <br> Stick + Rock
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Metal sword <br>
-      Sharper, better than spears
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 
 <div class="dropwdown">
   <!-- TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS TOOLS   -->
-<button class="dropdownTitle" onclick="reveal('TOOLS')">
-  <h3 class="heading"><b>Tools</b></h3>
-</button>
-<div class="dropdownText" id="TOOLS" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Axe
+  <button class="dropdownTitle" onclick="reveal('TOOLS')">
+    <h3 class="heading"><b>Tools</b></h3>
+  </button>
+  <div class="dropdownText" id="TOOLS" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Axe
         <div class="subtitle">(10 M³)</div>
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Shovel
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Shovel
         <div class="subtitle">(10 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Hammer
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Hammer
         <div class="subtitle">(10 M³)</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Building Stuff
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Building Stuff
         <div class="subtitle">(20 M³)</div>
-    </p>
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          Chop things
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Dig things
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>Hit things
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>Build things
+        </p>
+      </div>
+    </div>
   </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      Chop things
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      Dig things
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Hit things
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Build things
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 
 <div class="dropdown">
   <!-- STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS STALLS   -->
-<button class="dropdownTitle" onclick="reveal('stalls')">
-  <h3 class="heading"><b>Stalls (per day)</b></h3>
-</button>
-<div class="dropdownText" id="stalls" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Cheap Stalls
-      
-    </p> 
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Standard Stalls
-      
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Plus Stalls
+  <button class="dropdownTitle" onclick="reveal('stalls')">
+    <h3 class="heading"><b>Stalls (per day)</b></h3>
+  </button>
+  <div class="dropdownText" id="stalls" style="display: none">
+    <div class="earn-display">
+      <!-- Title -->
+      <div class="earn-item">
+        <p class="earn-title">
+          Cheap Stalls
 
-    </p>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Standard Stalls
+
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Plus Stalls
+
+        </p>
+      </div>
+      <div class="earn-item">
+        <p class="earn-title">
+          Premium Stalls
+        </p>
+      </div>
+      <!-- Description -->
+      <div class="earn-item">
+        <p>
+          *Required to sell goods* <br>
+          Normal times, small stall<br>
+          <b>5 / hr</b>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Good times, small stall<br>
+          <b>10 / hr</b>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Good times, medium stall<br>
+          <b>20 / hr</b>
+        </p>
+      </div>
+      <div class="earn-item">
+        <p>
+          Good times, large stall<br>
+          <b>40 / hr</b>
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="earn-item">
-    <p class="earn-title">
-       Premium Stalls
-    </p>
-  </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-        *Required to sell goods* <br> 
-        Normal times, small stall<br> 
-        <b>5 / hr</b>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-        Good times, small stall<br> 
-        <b>10 / hr</b>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-        Good times, medium stall<br> 
-        <b>20 / hr</b>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-        Good times, large stall<br> 
-        <b>40 / hr</b>
-    </p>
-  </div>
-</div>
-</div>
-<br>
-<br>
+  <br>
+  <br>
 </div>
 <script type="module" src="control.js"></script>
 <script type="module" src="script.js"></script>
@@ -619,7 +627,7 @@
 
   function handleMissedMidnights() {
     const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); // Start of today
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); 
     const lastExecution =
       parseInt(localStorage.getItem("lastMidnightExecution")) || 0;
 
@@ -630,9 +638,10 @@
 
     if (daysMissed > 0) {
       console.log(`Missed ${daysMissed} midnights. Applying updates...`);
-      console.log(window.updatePrices); 
-      updatePrices(); // Update prices
-      localStorage.setItem("lastMidnightExecution", today); // Update the last execution time
+      for (let i = 0; i < daysMissed; i++) {
+        updatePrices(); // Update prices for each missed day
+      }
+      localStorage.setItem("lastMidnightExecution", today); 
     } else {
       console.log("No missed midnights. Everything is up to date.");
     }
@@ -658,4 +667,5 @@
   // Run the check every second
   setInterval(checkForMidnight, 1000); // Check every 1 second
 </script>
+
 </html>

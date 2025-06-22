@@ -91,15 +91,21 @@ function generatePrice(itemKey, basePrice, minPrice, maxPrice) {
     localStorage.setItem(itemKey, initialPrice); // Save the initial price to localStorage
     return initialPrice;
   } else {
-    // 25% chance the price stays the same
-    if (Math.random() < 0.25) {
-      return currentPrice; 
+    const rand = Math.random();
+    if (rand < 0.25) {
+      // 25% chance the price stays the same
+      return currentPrice;
+    } else if (rand < 0.5) {
+      // 25% chance the price is regenerated randomly
+      const randomPrice = Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
+      localStorage.setItem(itemKey, randomPrice);
+      return randomPrice;
     }
-    // Adjust the price daily by ±100, ensuring it stays within bounds
-    const adjustment = Math.floor(Math.random() * 201) - 100; 
+    // 50% chance to adjust the price daily by ±100, ensuring it stays within bounds
+    const adjustment = Math.floor(Math.random() * 201) - 100;
     const newPrice = currentPrice + adjustment;
     const boundedPrice = Math.max(minPrice, Math.min(maxPrice, newPrice)); // Ensure it stays within bounds
-    localStorage.setItem(itemKey, boundedPrice); 
+    localStorage.setItem(itemKey, boundedPrice);
     return boundedPrice;
   }
 }
