@@ -100,7 +100,10 @@ const randomEvents = [
         alert(`Gaining Prestige! Your prestige has increased by ${gain}.`);
       },
     },
-    // Health Related Events
+  ];
+
+  // Health Related Events
+  const healthEvents = [
     {
       name: "Sickness",
       description: "Sickness struck your animals! Lost 10% of your cattle.",
