@@ -180,6 +180,10 @@ input[type="password"] {
   width: 97.5%;
   margin-left: 20px;
   font-size: 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 
@@ -235,7 +239,7 @@ input[type="password"] {
 }
 
 body {
-  background-color: #87cee8;
+  background-color: #bfe5fa;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -411,7 +415,7 @@ body {
 
 
 body {
-  background-color: #87cee8;
+  background-color: #bfe5fa;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -419,23 +423,41 @@ body {
 .navbar {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 10px 0;
+  margin: 24px auto 32px auto;
+  max-width: 700px;
+  width: 40%;
 }
 
 .navbar a {
-  float: left;
-  color: #090909;
-  text-align: center;
-  padding: 14px 16px;
+  color: #2260a9;
+  background: transparent;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: 600;
   text-decoration: none;
-  font-size: 28px;
-  border-width: 2px;
-  border-color: black;
-  background-color: rgb(26, 221, 221);
+  transition: background 0.18s, color 0.18s;
+  border: none;
+  float: none;
+  display: inline-block;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+  background: #e3f0fc;
+  color: #17406b;
 }
 
 .navbar a.active {
-  background-color: #498fb4;
-  color: black;
+  background: #2260a9;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(34,96,169,0.10);
 }
 
 .flex-container {
@@ -786,4 +808,70 @@ input[type="number"].addCoins {
   color: white;
   cursor: pointer;
   z-index: 5;
+}
+
+button,
+.changeBtn,
+.logout,
+.login,
+.add-coins-container button,
+.alertButton {
+  background-color: #04aa6d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+/* Modernize dropdownTitle but do NOT expand on hover */
+.dropdownTitle {
+  background-color: #68e0b4;
+  color: black;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 97.5%;
+  margin-left: 20px;
+  font-size: 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.dropdownTitle:hover {
+  background-color: #06d68a;
+  color: #fff;
+  /* No transform or scale for dropdowns */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Only expand/scale non-dropdown buttons on hover */
+button:hover:not(.dropdownTitle),
+.changeBtn:hover,
+.logout:hover,
+.login:hover,
+.add-coins-container button:hover,
+.alertButton:hover {
+  background-color: #06d68a;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px) scale(1.03);
+}
+
+button:active,
+.changeBtn:active,
+.logout:active,
+.login:active,
+.add-coins-container button:active,
+.alertButton:active {
+  background-color: #029e5c;
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  transform: translateY(1px) scale(0.98);
 }
