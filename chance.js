@@ -4,7 +4,7 @@ import {correctPassword, cowsAmount, cattleAmount, bullAmount, horseAmount, upgr
 const randomEvents = [
     {
       name: "Robbery",
-      description: "You were robbed! Lost 10% of your coins.",
+      description: "You were robbed!",
       effect: () => {
         const coins = getCoins();
         const loss = Math.floor(coins * 0.1);
@@ -18,7 +18,7 @@ const randomEvents = [
         effect: () => {
           const coins = getCoins();
           const min = 10;
-          const max = Math.max(min, Math.floor(coins / 10)); // Ensure max is at least min
+          const max = Math.max(min, Math.floor(coins / 10)); 
           const loss = Math.floor(Math.random() * (max - min + 1)) + min;
           setCoins(coins - loss);
           alert(`Land Destruction! You lost ${loss} M³.`);
