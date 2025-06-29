@@ -4,15 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="images/favicon.ico"
-    />
-    <title>Job</title>
+    <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+    <title>Expenses</title>
   </head>
   <div id="header-placeholder"></div>
-  <h1 class="center">Jobs</h1>
+  <h1 class="center">Expenses</h1>
   <a href="./home.html">
     <img src="images/cow.jpg" alt="logo" width="150" height="150" class="img" />
   </a>
@@ -61,138 +57,93 @@
 
 
 <div class="dropwdown">
-  <!-- DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES DAILY EXPENSES    -->
-<button class="dropdownTitle" onclick="reveal('daily')">
-  <h2 class="heading"><b>Daily Expenses</b></h2>
-</button>
-<div class="dropdownText" id="daily" style="display: none">
-  <div class="earn-display">
-    <!-- Earn Item Title -->
-    <div class="earn-item">
-      <p class="earn-title">
-         Food
-          <div class="subtitle">0 M³ / day
-          </div>
-      </p> 
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">
-         Water
-          <div class="subtitle">0 M³ / day</div>
-      </p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">
-        Market Rent
-          <div class="subtitle"> 0 M³ / day</div>
-      </p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">
-          Insurance
-          <div class="subtitle">0 M³ / day</div>
-      </p>
-    </div>
-    <!-- Earn Item Description -->
-    <div class="earn-item">
-      <p>
-        <b>No Plan Chosen</b> <br>
-         - Basic <br>
-         - Standard <br>
-         - Plus <br>
-         - Premium <br>
-      </p>
-    </div>
-    <div class="earn-item">
-      <p> 
-        <b>No Water Chosen</b> <br>
-        - Market <br>
-        - Spring <br>
-        - River <br>
-        - Lake <br>
-      </p>
-    </div>
-    <div class="earn-item">
-      <p>         <b>No Water Chosen</b> <br>
-        Rent market stalls to sell products.
-    </p>
-    </div>
-    <div class="earn-item">
-      <p>        <b>No Insurance Chosen</b> <br>
-        - Government <br>
-        - Geico <br>
-        - StateFarm <br>
-        - Progresive
-      </p>
+  <!-- DAILY EXPENSES -->
+  <button class="dropdownTitle" onclick="reveal('daily')">
+    <h2 class="heading"><b>Daily Expenses</b></h2>
+  </button>
+  <div class="dropdownText" id="daily" style="display: none">
+    <div class="earn-display">
+      <div class="grid-tile">
+        <div class="tile-title">Food<div class="subtitle">0 M³ / day</div></div>
+        <div class="tile-content">
+          <b>No Plan Chosen</b> <br>
+          - Basic <br>
+          - Standard <br>
+          - Plus <br>
+          - Premium <br>
+        </div>
+      </div>
+      <div class="grid-tile">
+        <div class="tile-title">Water<div class="subtitle">0 M³ / day</div></div>
+        <div class="tile-content">
+          <b>No Water Chosen</b> <br>
+          - Market <br>
+          - Spring <br>
+          - River <br>
+          - Lake <br>
+        </div>
+      </div>
+      <div class="grid-tile">
+        <div class="tile-title">Market Rent<div class="subtitle">0 M³ / day</div></div>
+        <div class="tile-content">
+          <b>No Water Chosen</b> <br>
+          Rent market stalls to sell products.
+        </div>
+      </div>
+      <div class="grid-tile">
+        <div class="tile-title">Insurance<div class="subtitle">0 M³ / day</div></div>
+        <div class="tile-content">
+          <b>No Insurance Chosen</b> <br>
+          - Government <br>
+          - Geico <br>
+          - StateFarm <br>
+          - Progresive
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<br>
-<br>
+  <br><br>
 </div>
 <div class="dropwdown">
-    <!-- OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES OTHER EXPENSES    -->
+  <!-- OTHER EXPENSES -->
   <button class="dropdownTitle" onclick="reveal('other')">
     <h2 class="heading"><b>Other Expenses</b></h2>
   </button>
   <div class="dropdownText" id="other" style="display: none">
     <div class="earn-display">
-      <!-- Earn Item Title -->
-      <div class="earn-item">
-        <p class="earn-title">
-           Tax
-            <div class="subtitle">10% / month
-            </div>
-        </p> 
-      </div>
-      <div class="earn-item">
-        <p class="earn-title">
-           School
-            <div class="subtitle">0 M³ / day</div>
-        </p>
-      </div>
-      <div class="earn-item">
-        <p class="earn-title">
-          Cow Insurance
-            <div class="subtitle"> 0 M³ / day</div>
-        </p>
-      </div>
-      <div class="earn-item">
-        <p class="earn-title">
-            Subscriptions
-            <div class="subtitle">2 M³ / day</div>
-        </p>
-      </div>
-      <!-- Earn Item Description -->
-      <div class="earn-item">
-        <p>
+      <div class="grid-tile">
+        <div class="tile-title">Tax<div class="subtitle">10% / month</div></div>
+        <div class="tile-content">
           <b>Property Tax:</b> 5% of income / month <br>
           <b>Income Tax:</b> 5% of income / month
-        </p>
+        </div>
       </div>
-      <div class="earn-item">
-        <p> 
+      <div class="grid-tile">
+        <div class="tile-title">School<div class="subtitle">0 M³ / day</div></div>
+        <div class="tile-content">
           <b>No School Chosen</b> <br>
-            Attend various schools, like trade school, university, or be an apprentice to gain knowledge.
-        </p>
+          Attend various schools, like trade school, university, or be an apprentice to gain knowledge.
+        </div>
       </div>
-      <div class="earn-item">
-        <p>         <b>No Insurance Chosen</b> <br>
-            - Lvl 1 <br>
-            - Lvl 2 <br>
-            - Lvl 3 <br>
-      </p>
+      <div class="grid-tile">
+        <div class="tile-title">Cow Insurance<div class="subtitle">0 M³ / day</div></div>
+        <div class="tile-content">
+          <b>No Insurance Chosen</b> <br>
+          - Lvl 1 <br>
+          - Lvl 2 <br>
+          - Lvl 3 <br>
+        </div>
       </div>
-      <div class="earn-item">
-        <p> - Standard Horse Food<br>
-  
-        </p>
+      <div class="grid-tile">
+        <div class="tile-title">Subscriptions<div class="subtitle">2 M³ / day</div></div>
+        <div class="tile-content">
+          - Standard Horse Food<br>
+        </div>
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  </div>
+  <br><br>
+</div>
 
   <!-- Wrong Password Punishment -->
   <div id="BigBadBox" style="display: none;"></div>

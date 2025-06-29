@@ -4,17 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
-    />
+    <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
     <title>Purchase</title>
   </head>
   <div id="header-placeholder"></div>
   <h1 class="center">Purchase</h1>
   <a href="./home.html">
-    <img src="cow.jpg" alt="logo" width="150" height="150" class="img" />
+    <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
   </a>
 
   <!--Account Dashboard-->
@@ -29,7 +25,7 @@
       <p class="grid-title">Today's Losses</p>
     </div>
     <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="question.png" alt="auto earn" width="20" height="20"/></a></p>  
+      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="./images/question.png" alt="auto earn" width="20" height="20"/></a></p>  
     </div>
     <!--Avaiable Coins-->
     <div class="grid-item">
@@ -58,63 +54,40 @@
   </div>
 <br>
   <div class="dropwdown">
-    <!--  OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED OWNED　   -->
+  <!-- OWNED -->
   <button class="dropdownTitle" onclick="reveal('owned')">
     <h1 class="center">Currently Owned:</h1>
   </button>
   <div class="dropdownText" id="owned" style="display: none">
     <div class="earn-display">
-      <!-- Earn Item Title -->
-      <div class="earn-item">
-        <p class="earn-title">
-           Small Farm
-        </p> 
-      </div>
-      <div class="earn-item">
-        <p class="earn-title">
-          Livestock
-           
-        </p>
-      </div>
-      <div class="earn-item">
-        <p class="earn-title">
-          Items/Tools/Equipments
-
-        </p>
-      </div>
-      <div class="earn-item">
-        <p class="earn-title">
-          Nothing
-
-        </p>
-      </div>
-      <!-- Earn Item Description -->
-      <div class="earn-item">
-        <p>
+      <div class="grid-tile">
+        <div class="tile-title">Small Farm</div>
+        <div class="tile-content">
           Hut with basic furniture, 36 plots of farmland and barn <br><br>
           Max: 3 cows
-        </p>
+        </div>
       </div>
-      <div class="earn-item">
-        <p> 
+      <div class="grid-tile">
+        <div class="tile-title">Livestock</div>
+        <div class="tile-content">
           <li>Horse</li>
-        </p>
+        </div>
       </div>
-      <div class="earn-item">
-        <p>
+      <div class="grid-tile">
+        <div class="tile-title">Items/Tools/Equipments</div>
+        <div class="tile-content">
           <li>Bucket (2)</li>
           <li>Cart</li>
           <li>Farming Tools</li>
-        </p>
+        </div>
       </div>
-      <div class="earn-item">
-        <p>Buy something!
-        </p>
+      <div class="grid-tile">
+        <div class="tile-title">Nothing</div>
+        <div class="tile-content">Buy something!</div>
       </div>
     </div>
   </div>
-  <br>
-  <br>
+  <br><br>
   </div>
 
 <!-- LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND-->
@@ -122,126 +95,73 @@
   <h3 class="heading"><b>Land</b></h3>
 </button>
 <div class="dropdownText" id="land" style="display: none">
-<div class="earn-display">
-  <!-- Earn Item Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-        Garden
-        <div class="subtitle">100  M³</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Small Farm
-        <div class="subtitle">400 M³</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Medium Farm
-        <div class="subtitle">750  M³</div>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Large Farm
-        <div class="subtitle">1000 M³
-        </div>
-    </p> 
-  </div>
-
-  <!-- Earn Item Description -->
-  <div class="earn-item">
-    <p>Land for garden (can serve as farm extension)<br>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Land for a small farm <br>
-      (Includes hut, grass/garden, and barn) <br><br>
-      Max: 3 cows</p>
-  </div>
-  <div class="earn-item">
-    <p>Land for a medium farm <br>
-      (Includes grassy field and barn) <br><br>
-      Max: 10 cows and 3 cattle</p>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>Land for a large farm <br>
-      (Includes grassy field and barn) <br><br>
-      Max: 20 cows and 5 cattle</p>
-    </p>
+  <div class="earn-display">
+    <div class="grid-tile">
+      <div class="tile-title">Garden<div class="subtitle">100  M³</div></div>
+      <div class="tile-content">Land for garden (can serve as farm extension)<br></div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Small Farm<div class="subtitle">400 M³</div></div>
+      <div class="tile-content">Land for a small farm <br>
+        (Includes hut, grass/garden, and barn) <br><br>
+        Max: 3 cows</div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Medium Farm<div class="subtitle">750  M³</div></div>
+      <div class="tile-content">Land for a medium farm <br>
+        (Includes grassy field and barn) <br><br>
+        Max: 10 cows and 3 cattle</div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Large Farm<div class="subtitle">1000 M³</div></div>
+      <div class="tile-content">Land for a large farm <br>
+        (Includes grassy field and barn) <br><br>
+        Max: 20 cows and 5 cattle</div>
+    </div>
   </div>
 </div>
-</div>
-
-<br>
-<br>
+<br><br>
 
 <div class="dropdown">
-  <!-- INSURANCE INSURANCE INSURANCE INSURANCE INSURANCE INSURANCE INSURANCE INSURANCE   -->
-<button class="dropdownTitle" onclick="reveal('insurance')">
-  <h3 class="heading"><b>Insurance (per day)</b></h3>
-</button>
-<div class="dropdownText" id="insurance" style="display: none">
-<div class="earn-display">
-  <!-- Title -->
-  <div class="earn-item">
-    <p class="earn-title">
-      Governemnt
-      
-    </p> 
+  <!-- INSURANCE -->
+  <button class="dropdownTitle" onclick="reveal('insurance')">
+    <h3 class="heading"><b>Insurance (per day)</b></h3>
+  </button>
+  <div class="dropdownText" id="insurance" style="display: none">
+    <div class="earn-display">
+      <div class="grid-tile">
+        <div class="tile-title">Government</div>
+        <div class="tile-content">
+          <b>Health: </b>30% Coverage (3 M³) <br>
+          <b>Property: </b> 30% Coverage (3 M³) <br>
+          <b>Livestock: </b> 30% Coverage  (3 M³/ animal)
+        </div>
+      </div>
+      <div class="grid-tile">
+        <div class="tile-title">Geico</div>
+        <div class="tile-content">
+          <b>Health: </b>60% Coverage (7 M³) <br>
+          <b>Property: </b> 60% Coverage (7 M³) <br>
+          <b>Livestock: </b> 60% Coverage  (7 M³/ animal)
+        </div>
+      </div>
+      <div class="grid-tile">
+        <div class="tile-title">Progressive</div>
+        <div class="tile-content">
+          <b>Health + Property + Livestock / animal: </b> 90% Coverage (25 M³) <br>
+        </div>
+      </div>
+      <div class="grid-tile">
+        <div class="tile-title">StateFarm Insurance</div>
+        <div class="tile-content">
+          <b>Health: </b>Full Coverage (12 M³) <br>
+          <b>Property: </b> Full Coverage (12 M³) <br>
+          <b>Livestock: </b> Full Coverage  (12 M³/ animal)
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Geico
-      
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-        Progressive
-
-    </p>
-  </div>
-  <div class="earn-item">
-    <p class="earn-title">
-       StateFarm Insurance
-    </p>
-  </div>
-  <!-- Description -->
-  <div class="earn-item">
-    <p>
-      <b>Health: </b>30% Coverage (3 M³) <br>
-      <b>Property: </b> 30% Coverage (3 M³) <br>
-      <b>Livestock: </b> 30% Coverage  (3 M³/ animal)
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Health: </b>60% Coverage (7 M³) <br>
-      <b>Property: </b> 60% Coverage (7 M³) <br>
-      <b>Livestock: </b> 60% Coverage  (7 M³/ animal)
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Health + Property + Livestock / animal: </b> 90% Coverage (25 M³) <br>
-    </p>
-  </div>
-  <div class="earn-item">
-    <p>
-      <b>Health: </b>Full Coverage (12 M³) <br>
-      <b>Property: </b> Full Coverage (12 M³) <br>
-      <b>Livestock: </b> Full Coverage  (12 M³/ animal)
-    </p>
-  </div>
+  <br><br>
 </div>
-</div>
-<br>
-<br>
-</div>
-
-
 <script  type="module" src="script.js"></script>
 </html>
