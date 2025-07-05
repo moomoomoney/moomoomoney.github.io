@@ -1,244 +1,161 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="images/favicon.ico"
-    />
-    <title>Auto Earn</title>
-  </head>
-  <div id="header-placeholder"></div>
 
-  <h1 class="center">Auto Earn</h1>
-  <a href="./home.html">
-    <img src="images/cow.jpg" alt="logo" width="150" height="150" class="img" />
-  </a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <title>Auto Earn</title>
+</head>
+<div id="header-placeholder"></div>
 
-  <!--Account Dashboard-->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">
-        Auto Earning
-        <a href="autoearn.html"
-          ><img src="images/question.png" alt="auto earn" width="20" height="20"
-        /></a>
-      </p>
-    </div>
-    <!--Available Coins-->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <!--Income-->
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <!--Losses-->
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <!--Auto Earn-->
-    <div class="grid-item">
-      <p class="auto"></p>
-    </div>
+<h1 class="center">Auto Earn</h1>
+<a href="./home.html">
+  <img src="images/cow.jpg" alt="logo" width="150" height="150" class="img" />
+</a>
+
+<!--Account Dashboard-->
+<div class="grid-display">
+  <div class="grid-item">
+    <p class="grid-title">Available Coins</p>
   </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Income</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Losses</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">
+      Auto Earning
+      <a href="autoearn.html"><img src="images/question.png" alt="auto earn" width="20" height="20" /></a>
+    </p>
+  </div>
+  <!--Available Coins-->
+  <div class="grid-item">
+    <p class="coins"></p>
+  </div>
+  <!--Income-->
+  <div class="grid-item">
+    <p class="income"></p>
+  </div>
+  <!--Losses-->
+  <div class="grid-item">
+    <p class="losses"></p>
+  </div>
+  <!--Auto Earn-->
+  <div class="grid-item">
+    <p class="auto"></p>
+  </div>
+</div>
 
-  <h3 class="center">
-    See <a href="purchase.html">Purchase</a> for Auto Earn Options!
-  </h3>
+<h3 class="center">
+  See <a href="purchase.html">Purchase</a> for Auto Earn Options!
+</h3>
 
-  <!-- Earn Options -->
-  <div class="earn-display">
-    <!-- Earn Item Title -->
-    <div class="earn-item">
-      <p class="earn-title">ICOF Salary</p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">Crops</p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">Insurance</p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">Other Expenses</p>
-    </div>
-    <!-- Earn Item Description -->
-    <div class="earn-item">
+<!-- Income Sources -->
+<div class="earn-display">
+  <div class="grid-tile">
+    <div class="tile-title">ICOF Salary</div>
+    <div class="tile-content">
       You work as the Vice Chief Idiot <br />
-      You earn <span class="salary"></span> M³ per day <br /><br />
-      <input
-        class="addCows"
-        id="addSalary"
-        placeholder="Change pay"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addSalary', 'salary', salary)"
-      >
+      <b>Earns:</b> <span class="salary"></span> M³ per day <br /><br />
+      <input class="addCows" id="addSalary" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addSalary', 'salary', salary)">
         Change
       </button>
     </div>
-    <div class="earn-item">
+  </div>
+  <div class="grid-tile">
+    <div class="tile-title">Crops</div>
+    <div class="tile-content">
       You don't own any crops <br />
-      You crops earn <span class="cropsAmount"></span> M³ per day <br /><br />
-      <input
-        class="addCows"
-        id="addCrops"
-        placeholder="Change earnings"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addCrops', 'cropsAmount', cropsAmount)"
-      >
+      <b>Earns:</b> <span class="cropsAmount"></span> M³ per day <br /><br />
+      <input class="addCows" id="addCrops" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addCrops', 'cropsAmount', cropsAmount)">
         Change
       </button>
     </div>
-    <div class="earn-item">
+  </div>
+  <div class="grid-tile">
+    <div class="tile-title">Insurance</div>
+    <div class="tile-content">
       You don't have any insurance plans. <br />
-      Your insurance plans cost <span class="insuranceAmount"></span> M³ per day
-      <br /><br />
-      <input
-        class="addCows"
-        id="addInsurance"
-        placeholder="Insurance cost"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addInsurance', 'insuranceAmount', insuranceAmount)"
-      >
-        Change
-      </button>
-    </div>
-    <div class="earn-item">
-      Your plans:
-      <br> - Std Horse Food (2M³)
-      You pay <span class="expenseAmount"></span> M³ per day <br /><br />
-      <input
-        class="addCows"
-        id="addExpenses"
-        placeholder="Expense cos"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addExpenses', 'expenseAmount', expenseAmount)"
-      >
+      <b>Costs:</b> <span class="insuranceAmount"></span> M³ per day <br /><br />
+      <input class="addCows" id="addInsurance" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addInsurance', 'insuranceAmount', insuranceAmount)">
         Change
       </button>
     </div>
   </div>
-  <br />
-
-  <!-- Earn Options -->
-  <div class="earn-display">
-    <!-- Earn Item Title -->
-    <div class="earn-item">
-      <p class="earn-title">Cow</p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">Cattle</p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">Bull</p>
-    </div>
-    <div class="earn-item">
-      <p class="earn-title">Upgraded Cow</p>
-    </div>
-    <!-- Earn Item Description -->
-    <div class="earn-item">
-      Earns 1 M³ per day
-      <p class="cowsAmount"></p>
-      <input
-        class="addCows"
-        id="addCows"
-        placeholder="# Cows"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addCows', 'cowsAmount', cowsAmount)"
-      >
-        Change
-      </button>
-    </div>
-    <div class="earn-item">
-      Earns 5 M³ per day
-      <p class="cattleAmount"></p>
-      <input
-        class="addCows"
-        id="addCattle"
-        placeholder="# Cattle"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addCattle', 'cattleAmount', cattleAmount)"
-      >
-        Change
-      </button>
-    </div>
-    <div class="earn-item">
-      Earns 100 M³ per day
-      <p class="bullAmount"></p>
-      <input
-        class="addCows"
-        id="addBull"
-        placeholder="# Bull"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addBull', 'bullAmount', bullAmount)"
-      >
-        Change
-      </button>
-    </div>
-    <div class="earn-item">
-      Earns 4 M³ per day
-      <p class="upgradedAmount"></p>
-      <input
-        class="addCows"
-        id="addUpgraded"
-        placeholder="# Upgraded"
-        type="number"
-        maxlength="2"
-      />
-      <button
-        class="changeBtn"
-        onclick="changeAutoEarn('addUpgraded', 'upgradedAmount', upgradedAmount)"
-      >
+  <div class="grid-tile">
+    <div class="tile-title">Other Expenses</div>
+    <div class="tile-content">
+      Your plans: <br>
+      - Std Horse Food (2M³) <br>
+      <b>Costs:</b> <span class="expenseAmount"></span> M³ per day <br /><br />
+      <input class="addCows" id="addExpenses" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addExpenses', 'expenseAmount', expenseAmount)">
         Change
       </button>
     </div>
   </div>
-  <br />
+</div>
+<br />
 
-  <!-- Password Modal -->
-  <div
-    id="passwordModalForCows"
-    style="
+<!-- Livestock Income -->
+<div class="earn-display">
+  <div class="grid-tile">
+    <div class="tile-title">Cow</div>
+    <div class="tile-content">
+      <b>Earns:</b> 1 M³ per day <br>
+      <b>Owned:</b> <span class="cowsAmount"></span> <br /><br />
+      <input class="addCows" id="addCows" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addCows', 'cowsAmount', cowsAmount)">
+        Change
+      </button>
+    </div>
+  </div>
+  <div class="grid-tile">
+    <div class="tile-title">Cattle</div>
+    <div class="tile-content">
+      <b>Earns:</b> 5 M³ per day <br>
+      <b>Owned:</b> <span class="cattleAmount"></span> <br /><br />
+      <input class="addCows" id="addCattle" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addCattle', 'cattleAmount', cattleAmount)">
+        Change
+      </button>
+    </div>
+  </div>
+  <div class="grid-tile">
+    <div class="tile-title">Bull</div>
+    <div class="tile-content">
+      <b>Earns:</b> 100 M³ per day <br>
+      <b>Owned:</b> <span class="bullAmount"></span> <br /><br />
+      <input class="addCows" id="addBull" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addBull', 'bullAmount', bullAmount)">
+        Change
+      </button>
+    </div>
+  </div>
+  <div class="grid-tile">
+    <div class="tile-title">Upgraded Cow</div>
+    <div class="tile-content">
+      <b>Earns:</b> 4 M³ per day <br>
+      <b>Owned:</b> <span class="upgradedAmount"></span> <br /><br />
+      <input class="addCows" id="addUpgraded" placeholder="Amount" type="number" maxlength="2" />
+      <button class="changeBtn" onclick="changeAutoEarn('addUpgraded', 'upgradedAmount', upgradedAmount)">
+        Change
+      </button>
+    </div>
+  </div>
+</div>
+<br />
+
+<!-- Password Modal -->
+<div id="passwordModalForCows" style="
       display: none;
       position: fixed;
       top: 0;
@@ -246,10 +163,8 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
-    "
-  >
-    <div
-      style="
+    ">
+  <div style="
         position: absolute;
         top: 50%;
         left: 50%;
@@ -257,18 +172,18 @@
         background-color: white;
         padding: 20px;
         border-radius: 5px;
-      "
-    >
-      <label for="modalPassword">Enter password:</label>
-      <input type="password" id="modalPasswordForCows" />
-      <button onclick="submitPasswordForCows()">Submit</button>
-      <button onclick="closeModalForCows()">Cancel</button>
-      <div id="errorMessageForCows" style="color: red; display: none">
-        Incorrect Password.
-      </div>
+      ">
+    <label for="modalPassword">Enter password:</label>
+    <input type="password" id="modalPasswordForCows" />
+    <button onclick="submitPasswordForCows()">Submit</button>
+    <button onclick="closeModalForCows()">Cancel</button>
+    <div id="errorMessageForCows" style="color: red; display: none">
+      Incorrect Password.
     </div>
   </div>
+</div>
 
-  <script type = "module" src="script.js"></script>
-  <script type = "module" src="control.js"></script>
+<script type="module" src="script.js"></script>
+<script type="module" src="control.js"></script>
+
 </html>

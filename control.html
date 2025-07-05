@@ -8,6 +8,7 @@
   <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
   <title>CONTROL SYSTEM</title>
 </head>
+<body>
 <div id="header-placeholder"></div>
 <br>
 <a href="./home.html">
@@ -57,16 +58,12 @@
     <h2 class="center">Add Coins</h2>
   </button>
   <div class="dropdownText" id="coins" style="display: none">
-
-    <!-- <h1 class="center">Add Coins</h1> -->
     <div class="add-coins-container">
       <input class="addCoins" placeholder="Coins" type="number" max="23" maxlength="2" />
       <input class="addReason" placeholder="Reason for Change" type="text" style="width: 30%" />
       <button onclick="openModal('addCoins')" class="controlButton">Add</button>
       <button onclick="openModal('clearCoins')" class="controlButton">Clear</button>
     </div>
-
-
     <!-- Money Tracker -->
     <div class="table-container">
       <table class="table">
@@ -136,7 +133,6 @@
         </tr>
       </table>
     </div>
-
   </div>
 </div>
 
@@ -183,7 +179,7 @@
     </div>
     <!-- <h1 class="center">Add Coins</h1> -->
     <div class="add-coins-container">
-      <input class="addPrestige" placeholder="Add Prestige" type="number" maxlength="2" />
+      <input class="addPrestige" placeholder="Add" type="number" maxlength="2" />
       <input class="addReason" placeholder="Reason" type="text" style="width: 30%" />
       <button onclick="openModal('addPrestige')" class="controlButton">Add</button>
       <button onclick="openModal('clearPrestige')" class="controlButton">Clear</button>
@@ -200,19 +196,6 @@
       <button onclick="submitPassword()">Submit</button>
       <button onclick="closeModal()">Cancel</button>
       <div id="errorMessage" style="color: red; display: none;">Incorrect Password. You have been reported.</div>
-    </div>
-  </div>
-
-  <!-- Wrong Password Punishment -->
-  <div id="BigBadBox" style="display: none;"></div>
-  <div id="passwordModal2"
-    style="display: none; position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-    <div
-      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
-      <label for="modalPasswordWrong">You've entered the wrong password. Enter the password correctly to unlock this
-        website.</label>
-      <input type="password" id="modalPasswordWrong" />
-      <button onclick="submitPasswordWrong()">Submit</button>
     </div>
   </div>
   </body>

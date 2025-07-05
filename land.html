@@ -10,7 +10,7 @@
   <div id="header-placeholder"></div>
   <h1 class="center">Land</h1>
   <a href="./home.html">
-    <img src="images/cow.jpg" alt="logo" width="150" height="150" class="img" />
+    <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
   </a>
 
   <!--Account Dashboard-->
@@ -45,13 +45,28 @@
     </div>
   </div>
 <!--Navbar-->
-  <div class="navbar">
-    <a href="./world.html" >World</a>
-    <a href="./map.html">Map</a>
-    <a href="./job.html" >Job</a>
-    <a href="./expenses.html" >Expenses</a>
-    <a href="./purchase.html">Purchase</a>
-  </div>
+<nav class="navbar">
+  <a href="./world.html" aria-label="World">
+    <span class="emoji">🌍</span>
+    <span class="full-text">World</span>
+  </a>
+  <a href="./map.html" class="active" aria-label="Map">
+      <span class="emoji">🗺️</span>
+    <span class="full-text">Map</span>
+  </a>
+  <a href="./job.html" aria-label="Job">
+        <span class="emoji">💼</span>
+    <span class="full-text">Job</span>
+  </a>
+  <a href="./expenses.html" aria-label="Expenses">
+    <span class="emoji">🧾</span>
+    <span class="full-text">Expenses</span>
+  </a>
+  <a href="./purchase.html" aria-label="Purchase">
+    <span class="emoji">🛒</span>
+    <span class="full-text">Purchase</span>
+  </a>
+</nav>
 <h1 class="center">Current Land: Small Farm</h1>
 <p class="center"><b>Value:</b> 750 M³ <br>
   <b>Water Use:</b> 3 buckets / day
@@ -66,7 +81,6 @@
     <!-- Title -->
     <div class="one-item">
       <br>
-        <h2>Map</h2>
         <div class="map-container">
           <!-- Grass background -->
           <img src="images/grass.jpg" alt="grass" class="map-grass" />
@@ -162,37 +176,30 @@
     <strong>Warning:</strong> Your barn has not been used in a long time, and has fallen into a state of disrepair. Your barn is full of cobwebs and certain repairs are needed. Cleaning and fixing will cost you <b>40 M³</b> and this cost will only increase the longer you wait.
    </div> -->
     <p class="center">You have one horse! Your barn is 1/3 full.
-    <div class="three-display">
-      <div class="three-item">
-        <p class="three-title">Horse #1</p>
-      </div>
-      <div class="three-item">
-        <p class="three-title">Empty</p>
-      </div>
-      <div class="three-item">
-        <p class="three-title">Empty</p>
-      </div>
-      <!--Avaiable Coins-->
-      <div class="three-item">
-        <b>Lvl 3 Horse: </b>Average adult horse <br>
-        You use this horse for transportation. <br>
-        <b>Age: </b>12/25 years<br>
-        <b>Health: </b> 99%<br>
-        <b>Happiness: </b> 100%<br>
-        <b>Water: </b>1/1 buckets<br>
-        <b>Food: </b> Grass + Standard Horse Food (Hay, Oats, Apples)<br><br>
-      </div>
-      <!--Income-->
-      <div class="three-item">
-        Buy an animal at the <a href="market.html">Market</a>!
-      </div>
-      <!--Losses-->
-      <div class="three-item">
-        Buy an animal at the <a href="market.html">Market</a>!
-      </div>
+<div class="three-display">
+  <div class="grid-tile">
+    <div class="tile-title">Horse #1</div>
+    <div class="tile-content">
+      <b>Lvl 3 Horse: </b>Average adult horse <br>
+      You use this horse for transportation. <br>
+      <b>Age: </b>12/25 years<br>
+      <b>Health: </b> 99%<br>
+      <b>Happiness: </b> 100%<br>
+      <b>Water: </b>1/1 buckets<br>
+      <b>Food: </b> Grass + Standard Horse Food (Hay, Oats, Apples)<br><br>
+    </div>
   </div>
-</div>
-</div>
+  <div class="grid-tile">
+    <div class="tile-title">Empty</div>
+    <div class="tile-content">
+      Buy an animal at the <a href="market.html">Market</a>!
+    </div>
+  </div>
+  <div class="grid-tile">
+    <div class="tile-title">Empty</div>
+    <div class="tile-content">
+      Buy an animal at the <a href="market.html">Market</a>!
+    </div>
 
 <!-- Info Modal Grass -->
 <div id="infoModalGrass" class="modal" style=" z-index: 900;">

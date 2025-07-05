@@ -1,82 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./style.css" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain"
-    />
-    <title>Map</title>
-    
-  </head>
-  <div id="header-placeholder"></div>
-  <h1 class="center">Land</h1>
-  <a href="./home.html">
-    <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
-  </a>
 
-  <!--Account Dashboard-->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="./images/question.png" alt="auto earn" width="20" height="20"/></a></p>  
-    </div>
-    <!--Avaiable Coins-->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <!--Income-->
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <!--Losses-->
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <!--Auto Earn-->
-    <div class="grid-item">
-      <p class="auto"></p>
-    </div>
-  </div>
-<!--Navbar-->
-  <div class="navbar">
-    <a href="./world.html" >World</a>
-    <a href="./map.html"  class="active">Map</a>
-    <a href="./job.html" >Job</a>
-    <a href="./expenses.html" >Expenses</a>
-    <a href="./purchase.html">Purchase</a>
-  </div>
-<h1 class="center">Pus Village Map</h1>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <title>Map</title>
 
-<img src="./images/pusvillage.jpg" width="900" class="img">
-
-<a href="./market.html">
-    <button class="mapBtnMarket">Market</button>
+</head>
+<div id="header-placeholder"></div>
+<h1 class="center">Land</h1>
+<a href="./home.html">
+  <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
 </a>
-<a href="./land.html">
-    <button class="mapBtnLand">Land</button>
-</a>
-  <!-- Wrong Password Punishment -->
-  <div id="BigBadBox" style="display: none;"></div>
-  <div id="passwordModal2"
-  style="display: none; position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-  <div
-    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
-    <label for="modalPasswordWrong">You've entered the wrong password. Enter the password correctly to unlock this website.</label>
-    <input type="password" id="modalPasswordWrong" />
-    <button onclick="submitPasswordWrong()">Submit</button>
+
+<!--Account Dashboard-->
+<div class="grid-display">
+  <div class="grid-item">
+    <p class="grid-title">Available Coins</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Income</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Losses</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="./images/question.png" alt="auto earn"
+          width="20" height="20" /></a></p>
+  </div>
+  <!--Avaiable Coins-->
+  <div class="grid-item">
+    <p class="coins"></p>
+  </div>
+  <!--Income-->
+  <div class="grid-item">
+    <p class="income"></p>
+  </div>
+  <!--Losses-->
+  <div class="grid-item">
+    <p class="losses"></p>
+  </div>
+  <!--Auto Earn-->
+  <div class="grid-item">
+    <p class="auto"></p>
   </div>
 </div>
-<script type="module"  src="script.js"></script>
+<!--Navbar-->
+<nav class="navbar">
+  <a href="./world.html" aria-label="World">
+    <span class="emoji">🌍</span>
+    <span class="full-text">World</span>
+  </a>
+  <a href="./map.html" class="active" aria-label="Map">
+      <span class="emoji">🗺️</span>
+    <span class="full-text">Map</span>
+  </a>
+  <a href="./job.html" aria-label="Job">
+        <span class="emoji">💼</span>
+    <span class="full-text">Job</span>
+  </a>
+  <a href="./expenses.html" aria-label="Expenses">
+    <span class="emoji">🧾</span>
+    <span class="full-text">Expenses</span>
+  </a>
+  <a href="./purchase.html" aria-label="Purchase">
+    <span class="emoji">🛒</span>
+    <span class="full-text">Purchase</span>
+  </a>
+</nav>
+<h1 class="center">Pus Village Map</h1>
+
+<div class="image-layer-container" style="width:90%; margin: 0 auto; position:relative;">
+  <img src="./images/pusvillage.jpg" width="900" class="img" alt="Pus Village Map">
+  <!-- Overlay for Market -->
+  <a href="./market.html" class="overlay-link" style="left: 47%; top: 72%;">
+    <span class="overlay-text">Market</span>
+  </a>
+  <!-- Overlay for Land -->
+  <a href="./land.html" class="overlay-link" style="left: 38%; top: 51%;">
+    <span class="overlay-text">Your Farm</span>
+  </a>
+</div>
+<script type="module" src="script.js"></script>
+
 </html>

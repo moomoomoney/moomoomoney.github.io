@@ -175,8 +175,8 @@ function login(event) {
 }
 
 function reveal(id) {
-  const dropdowns = document.querySelectorAll('.dropdownText'); // Using the class 'dropdownText'
-
+  const dropdowns = document.querySelectorAll('.dropdownText'); 
+  const dropdownTitle = document.querySelectorAll('.dropdownTitle'); 
   // Close all dropdowns except the clicked one
   dropdowns.forEach(dropdown => {
     // Only hide dropdowns that aren't the one clicked
@@ -192,9 +192,9 @@ function reveal(id) {
 
     // Toggle the display of the clicked dropdown
     if (currentDisplay === 'none') {
-      element.style.display = 'block'; // Open the dropdown
+      element.style.display = 'block'; 
     } else {
-      element.style.display = 'none'; // Close the dropdown
+      element.style.display = 'none'; 
     }
   }
 }
@@ -410,6 +410,47 @@ function loadHeader() {
       console.error('Error loading header:', error);
     });
 }
+
+// Change Dashboard Titles for Mobile View
+function adaptTitles() {
+  const gridTitles = document.querySelectorAll('.grid-title');
+  const mobileReplacements = ["Coins", "Income", "Losses", "Auto Earn"];
+  
+  if (window.innerWidth <= 767) { // Mobile view
+    gridTitles.forEach((title, index) => {
+      if (index < 4) { 
+        if (!title.dataset.original) {
+          title.dataset.original = title.innerHTML;
+        }
+        const helpIcon = title.querySelector('img');
+        const newContent = document.createElement('span');
+        newContent.textContent = mobileReplacements[index];
+        title.innerHTML = '';
+        title.appendChild(newContent);
+        if (helpIcon) {
+          title.appendChild(helpIcon);
+          helpIcon.style.marginLeft = '5px';
+          helpIcon.style.verticalAlign = 'middle';
+          const iconLink = document.createElement('a');
+          iconLink.href = 'autoearn.html';
+          iconLink.appendChild(helpIcon.cloneNode(true));
+          title.appendChild(iconLink);
+          helpIcon.remove()
+        }
+      }
+    });
+  } else { // Desktop view - restore original
+    gridTitles.forEach(title => {
+      if (title.dataset.original) {
+        title.innerHTML = title.dataset.original;
+      }
+    });
+  }
+}
+
+// Run on load and resize
+window.addEventListener('load', adaptTitles);
+window.addEventListener('resize', adaptTitles);
 
 // Call the function to load the header
 loadHeader();

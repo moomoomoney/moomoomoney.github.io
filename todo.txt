@@ -1,4 +1,3 @@
-
 - Improve CSS styling  v2.5
 - Random event generation (Robbery, famine, sickness, etc) v2.6
 - Festival page in tools for in-website random number generator v27

@@ -5,7 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./style.css" />
-  <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
   <title>Track</title>
 </head>
 
@@ -14,7 +15,7 @@
 
   <h1 class="center">Track</h1>
   <a href="./world.html">
-    <img src="images/cow.jpg" alt="logo" width="150" height="150" class="img" />
+    <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
   </a>
 
   <!--Account Dashboard-->
@@ -29,8 +30,8 @@
       <p class="grid-title">Today's Losses</p>
     </div>
     <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="images/question.png" alt="auto earn" width="20"
-            height="20" /></a></p>
+      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="images/question.png" alt="auto earn"
+            width="20" height="20" /></a></p>
     </div>
     <!--Avaiable Coins-->
     <div class="grid-item">
@@ -51,11 +52,20 @@
   </div>
 
   <!--Navbar-->
-  <div class="navbar">
-    <a href="./earn.html">Earn</a>
-    <a href="./redeem.html">Redeem</a>
-    <a href="./track.html" class="active">Track</a>
-  </div>
+<nav class="navbar">
+  <a href="./earn.html" aria-label="Earn">
+    <span class="emoji">💰</span>
+    <span class="full-text">Earn</span>
+  </a>
+  <a href="./redeem.html" aria-label="Redeem">
+    <span class="emoji">🎁</span>
+    <span class="full-text">Redeem</span>
+  </a>
+  <a href="./track.html" class="active" aria-label="Track">
+    <span class="emoji">📊</span>
+    <span class="full-text">Track</span>
+  </a>
+</nav>
 
   <h2 class="center">Goal: <span class="coins"></span> / 250 <span id="status-icon"></span> </h2>
 
@@ -69,7 +79,7 @@
         <tr>
           <th>Date</th>
           <th>Amount</th>
-          <th>Purpose/Reason</th>
+          <th>Description</th>
         </tr>
         <tr class="header">
           <td><b>SEPTEMBER</td>
@@ -94,6 +104,11 @@
         <tr class="header">
           <td><b>JANUARY</td>
           <td>190 M³</td>
+          <td>Monthly earnings</td>
+        </tr>
+        <tr class="header">
+          <td><b>FEBRUARY</td>
+          <td>321 M³</td>
           <td>Monthly earnings</td>
         </tr>
         <tr class="header">
