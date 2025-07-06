@@ -346,13 +346,12 @@ td:not(:last-child) { border-right: 10px solid white; }
 /* ===== MAP STYLES ===== */
 .map-container {
   position: relative;
-  width: 90vw;
+  width: 100%;
   max-width: 80rem;
   height: 500px;
-  margin-left: 2em;
-  margin-right: 2em;
-  border: 7px solid #06d68a;
+  margin: 0 auto;
   overflow: hidden;
+  display: block; 
 }
 
 .map-grass {

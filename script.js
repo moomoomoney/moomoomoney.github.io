@@ -117,7 +117,7 @@ function generateAllPrices() {
   generatePrice('bullPrice', 750, 600, 850);
   generatePrice('arenaPrice', 2000, 1800, 2250);
   generatePrice('sheepPrice', 150, 125, 250);
-  generatePrice('horsePrice', 400, 1000, 2000);
+  generatePrice('horsePrice', 500, 350, 1000);
   generatePrice('chickenPrice', 150, 80, 200);
   generatePrice('pigPrice', 150, 125, 250);
   generatePrice('smallTreePrice', 200, 180, 300);

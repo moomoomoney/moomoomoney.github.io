@@ -1,4 +1,4 @@
-- Improve CSS styling  v2.5
-- Random event generation (Robbery, famine, sickness, etc) v2.6
-- Festival page in tools for in-website random number generator v27
+- Improved security v2.6
+- Random event generation (Robbery, famine, sickness, etc) v2.7
+- Festival page in tools for in-website random number generator v2.8
 - SQL storage v3.0
