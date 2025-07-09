@@ -160,20 +160,142 @@ function loadPricesFromLocalStorage() {
   });
 }
 
-// Login function to validate username and password
-function login(event) {
+// Login functions
+const MAX_ATTEMPTS = 3;
+const LOCKOUT_TIME = 10 * 60 * 1000;
+if (localStorage.getItem('loginState') === null) {
+  localStorage.setItem('loginState', "false");
+}
+let loginState = localStorage.getItem('loginState');
+
+async function login(event) {
   event.preventDefault();
+
+  // Check for lockout
+  const failedAttempts = parseInt(localStorage.getItem("failedAttempts")) || 0;
+  const lockoutUntil = parseInt(localStorage.getItem("lockoutUntil")) || 0;
+  const now = Date.now();
+
+  if (lockoutUntil && now < lockoutUntil) {
+    const minutesLeft = Math.ceil((lockoutUntil - now) / 60000);
+    alert(`Too many failed attempts. Try again in ${minutesLeft} minute(s).`);
+    return;
+  }
 
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
   if (username === "Zhongjie" && password === "IsSmart") {
+    loginState = "true";
+    localStorage.setItem("loginState", loginState);
+    localStorage.setItem("loginTimestamp", Date.now());
+    localStorage.removeItem("adminState");
+    localStorage.removeItem("failedAttempts");
+    localStorage.removeItem("lockoutUntil");
     window.location.href = "home.html";
+  } else if (username === "Admin") {
+    const hashed = await hashPassword(password);
+    if (hashed === correctPassword) {
+      loginState = "true";
+      localStorage.setItem("loginState", loginState);
+      localStorage.setItem("loginTimestamp", Date.now());
+      localStorage.setItem("adminState", "true");
+      localStorage.setItem("controlAccess", "true");
+      localStorage.removeItem("failedAttempts");
+      localStorage.removeItem("lockoutUntil");
+      window.location.href = "control.html";
+    } else {
+      // Increment failed attempts
+      const newAttempts = failedAttempts + 1;
+      localStorage.setItem("failedAttempts", newAttempts);
+      if (newAttempts >= MAX_ATTEMPTS) {
+        localStorage.setItem("lockoutUntil", now + LOCKOUT_TIME);
+        alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
+        alert("Too many failed attempts. You are locked out for 10 minutes.");
+        wrongPassword();
+      } else {
+        alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
+        wrongPassword();
+      }
+    }
   } else {
-    alert("Password or username incorrect.");
+    // Increment failed attempts
+    const newAttempts = failedAttempts + 1;
+    localStorage.setItem("failedAttempts", newAttempts);
+    if (newAttempts >= MAX_ATTEMPTS) {
+      localStorage.setItem("lockoutUntil", now + LOCKOUT_TIME);
+      alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
+      wrongPassword();
+      alert("Too many failed attempts. You are locked out for 10 minutes.");
+    } else {
+      alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
+      wrongPassword();
+    }
   }
 }
+window.login = login;
 
+window.onload = function() {
+  const loginState = localStorage.getItem("loginState");
+  const loginTimestamp = parseInt(localStorage.getItem("loginTimestamp"), 10);
+  const adminState = localStorage.getItem("adminState");
+  const now = Date.now();
+  const sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 days
+  const thirtyMinutes = 30 * 60 * 1000; // 30 minutes
+
+  // Always redirect to login when accessing control.html
+  if (window.location.pathname.indexOf("control.html") !== -1) {
+    const controlAccess = localStorage.getItem("controlAccess");
+    // Only redirect if not admin or session expired
+    if (
+      controlAccess !== "true" ||
+      !loginTimestamp ||
+      now - loginTimestamp > thirtyMinutes
+    ) {
+      localStorage.setItem("loginState", "false");
+      localStorage.setItem("controlAccess", "false");
+      localStorage.removeItem("loginTimestamp");
+      localStorage.removeItem("adminState");
+      let pageToAccess = "control";
+      localStorage.setItem("pageToAccess", pageToAccess);
+      window.location.href = "index.html";
+      return;
+    }
+  }
+
+  // If not on login page, check login expiration
+  if (
+    window.location.pathname.indexOf("index.html") === -1 &&
+    (loginState !== "true" || !loginTimestamp || now - loginTimestamp > sevenDays)
+  ) {
+    localStorage.setItem("loginState", "false");
+    localStorage.removeItem("loginTimestamp");
+    localStorage.removeItem("adminState");
+    window.location.href = "index.html";
+    return;
+  }
+};
+
+if (window.location.pathname.indexOf("control.html") !== -1) {
+  window.addEventListener("beforeunload", function () {
+    // Only log out admin if on control.html
+    localStorage.setItem("loginState", "false");
+    localStorage.setItem("controlAccess", "false");
+    localStorage.removeItem("loginTimestamp");
+    localStorage.removeItem("adminState");
+  });
+}
+
+function logout() {
+  loginState = "false";
+  localStorage.setItem("loginState", loginState);
+  localStorage.removeItem("loginTimestamp");
+  localStorage.removeItem("adminState");
+  window.location.href = "index.html";
+}
+window.logout = logout;
+
+// Dropdowns
 function reveal(id) {
   const dropdowns = document.querySelectorAll('.dropdownText'); 
   const dropdownTitle = document.querySelectorAll('.dropdownTitle'); 
@@ -187,9 +309,7 @@ function reveal(id) {
 
   const element = document.getElementById(id);
   if (element) {
-    // Check the computed display style to handle the element's visibility properly
     const currentDisplay = window.getComputedStyle(element).display;
-
     // Toggle the display of the clicked dropdown
     if (currentDisplay === 'none') {
       element.style.display = 'block'; 

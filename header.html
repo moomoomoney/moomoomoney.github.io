@@ -10,7 +10,7 @@
 <body>
 <div class="flex-container">
     <div>
-      <a href="./index.html">
+      <a onclick="logout()">
         <button class="topBtn">Log Out</button>
       </a>
     </div>
@@ -33,8 +33,10 @@
       <button class="topBtn" onclick="location.reload()">Refresh</button>
     </div>
   </div>
+  <!-- Random Event Alert -->
   <div class="alert"  id="alert" style="padding: 18px; display: none;">
     <strong>Alert!</strong> <span id="randomEventMessage"></span><button onclick="applyEffect()" class="alertButton" style="margin-left: 20px;">Apply</button> <button onclick="cancelEvent()" class="alertButton">Cancel</button>
+    <span class="alert-close" onclick="this.parentElement.style.display='none';" aria-label="Close">&times;</span>
   </div>
  <!-- Wrong Password Punishment -->
   <div id="BigBadBox" style="display: none;"></div>
