@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" type="image/x-icon" href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
-    <title>Purchase</title>
-  </head>
-  <div id="header-placeholder"></div>
-  <h1 class="center">Purchase</h1>
-  <a href="./home.html">
-    <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
-  </a>
 
-  <!--Account Dashboard-->
-  <div class="grid-display">
-    <div class="grid-item">
-      <p class="grid-title">Available Coins</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Income</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Today's Losses</p>
-    </div>
-    <div class="grid-item">
-      <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="./images/question.png" alt="auto earn" width="20" height="20"/></a></p>  
-    </div>
-    <!--Avaiable Coins-->
-    <div class="grid-item">
-      <p class="coins"></p>
-    </div>
-    <!--Income-->
-    <div class="grid-item">
-      <p class="income"></p>
-    </div>
-    <!--Losses-->
-    <div class="grid-item">
-      <p class="losses"></p>
-    </div>
-    <!--Auto Earn-->
-    <div class="grid-item">
-      <p class="auto"></p>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <title>Purchase</title>
+</head>
+<div id="header-placeholder"></div>
+<h1 class="center">Purchase</h1>
+<a href="./home.html">
+  <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
+</a>
+
+<!--Account Dashboard-->
+<div class="grid-display">
+  <div class="grid-item">
+    <p class="grid-title">Available Coins</p>
   </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Income</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Losses</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="./images/question.png" alt="auto earn"
+          width="20" height="20" /></a></p>
+  </div>
+  <!--Avaiable Coins-->
+  <div class="grid-item">
+    <p class="coins"></p>
+  </div>
+  <!--Income-->
+  <div class="grid-item">
+    <p class="income"></p>
+  </div>
+  <!--Losses-->
+  <div class="grid-item">
+    <p class="losses"></p>
+  </div>
+  <!--Auto Earn-->
+  <div class="grid-item">
+    <p class="auto"></p>
+  </div>
+</div>
 <!--Navbar-->
 <nav class="navbar">
   <a href="./world.html" aria-label="World">
@@ -51,11 +54,11 @@
     <span class="full-text">World</span>
   </a>
   <a href="./map.html" aria-label="Map">
-      <span class="emoji">🗺️</span>
+    <span class="emoji">🗺️</span>
     <span class="full-text">Map</span>
   </a>
   <a href="./job.html" aria-label="Job">
-        <span class="emoji">💼</span>
+    <span class="emoji">💼</span>
     <span class="full-text">Job</span>
   </a>
   <a href="./expenses.html" aria-label="Expenses">
@@ -68,7 +71,7 @@
   </a>
 </nav>
 <br>
-  <div class="dropwdown">
+<div class="dropwdown">
   <!-- OWNED -->
   <button class="dropdownTitle" onclick="reveal('owned')">
     <h1 class="center">Currently Owned:</h1>
@@ -91,8 +94,7 @@
       <div class="grid-tile">
         <div class="tile-title">Items/Tools/Equipments</div>
         <div class="tile-content">
-          <li>Bucket (2)</li>
-          <li>Cart</li>
+          <li>Buckets (3)</li>
           <li>Farming Tools</li>
         </div>
       </div>
@@ -103,7 +105,99 @@
     </div>
   </div>
   <br><br>
+</div>
+
+<!-- FARMING EQUIPMENT  FARMING EQUIPMENT  FARMING EQUIPMENT  FARMING EQUIPMENT  FARMING EQUIPMENT -->
+<button class="dropdownTitle" onclick="reveal('farmingEquipment')">
+  <h3 class="heading"><b>Farming Equipment</b></h3>
+</button>
+<div class="dropdownText" id="farmingEquipment" style="display: none">
+  <div class="earn-display">
+    <div class="grid-tile">
+      <div class="tile-title">General Equipments<div class="subtitle">100 M³</div>
+      </div>
+      <div class="tile-content">
+        <b>Crop Tools:</b> 20 M³ <br>
+        <b>Livestock Equipment:</b> 30 M³ <br>
+        <b>Tree Equipment:</b> 40 M³
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Mill<div class="subtitle">200 M³</div>
+      </div>
+      <div class="tile-content">Used to process wheat into flour and corn into cornmeal. <br>
+        Requires 1-2 workers. <br>
+        <b>Capacity:</b> 4 plots <br>
+        <b>Upkeep:</b> 3 M³ / day
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Hand-powered Cotton Gin<div class="subtitle">80 M³</div>
+      </div>
+      <div class="tile-content">Used to process cotton before selling <br>
+        <b>Capacity:</b> 1 plot <br>
+        <b>Efficiency:</b> 2 hr<br>
+        <b>Upkeep: </b> 5 M³/day
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Horse-powered Cotton Gin<div class="subtitle">175 M³</div>
+      </div>
+      <div class="tile-content">Used to process cotton before selling <br>
+        <b>Capacity:</b> 3 plots <br>
+        <b>Efficiency:</b> 1 hr<br>
+        <b>Upkeep: </b> 8 M³/day
+      </div>
+    </div>
   </div>
+</div>
+<br><br>
+
+<!-- Vehicles  Vehicles  Vehicles  Vehicles  Vehicles  Vehicles  Vehicles  Vehicles  Vehicles  Vehicles -->
+<button class="dropdownTitle" onclick="reveal('vehicles')">
+  <h3 class="heading"><b>Vehicles</b></h3>
+</button>
+<div class="dropdownText" id="vehicles" style="display: none">
+  <div class="earn-display">
+    <div class="grid-tile">
+      <div class="tile-title">Wheelbarrow<div class="subtitle">20 M³</div>
+      </div>
+      <div class="tile-content">
+        Push things around <br>
+        <b>Capacity:</b> 2 buckets <br>
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Cart<div class="subtitle">30 M³</div>
+      </div>
+      <div class="tile-content">
+        Pull things around<br>
+        * Requires horse <br>
+        <b>Capacity:</b> 6 buckets <br>
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Wagon<div class="subtitle">50 M³</div>
+      </div>
+      <div class="tile-content">
+        Pull more things around <br>
+        * Requires horse <br>
+        <b>Passenger Wagon: </b>100 M³
+        <b>Capacity:</b> 12 buckets / 4 people <br>
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Water Tanker<div class="subtitle">200 M³</div>
+      </div>
+      <div class="tile-content">
+        Haul a lot of water around<br>
+        * Requires horse <br>
+        <b>Capacity:</b> 20 buckets <br>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
 
 <!-- LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND LAND-->
 <button class="dropdownTitle" onclick="reveal('land')">
@@ -112,26 +206,42 @@
 <div class="dropdownText" id="land" style="display: none">
   <div class="earn-display">
     <div class="grid-tile">
-      <div class="tile-title">Garden<div class="subtitle">100  M³</div></div>
-      <div class="tile-content">Land for garden (can serve as farm extension)<br></div>
+      <div class="tile-title">Garden<div class="subtitle">100 M³</div>
+      </div>
+      <div class="tile-content">
+        Land for garden (can serve as farm extension)<br>
+        <b>Farmland: </b>Four plots
+      </div>
     </div>
     <div class="grid-tile">
-      <div class="tile-title">Small Farm<div class="subtitle">400 M³</div></div>
+      <div class="tile-title">Small Farm<div class="subtitle">400 M³</div>
+      </div>
       <div class="tile-content">Land for a small farm <br>
-        (Includes hut, grass/garden, and barn) <br><br>
-        Max: 3 cows</div>
+        <b>Hut: </b> Bedroom, kitchen, bathroom <br>
+        <b>Farmland: </b> 9 plots<br>
+        <b>Grass Field: </b>2 animals' amount<br>
+        <b>Barn: </b> 3 stalls <br>
+      </div>
     </div>
     <div class="grid-tile">
-      <div class="tile-title">Medium Farm<div class="subtitle">750  M³</div></div>
+      <div class="tile-title">Medium Farm<div class="subtitle">750 M³</div>
+      </div>
       <div class="tile-content">Land for a medium farm <br>
-        (Includes grassy field and barn) <br><br>
-        Max: 10 cows and 3 cattle</div>
+        <b>House: </b> 2 bedrooms, kitchen, bathroom, living area<br>
+        <b>Farmland: </b> 16 plots<br>
+        <b>Grass Field: </b>4 animals' amount<br>
+        <b>Barn: </b> 6 stalls <br>
+      </div>
     </div>
     <div class="grid-tile">
-      <div class="tile-title">Large Farm<div class="subtitle">1000 M³</div></div>
+      <div class="tile-title">Large Farm<div class="subtitle">1000 M³</div>
+      </div>
       <div class="tile-content">Land for a large farm <br>
-        (Includes grassy field and barn) <br><br>
-        Max: 20 cows and 5 cattle</div>
+        <b>Farmhouse: </b> 3 bedrooms, kitchen, 2 bathrooms, shed <br>
+        <b>Farmland: </b> 25 plots<br>
+        <b>Grass Field: </b>8 animals' amount<br>
+        <b>Barn: </b> 10 stalls <br>
+      </div>
     </div>
   </div>
 </div>
@@ -149,7 +259,7 @@
         <div class="tile-content">
           <b>Health: </b>30% Coverage (3 M³) <br>
           <b>Property: </b> 30% Coverage (3 M³) <br>
-          <b>Livestock: </b> 30% Coverage  (3 M³/ animal)
+          <b>Livestock: </b> 30% Coverage (3 M³/ animal)
         </div>
       </div>
       <div class="grid-tile">
@@ -157,7 +267,7 @@
         <div class="tile-content">
           <b>Health: </b>60% Coverage (7 M³) <br>
           <b>Property: </b> 60% Coverage (7 M³) <br>
-          <b>Livestock: </b> 60% Coverage  (7 M³/ animal)
+          <b>Livestock: </b> 60% Coverage (7 M³/ animal)
         </div>
       </div>
       <div class="grid-tile">
@@ -171,12 +281,13 @@
         <div class="tile-content">
           <b>Health: </b>Full Coverage (12 M³) <br>
           <b>Property: </b> Full Coverage (12 M³) <br>
-          <b>Livestock: </b> Full Coverage  (12 M³/ animal)
+          <b>Livestock: </b> Full Coverage (12 M³/ animal)
         </div>
       </div>
     </div>
   </div>
   <br><br>
 </div>
-<script  type="module" src="script.js"></script>
+<script type="module" src="script.js"></script>
+
 </html>

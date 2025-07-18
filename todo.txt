@@ -1,4 +1,5 @@
-- Improved security v2.6
-- Random event generation (Robbery, famine, sickness, etc) v2.7
-- Festival page in tools for in-website random number generator v2.8
+- Sickness and Injury 
+    - Changing health conditions
+    - Chance calculation formulas
+- Festival page in tools for in-website random number generator v2.9
 - SQL storage v3.0

@@ -8,6 +8,18 @@
     <title>Head</title>
 </head>
 <body>
+    <!-- Password Modal  -->
+  <div id="passwordModal"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;z-index: 1000;">
+      <label for="modalPassword">Enter password:</label>
+      <input type="password" id="modalPassword" />
+      <button onclick="submitPassword()">Submit</button>
+      <button onclick="closeModal()">Cancel</button>
+      <div id="errorMessage" style="color: red; display: none;">Incorrect Password. You have been reported.</div>
+    </div>
+  </div>
 <div class="flex-container">
     <div>
       <a onclick="logout()">
@@ -35,9 +47,14 @@
   </div>
   <!-- Random Event Alert -->
   <div class="alert"  id="alert" style="padding: 18px; display: none;">
-    <strong>Alert!</strong> <span id="randomEventMessage"></span><button onclick="applyEffect()" class="alertButton" style="margin-left: 20px;">Apply</button> <button onclick="cancelEvent()" class="alertButton">Cancel</button>
-    <span class="alert-close" onclick="this.parentElement.style.display='none';" aria-label="Close">&times;</span>
+    <strong>Alert!</strong> <span id="randomEventMessage"></span>
+    <span class="alert-close" onclick="closeAlert()" aria-label="Close">&times;</span>
+    <span class="alert-actions">
+      <button onclick="applyEffect()" class="alertButton">Apply</button>
+      <button onclick="cancelEvent()" class="alertButton">Cancel</button>
+    </span>
   </div>
+
  <!-- Wrong Password Punishment -->
   <div id="BigBadBox" style="display: none;"></div>
   <div id="passwordModal2"

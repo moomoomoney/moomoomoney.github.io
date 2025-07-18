@@ -1,11 +1,12 @@
-import {updateDashboard, wrongPassword, coins, income, losses, openModal, closeModal, getCoins, setCoins, isWrongPassword, totalEarned} from './control.js';
-import {triggerRandomEvent} from './chance.js';
+import {updateDashboard, wrongPassword, coins, income, losses, addIncome, addLosses, openModal, closeModal, getCoins, setCoins, isWrongPassword, totalEarned} from './control.js';
+import {triggerRandomEvent, displayEventMessage, checkForNewMonth, getCurrentMonthKey} from './chance.js';
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  // Display amounts from localStorage or defaults
   updateAutoEarnDashboard();
+  displayEventMessage();
 });
 
+checkForNewMonth();
 // Total Auto Earn Variable
 let totalAutoEarn = parseInt(localStorage.getItem('totalAutoEarn')) || 0;
 localStorage.setItem('totalAutoEarn', totalAutoEarn);  
@@ -31,12 +32,16 @@ let insuranceAmount = parseInt(localStorage.getItem('insuranceAmount'))|| 0;
 localStorage.setItem('insuranceAmount', insuranceAmount); 
 let expenseAmount = parseInt(localStorage.getItem('expenseAmount'))|| 0;
 localStorage.setItem('expenseAmount', expenseAmount);  
-let whatAutoEarn = getAutoEarningsDescription();
-localStorage.setItem('whatAutoEarn', whatAutoEarn);
 let horseAmount = parseInt(localStorage.getItem('horseAmount')) || 0;
 localStorage.setItem('horseAmount', horseAmount); 
 let sheepAmount = parseInt(localStorage.getItem('sheepAmount')) || 0;
 localStorage.setItem('sheepAmount', sheepAmount); 
+let priceChangeMultiplier = parseFloat(localStorage.getItem('priceChangeMultiplier')) || 1.0;  
+localStorage.setItem('priceChangeMultiplier', priceChangeMultiplier); 
+let cropsEarnMultiplier = parseFloat(localStorage.getItem('cropsEarnMultiplier')) || 1.0;  
+localStorage.setItem('cropsEarnMultiplier', cropsEarnMultiplier); 
+let whatAutoEarn = getAutoEarningsDescription();
+localStorage.setItem('whatAutoEarn', whatAutoEarn);
 window.cowsAmount = cowsAmount;
 window.cattleAmount = cattleAmount;
 window.bullAmount = bullAmount;
@@ -48,6 +53,8 @@ window.insuranceAmount = insuranceAmount;
 window.changeAutoEarn = changeAutoEarn;
 window.openModalForCows = openModalForCows;
 window.closeModalForCows = closeModalForCows;
+window.priceChangeMultiplier = priceChangeMultiplier;
+window.cropsEarnMultiplier = cropsEarnMultiplier;
 
 // Cow Earning rules
 let cowEarns = 1;
@@ -62,7 +69,7 @@ function calculateDailyEarnings() {
     cattleAmount * cattleEarns +
     bullAmount * bullEarns +
     upgradedAmount * upgradedEarns +
-    salary + cropsAmount - insuranceAmount - expenseAmount
+    salary + Math.floor(cropsAmount * cropsEarnMultiplier) - insuranceAmount - expenseAmount
   );
 }
 // Initialize autoearn variable
@@ -82,13 +89,11 @@ window.infoModal = infoModal;
 
 // Parent function to generate or adjust prices
 function generatePrice(itemKey, basePrice, minPrice, maxPrice) {
-  // Retrieve the current price from localStorage
   let currentPrice = parseInt(localStorage.getItem(itemKey));
 
   if (isNaN(currentPrice)) {
-    // If the item doesn't exist in localStorage, generate an initial price
     const initialPrice = Math.random() < 0.25 ? basePrice : Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice;
-    localStorage.setItem(itemKey, initialPrice); // Save the initial price to localStorage
+    localStorage.setItem(itemKey, initialPrice); 
     return initialPrice;
   } else {
     const rand = Math.random();
@@ -104,7 +109,7 @@ function generatePrice(itemKey, basePrice, minPrice, maxPrice) {
     // 50% chance to adjust the price daily by ±100, ensuring it stays within bounds
     const adjustment = Math.floor(Math.random() * 201) - 100;
     const newPrice = currentPrice + adjustment;
-    const boundedPrice = Math.max(minPrice, Math.min(maxPrice, newPrice)); // Ensure it stays within bounds
+    const boundedPrice = Math.max(minPrice, Math.min(maxPrice, newPrice)); 
     localStorage.setItem(itemKey, boundedPrice);
     return boundedPrice;
   }
@@ -136,7 +141,7 @@ export function updatePrices() {
 }
 window.updatePrices = updatePrices; 
 
-function loadPricesFromLocalStorage() {
+export function loadPricesFromLocalStorage() {
   const priceMapping = {
     cowPrice: "cowPrice",
     cattlePrice: "cattlePrice",
@@ -152,10 +157,10 @@ function loadPricesFromLocalStorage() {
   };
 
   Object.keys(priceMapping).forEach((key) => {
-    const price = parseInt(localStorage.getItem(key)) || 0; // Default to 0 if not found
+    const price = parseInt(localStorage.getItem(key)) || 0;
     const element = document.getElementById(key);
     if (element) {
-      element.innerHTML = `(${price} M³)`;
+      element.innerHTML = `(${parseInt(price * priceChangeMultiplier)} M³)`;
     }
   });
 }
@@ -225,11 +230,9 @@ async function login(event) {
     if (newAttempts >= MAX_ATTEMPTS) {
       localStorage.setItem("lockoutUntil", now + LOCKOUT_TIME);
       alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
-      wrongPassword();
       alert("Too many failed attempts. You are locked out for 10 minutes.");
     } else {
       alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
-      wrongPassword();
     }
   }
 }
@@ -347,32 +350,28 @@ function applyAutoEarnings() {
     const dailyEarnings = calculateDailyEarnings();
     setCoins(getCoins() + dailyEarnings * daysMissed);
     console.log("Updated coins:", getCoins());
-    localStorage.setItem('coins', coins); // Update coins in localStorage
-    localStorage.setItem('lastEarned', today.toString()); // Update lastEarned to today
+    localStorage.setItem('coins', coins); 
+    localStorage.setItem('lastEarned', today.toString()); 
     console.log(`Auto earnings of ${dailyEarnings * daysMissed} M³ applied.`);
-
     // Update other relevant data
     totalAutoEarn = parseInt(localStorage.getItem('totalAutoEarn')) || 0;
-    totalAutoEarn += autoearn * daysMissed; // Add auto earnings for missed days
+    totalAutoEarn += autoearn * daysMissed; 
     localStorage.setItem("totalAutoEarn", totalAutoEarn);
     if (autoearn > 0) {
-    income += autoearn;
-    localStorage.setItem("income", income);
+      addIncome(autoearn);
     }
     if (autoearn < 0) {
-      losses += autoearn; 
-      localStorage.setItem("losses", losses)
+      addLosses(autoearn);
     }
-
     // Update the UI
     updateAutoEarnTable();
-    updateTracker();
-    console.log("Calling updatePrices...");
-    if (window.location.pathname.endsWith("market.html")) {
-      updatePrices();
-  }
+    updatePrices();
     updateDashboard();
     console.log(`Prices updated, or at least UpdatePrices called`);
+    // Trigger Random Events
+    for (let repeat = 0; repeat < daysMissed; repeat++) {
+      triggerRandomEvent();
+    } 
   } else {
     console.log("Earnings already applied for today.");
   }
@@ -397,9 +396,8 @@ function updateAutoEarnTable() {
 // Function to generate a dynamic description for whatAutoEarn
 function getAutoEarningsDescription() {
   let description = '';
-  // Dynamically add descriptions based on values greater than 0
   if (cowsAmount > 0) description += `Cows earn: ${cowsAmount} M³/day; `;
-  if (cropsAmount > 0) description += `Crops earn: ${cropsAmount} M³/day; `;
+  if (cropsAmount > 0) description += `Crops earn: ${Math.floor(cropsAmount * cropsEarnMultiplier)} M³/day; `;
   if (cattleAmount > 0) description += `Cattle earn: ${cattleAmount} M³/day; `;
   if (bullAmount > 0) description += `Bulls earn: ${bullAmount} M³/day; `;
   if (upgradedAmount > 0) description += `Upgraded animals earn: ${upgradedAmount} M³/day; `;
@@ -409,7 +407,6 @@ function getAutoEarningsDescription() {
   if (description === '') {
     description = 'No Auto Earnings';
   }
-  // Return the final description
   return description;
 }
 
@@ -478,14 +475,14 @@ window.submitPasswordForCows = submitPasswordForCows;
 // Function to update the display on the page
 function updateAutoEarnDashboard() {
   updateDashboard();
-  updateAutoEarnTable();// Mapping of class names to their corresponding values
+  updateAutoEarnTable();
   const displayMapping = {
-    cattleAmount: `You own: ${cattleAmount} M³`,
-    bullAmount: `You own: ${bullAmount} M³`,
-    upgradedAmount: `You own: ${upgradedAmount} M³`,
-    cowsAmount: `You own: ${cowsAmount} M³`,
+    cattleAmount: `You own: ${cattleAmount}`,
+    bullAmount: `You own: ${bullAmount}`,
+    upgradedAmount: `You own: ${upgradedAmount}`,
+    cowsAmount: `You own: ${cowsAmount}`,
     salary: salary,
-    cropsAmount: cropsAmount,
+    cropsAmount: Math.floor(cropsAmount * cropsEarnMultiplier),
     insuranceAmount: insuranceAmount,
     expenseAmount: expenseAmount,
   };
@@ -575,4 +572,4 @@ window.addEventListener('resize', adaptTitles);
 // Call the function to load the header
 loadHeader();
 window.loadHeader = loadHeader;
-export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, hashPassword, reveal, loadHeader, cowsAmount, cattleAmount, bullAmount, horseAmount, upgradedAmount, sheepAmount, pigAmount, chickenAmount, salary, cropsAmount};
+export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, generateAllPrices, hashPassword, reveal, loadHeader, cowsAmount, cattleAmount, bullAmount, horseAmount, upgradedAmount, sheepAmount, pigAmount, chickenAmount, salary, cropsAmount};
