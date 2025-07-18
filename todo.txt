@@ -1,4 +1,4 @@
-- Sickness and Injury 
+- Sickness and Injury v2.8
     - Changing health conditions
     - Chance calculation formulas
 - Festival page in tools for in-website random number generator v2.9
