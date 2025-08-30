@@ -14,6 +14,7 @@
 <a href="./home.html">
   <img src="images/cow.jpg" alt="logo" width="150" height="150" class="img" />
 </a>
+
 <!-- Account Dashboard -->
 <div class="grid-display">
   <div class="grid-item">
@@ -30,30 +31,22 @@
       <a href="autoearn.html"><img src="images/question.png" alt="auto earn" width="20" height="20" /></a>
     </p>
   </div>
-
-  <!-- Available Coins -->
   <div class="grid-item">
     <p class="coins"></p>
   </div>
-
-  <!-- Income -->
   <div class="grid-item">
     <p class="income"></p>
   </div>
-
-  <!-- Losses -->
   <div class="grid-item">
     <p class="losses"></p>
   </div>
-
-  <!-- Auto Earn -->
   <div class="grid-item">
     <p class="auto"></p>
   </div>
 </div>
 
+<!--  COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS　   -->
 <div class="dropwdown">
-  <!--  COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS COINS　   -->
   <button class="dropdownTitle" onclick="reveal('coins')">
     <h2 class="center">Add Coins</h2>
   </button>
@@ -64,7 +57,7 @@
       <button onclick="openModal('addCoins')" class="controlButton">Add</button>
       <button onclick="openModal('clearCoins')" class="controlButton">Clear</button>
     </div>
-    <!-- Money Tracker -->
+    <!-- Coins Tracker -->
     <div class="table-container">
       <table class="table">
         <tr>
@@ -142,15 +135,14 @@
 </div>
 
 <br>
+<!-- COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON 　   -->
 <div class="dropwdown">
-  <!-- COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON COUPON 　   -->
   <button class="dropdownTitle" onclick="reveal('coupon')">
     <h2 class="center">Redeem Coupon</h2>
   </button>
   <div class="dropdownText" id="coupon" style="display: none">
     <br>  
     <div class="box"></div>
-    <!-- <h1 class="center">Add Coins</h1> -->
     <div class="add-coins-container">
       <input class="addCoupon" placeholder="Amount" type="number" maxlength="2" />
       <input class="addReason" placeholder="Use" type="text" style="width: 30%" />
@@ -173,9 +165,9 @@
   </div>
 </div>
 <br>
-<!-- PRESTIGE -->
+
+<!-- PRESTIGE PRESTIGE PRESTIGE PRESTIGE PRESTIGE PRESTIGE PRESTIGE  PRESTIGE PRESTIGE  PRESTIGE PRESTIGE  PRESTIGE PRESTIGE  　   -->
 <div class="dropwdown">
-  <!-- PRESTIGE PRESTIGE PRESTIGE PRESTIGE PRESTIGE PRESTIGE PRESTIGE  PRESTIGE PRESTIGE  PRESTIGE PRESTIGE  PRESTIGE PRESTIGE  　   -->
   <button class="dropdownTitle" onclick="reveal('prestigeControl')">
     <h2 class="center">Prestige</h2>
   </button>
@@ -190,7 +182,45 @@
       <button onclick="openModal('clearPrestige')" class="controlButton">Clear</button>
     </div>
   </div>
-
+  </div>
+<br>
+<!-- HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH  HEALTH -->
+<div class="dropwdown">
+  <button class="dropdownTitle" onclick="reveal('healthControl')">
+    <h2 class="center">Health</h2>
+  </button>
+  <div class="dropdownText" id="healthControl" style="display: none">
+    <div class="earn-display">
+    <div class="grid-tile">
+      <div class="tile-title">Your Health</div>
+      <div class="tile-content">
+        Age: <span id="yourAge"></span>
+        Health: <span id="yourHealth"></span> <br>
+        Food: ICOF cafeteria <br>
+        Water: ICOF + Lake Water <br>
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Heading</div>
+      <div class="tile-content">
+        Stuff
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Heading</div>
+      <div class="tile-content">
+        Stuff
+      </div>
+    </div>
+    <div class="grid-tile">
+      <div class="tile-title">Heading</div>
+      <div class="tile-content">
+        Stuff
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
   <!-- Password Modal  -->
   <div id="passwordModal"
     style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">

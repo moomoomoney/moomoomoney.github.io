@@ -165,139 +165,6 @@ export function loadPricesFromLocalStorage() {
   });
 }
 
-// Login functions
-const MAX_ATTEMPTS = 3;
-const LOCKOUT_TIME = 10 * 60 * 1000;
-if (localStorage.getItem('loginState') === null) {
-  localStorage.setItem('loginState', "false");
-}
-let loginState = localStorage.getItem('loginState');
-
-async function login(event) {
-  event.preventDefault();
-
-  // Check for lockout
-  const failedAttempts = parseInt(localStorage.getItem("failedAttempts")) || 0;
-  const lockoutUntil = parseInt(localStorage.getItem("lockoutUntil")) || 0;
-  const now = Date.now();
-
-  if (lockoutUntil && now < lockoutUntil) {
-    const minutesLeft = Math.ceil((lockoutUntil - now) / 60000);
-    alert(`Too many failed attempts. Try again in ${minutesLeft} minute(s).`);
-    return;
-  }
-
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  if (username === "Zhongjie" && password === "IsSmart") {
-    loginState = "true";
-    localStorage.setItem("loginState", loginState);
-    localStorage.setItem("loginTimestamp", Date.now());
-    localStorage.removeItem("adminState");
-    localStorage.removeItem("failedAttempts");
-    localStorage.removeItem("lockoutUntil");
-    window.location.href = "home.html";
-  } else if (username === "Admin") {
-    const hashed = await hashPassword(password);
-    if (hashed === correctPassword) {
-      loginState = "true";
-      localStorage.setItem("loginState", loginState);
-      localStorage.setItem("loginTimestamp", Date.now());
-      localStorage.setItem("adminState", "true");
-      localStorage.setItem("controlAccess", "true");
-      localStorage.removeItem("failedAttempts");
-      localStorage.removeItem("lockoutUntil");
-      window.location.href = "control.html";
-    } else {
-      // Increment failed attempts
-      const newAttempts = failedAttempts + 1;
-      localStorage.setItem("failedAttempts", newAttempts);
-      if (newAttempts >= MAX_ATTEMPTS) {
-        localStorage.setItem("lockoutUntil", now + LOCKOUT_TIME);
-        alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
-        alert("Too many failed attempts. You are locked out for 10 minutes.");
-        wrongPassword();
-      } else {
-        alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
-        wrongPassword();
-      }
-    }
-  } else {
-    // Increment failed attempts
-    const newAttempts = failedAttempts + 1;
-    localStorage.setItem("failedAttempts", newAttempts);
-    if (newAttempts >= MAX_ATTEMPTS) {
-      localStorage.setItem("lockoutUntil", now + LOCKOUT_TIME);
-      alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
-      alert("Too many failed attempts. You are locked out for 10 minutes.");
-    } else {
-      alert("It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.");
-    }
-  }
-}
-window.login = login;
-
-window.onload = function() {
-  const loginState = localStorage.getItem("loginState");
-  const loginTimestamp = parseInt(localStorage.getItem("loginTimestamp"), 10);
-  const adminState = localStorage.getItem("adminState");
-  const now = Date.now();
-  const sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 days
-  const thirtyMinutes = 30 * 60 * 1000; // 30 minutes
-
-  // Always redirect to login when accessing control.html
-  if (window.location.pathname.indexOf("control.html") !== -1) {
-    const controlAccess = localStorage.getItem("controlAccess");
-    // Only redirect if not admin or session expired
-    if (
-      controlAccess !== "true" ||
-      !loginTimestamp ||
-      now - loginTimestamp > thirtyMinutes
-    ) {
-      localStorage.setItem("loginState", "false");
-      localStorage.setItem("controlAccess", "false");
-      localStorage.removeItem("loginTimestamp");
-      localStorage.removeItem("adminState");
-      let pageToAccess = "control";
-      localStorage.setItem("pageToAccess", pageToAccess);
-      window.location.href = "index.html";
-      return;
-    }
-  }
-
-  // If not on login page, check login expiration
-  if (
-    window.location.pathname.indexOf("index.html") === -1 &&
-    (loginState !== "true" || !loginTimestamp || now - loginTimestamp > sevenDays)
-  ) {
-    localStorage.setItem("loginState", "false");
-    localStorage.removeItem("loginTimestamp");
-    localStorage.removeItem("adminState");
-    window.location.href = "index.html";
-    return;
-  }
-};
-
-if (window.location.pathname.indexOf("control.html") !== -1) {
-  window.addEventListener("beforeunload", function () {
-    // Only log out admin if on control.html
-    localStorage.setItem("loginState", "false");
-    localStorage.setItem("controlAccess", "false");
-    localStorage.removeItem("loginTimestamp");
-    localStorage.removeItem("adminState");
-  });
-}
-
-function logout() {
-  loginState = "false";
-  localStorage.setItem("loginState", loginState);
-  localStorage.removeItem("loginTimestamp");
-  localStorage.removeItem("adminState");
-  window.location.href = "index.html";
-}
-window.logout = logout;
-
 // Dropdowns
 function reveal(id) {
   const dropdowns = document.querySelectorAll('.dropdownText'); 
@@ -323,7 +190,7 @@ function reveal(id) {
 }
 window.reveal = reveal;
 
-// Refresh function to reload the page
+// Refresh 
 function refresh() {
 window.location.reload();
 }
@@ -335,7 +202,6 @@ function applyAutoEarnings() {
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime(); // Get today's date (start of the day)
 
   if (!lastEarned) {
-    // If no lastEarned date exists, initialize it for the first time
     console.log("First-time setup for auto earnings.");
     localStorage.setItem('lastEarned', today.toString());
     return;
@@ -393,7 +259,7 @@ function updateAutoEarnTable() {
   console.log(`tracker table updated`);
 }
 
-// Function to generate a dynamic description for whatAutoEarn
+// Generate description for whatAutoEarn
 function getAutoEarningsDescription() {
   let description = '';
   if (cowsAmount > 0) description += `Cows earn: ${cowsAmount} M³/day; `;
@@ -421,7 +287,7 @@ let changeWhat; // Variable amount to be changed (ie. what is in cowsAmount)
 let changeWhatBy; // Amount to be changed by (ie. 5)
 let changeName; // Name of the variable to be changed (ie. "cowsAmount")
 
-// CHANGE AUTOEARN AMOUNT
+// Change Auto Earn amounts
 function changeAutoEarn(inputId, variableName, variableRef) {
   openModalForCows(); // Open the modal for password validation
   const inputValue = parseInt(document.getElementById(inputId).value);
@@ -438,18 +304,16 @@ function changeAutoEarn(inputId, variableName, variableRef) {
 }
 window.changeAutoEarn = changeAutoEarn;
 
-// Open Modal for Changing Auto Earn
+// Auto Earn Modal Functions
 function openModalForCows() {
   document.getElementById("passwordModalForCows").style.display = "block";
 }
-
-// Close Modal for Changing Auto Earn
 function closeModalForCows() {
   document.getElementById("passwordModalForCows").style.display = "none";
   document.getElementById("modalPasswordForCows").value = "";
 }
 
-// Function to handle password submission for Changing Auto Earn
+// Password to change Auto Earn
 async function submitPasswordForCows() {
   const password = document.getElementById("modalPasswordForCows").value;
   const hashedPassword = await hashPassword(password);
@@ -472,7 +336,7 @@ async function submitPasswordForCows() {
 }
 window.submitPasswordForCows = submitPasswordForCows;
 
-// Function to update the display on the page
+// Update Auto Earn Dashboard
 function updateAutoEarnDashboard() {
   updateDashboard();
   updateAutoEarnTable();
@@ -511,7 +375,7 @@ async function hashPassword(password) {
 window.openModal = openModal;
 window.closeModal = closeModal;
 
-// Load the header dynamically
+// Load header
 function loadHeader() {
   fetch('./header.html')
     .then((response) => {
@@ -527,13 +391,15 @@ function loadHeader() {
       console.error('Error loading header:', error);
     });
 }
+loadHeader();
+window.loadHeader = loadHeader; 
 
 // Change Dashboard Titles for Mobile View
 function adaptTitles() {
   const gridTitles = document.querySelectorAll('.grid-title');
   const mobileReplacements = ["Coins", "Income", "Losses", "Auto Earn"];
   
-  if (window.innerWidth <= 767) { // Mobile view
+  if (window.innerWidth <= 767) { // Mobile view - Use abbreviations
     gridTitles.forEach((title, index) => {
       if (index < 4) { 
         if (!title.dataset.original) {
@@ -556,7 +422,7 @@ function adaptTitles() {
         }
       }
     });
-  } else { // Desktop view - restore original
+  } else { // Desktop view - Use full text
     gridTitles.forEach(title => {
       if (title.dataset.original) {
         title.innerHTML = title.dataset.original;
@@ -565,11 +431,142 @@ function adaptTitles() {
   }
 }
 
-// Run on load and resize
+
+// Login functions
+const MAX_ATTEMPTS = 3;
+const LOCKOUT_TIME = 10 * 60 * 1000;
+if (localStorage.getItem('loginState') === null) {
+  localStorage.setItem('loginState', "false");
+}
+let loginState = localStorage.getItem('loginState');
+const wrongPasswordAlertMessage = "It is regrettable that the credentials you have entered into the login form do not correspond with the information we have on records. Please kindly verify that both your username and password are entered accurately, paying close attention to capitalization and spelling, ensuring that Caps Lock is not turned on. If you continue to encounter difficulties, we recommend reviewing your login details or contacting our support services for further assistance. We appreciate your diligence and patience as you attempt to access your account.";
+
+async function login(event) {
+  event.preventDefault();
+  // Check for lockout
+  const failedAttempts = parseInt(localStorage.getItem("failedAttempts")) || 0;
+  const lockoutUntil = parseInt(localStorage.getItem("lockoutUntil")) || 0;
+  const now = Date.now();
+
+  if (lockoutUntil && now < lockoutUntil) {
+    const minutesLeft = Math.ceil((lockoutUntil - now) / 60000);
+    alert(`Too many failed attempts. Try again in ${minutesLeft} minute(s).`);
+    return;
+  }
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (username === "Zhongjie" && password === "IsSmart") {
+    loginState = "true";
+    localStorage.setItem("loginState", loginState);
+    localStorage.setItem("loginTimestamp", Date.now());
+    localStorage.removeItem("adminState");
+    localStorage.removeItem("failedAttempts");
+    localStorage.removeItem("lockoutUntil");
+    window.location.href = "home.html";
+  } else if (username === "Admin") {
+    const hashed = await hashPassword(password);
+    if (hashed === correctPassword) {
+      loginState = "true";
+      localStorage.setItem("loginState", loginState);
+      localStorage.setItem("loginTimestamp", Date.now());
+      localStorage.setItem("adminState", "true");
+      localStorage.setItem("controlAccess", "true");
+      localStorage.removeItem("failedAttempts");
+      localStorage.removeItem("lockoutUntil");
+      window.location.href = "control.html";
+    } else {
+      // Increment failed attempts
+      const newAttempts = failedAttempts + 1;
+      localStorage.setItem("failedAttempts", newAttempts);
+      if (newAttempts >= MAX_ATTEMPTS) {
+        localStorage.setItem("lockoutUntil", now + LOCKOUT_TIME);
+        alert(wrongPasswordAlertMessage);
+        alert("Too many failed attempts. You are locked out for 10 minutes.");
+        wrongPassword();
+      } else {
+        alert(wrongPasswordAlertMessage);
+        wrongPassword();
+      }
+    }
+  } else {
+    alert("Incorrect password. Please try again.");
+  }
+}
+window.login = login;
+
+window.onload = function() {
+  if (window.location.hostname === '127.0.0.1') {
+      loginState = "true";
+      localStorage.setItem("loginState", loginState);
+      localStorage.setItem("loginTimestamp", Date.now());
+      localStorage.setItem("adminState", "true");
+      localStorage.setItem("controlAccess", "true");
+      localStorage.removeItem("failedAttempts");
+      localStorage.removeItem("lockoutUntil");
+      return; // Skip login check if on localhost
+  }
+  const loginState = localStorage.getItem("loginState");
+  const loginTimestamp = parseInt(localStorage.getItem("loginTimestamp"), 10);
+  const adminState = localStorage.getItem("adminState");
+  const now = Date.now();
+  const sevenDays = 7 * 24 * 60 * 60 * 1000; // 7 days
+  const thirtyMinutes = 30 * 60 * 1000; // 30 minutes
+
+  // Always redirect to login when accessing control.html
+  if (window.location.pathname.indexOf("control.html") !== -1) {
+    const controlAccess = localStorage.getItem("controlAccess");
+    // Only redirect if not admin or session expired
+    if (
+      controlAccess !== "true" ||
+      !loginTimestamp ||
+      now - loginTimestamp > thirtyMinutes
+    ) {
+      localStorage.setItem("loginState", "false");
+      localStorage.setItem("controlAccess", "false");
+      localStorage.removeItem("loginTimestamp");
+      localStorage.removeItem("adminState");
+      let pageToAccess = "control";
+      localStorage.setItem("pageToAccess", pageToAccess);
+      window.location.href = "index.html";
+      return;
+    }
+  }
+
+  // If not on login page, check login expiration
+  if (
+    window.location.pathname.indexOf("index.html") === -1 &&
+    (loginState !== "true" || !loginTimestamp || now - loginTimestamp > sevenDays)
+  ) {
+    localStorage.setItem("loginState", "false");
+    localStorage.removeItem("loginTimestamp");
+    localStorage.removeItem("adminState");
+    window.location.href = "index.html";
+    return;
+  }
+};
+
+if (window.location.pathname.indexOf("control.html") !== -1) {
+  window.addEventListener("beforeunload", function () {
+    // Only log out admin if on control.html
+    localStorage.setItem("loginState", "false");
+    localStorage.setItem("controlAccess", "false");
+    localStorage.removeItem("loginTimestamp");
+    localStorage.removeItem("adminState");
+  });
+}
+
+// Logout
+function logout() {
+  loginState = "false";
+  localStorage.setItem("loginState", loginState);
+  localStorage.removeItem("loginTimestamp");
+  localStorage.removeItem("adminState");
+  window.location.href = "index.html";
+}
+window.logout = logout;
+
 window.addEventListener('load', adaptTitles);
 window.addEventListener('resize', adaptTitles);
-
-// Call the function to load the header
-loadHeader();
-window.loadHeader = loadHeader;
 export {updateAutoEarnTable, calculateDailyEarnings, correctPassword, generateAllPrices, hashPassword, reveal, loadHeader, cowsAmount, cattleAmount, bullAmount, horseAmount, upgradedAmount, sheepAmount, pigAmount, chickenAmount, salary, cropsAmount};

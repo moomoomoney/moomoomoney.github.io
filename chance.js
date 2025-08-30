@@ -18,7 +18,8 @@ function checkForNewMonth() {
   }
 }
 window.checkForNewMonth = checkForNewMonth;
-// Define random events and their effects
+
+// Random Events
 const randomEvents = [
   {
     name: "Robbery",
@@ -53,7 +54,7 @@ const randomEvents = [
       // Calculate random percentage between 10% and 20%
       const percentage = (Math.random() * (20 - 10) + 10).toFixed(2);
       // Calculate loss and round to 2 decimals
-      const loss = parseFloat((coins * (percentage / 100)).toFixed(2));
+      const loss = parseInt((coins * (percentage / 100)).toFixed(2));
       setCoins(coins - loss);
       localStorage.setItem("loss", loss);
       localStorage.setItem("loss_percentage", percentage);
@@ -191,7 +192,7 @@ const randomEvents = [
     name: "Finding Money",
     description: "You found some money on the ground!",
     effect: () => {
-      const gain = Math.random() < 0.5 ? 5 : 50;
+      const gain = parseInt(Math.random() < 0.5 ? 5 : 50);
       setCoins(getCoins() + gain);
       localStorage.setItem("gain", gain);
 
@@ -215,7 +216,7 @@ const randomEvents = [
     name: "Finding Redeem Coupon",
     description: "You recieved a redeem coupon at the market!",
     effect: () => {
-      const gain = Math.random() < 0.5 ? 15 : 100;
+      const gain = parseInt(Math.random() < 0.5 ? 15 : 100);
       localStorage.setItem("gain", gain);
 
       // Update Tracker Table
@@ -290,7 +291,7 @@ const healthEvents = [
 
 function triggerRandomEvent() {
   const chance = Math.random();
-  if (chance > 0.01) { 
+  if (chance > 0.05) { 
     console.log("No event triggered. Chance was greater than 1%.");
     return;
   }

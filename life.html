@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/x-icon"
+    href="https://tse1-mm.cn.bing.net/th/id/OIP-C.lU4kOMw5lwhBp2-8nT0t0QHaH-?rs=1&pid=ImgDetMain" />
+  <title>World</title>
+</head>
+<div id="header-placeholder"></div>
+
+<h1 class="center">World</h1>
+
+<a href="./home.html">
+  <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
+</a>
+
+<!-- Account Dashboard -->
+<div class="grid-display">
+  <div class="grid-item">
+    <p class="grid-title">Available Coins</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Income</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Today's Losses</p>
+  </div>
+  <div class="grid-item">
+    <p class="grid-title">Auto Earning <a href="autoearn.html"><img src="./images/question.png" alt="auto earn" width="20" height="20" /></a></p>
+  </div>
+  <div class="grid-item">
+    <p class="coins"></p>
+  </div>
+  <div class="grid-item">
+    <p class="income"></p>
+  </div>
+  <div class="grid-item">
+    <p class="losses"></p>
+  </div>
+  <div class="grid-item">
+    <p class="auto"></p>
+  </div>
+</div>
+
+<!--Navbar-->
+<nav class="navbar">
+  <a href="./world.html" aria-label="World">
+    <span class="emoji">🌍</span>
+    <span class="full-text">World</span>
+  </a>
+  <a href="./map.html" aria-label="Map">
+      <span class="emoji">🗺️</span>
+    <span class="full-text">Map</span>
+  </a>
+  <a href="./life.html" class="active" aria-label="Map">
+      <span class="emoji">👨‍🌾</span>
+    <span class="full-text">Life</span>
+  </a>
+  <a href="./job.html" aria-label="Job">
+        <span class="emoji">💼</span>
+    <span class="full-text">Job</span>
+  </a>
+  <a href="./expenses.html" aria-label="Expenses">
+    <span class="emoji">🧾</span>
+    <span class="full-text">Expenses</span>
+  </a>
+  <a href="./purchase.html" aria-label="Purchase">
+    <span class="emoji">🛒</span>
+    <span class="full-text">Purchase</span>
+  </a>
+</nav>
+<br />
+<button class="dropdownTitle" onclick="reveal('about')">
+  <h3 class="heading"><b>About You</b></h3>
+</button>
+<div class="dropdownText" id="about" style="display: none">
+  <div class="two-display">
+    <!-- Title -->
+    <div class="two-item">
+      <h2>Chester Cow</h2>
+      <img src="./images/idiot.png" class="img" alt="Chester Cow" />
+      <p class="center"><i>(Image of you)</i></p>
+    </div>
+
+    <!-- Information -->
+    <div class="two-item">
+      <h2>Information</h2>
+
+      <h3>Personal Information</h3>
+      <div class="info">
+        <b>Age: </b>29 <br />
+        <b>IQ: </b>Average <br />
+        <b>Family: </b>None that you know of <br />
+        <b>Health: </b>100% <br />
+        <b>Medical History: </b>Average <br />
+      </div>
+
+      <h3>Social Information</h3>
+      <div class="info">
+        <b>Town: </b>Pus Village, Nincompoop County <br />
+        <b>Job: </b> Chief Idiot at ICOF <br />
+        <b>Place of Residence: </b>1 Cowlifoolnia Way <br />
+        <b>Living Quarters: </b>Hut <br />
+        <b>Land: </b>Small Farm, Owned <br />
+        <b>Title: </b>Moo <br />
+        <b>Classification: </b>Fool <br />
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<button class="dropdownTitle" onclick="reveal('relationships')">
+  <h3 class="heading"><b>Relationships</b></h3>
+</button>
+<div class="dropdownText" id="relationships" style="display: none">
+    <div class="one-display">
+        <div class="one-item">
+        <h2 class="title" style="margin-top: 0px;">About</h2>
+        Relationships can improve your social life, giving you more influence and opportunities. You can make acquaintances, friends, close friends, and gain family members by boosting your relationships and increasing interactions with people of a lower tier. Being friends with important people can increase your prestige and benefit your career.
+        <br><br>
+        <h2 class="title" style="margin-top: 0px;">Friend Score</h2>
+        A friend score is given to each person you meet, which determines how close you are to them. The higher the score, the closer the relationship. You can increase your friend score by interacting with people, such as talking to them, helping them, or spending time with them. Your friend score will directly affect the relationship tier. You will also have a friend score with other people. <br><br>
+        <h2 class="title" style="margin-top: 0px;">Family Score</h2>
+        A family score is given to each family member, which determines how close you are to them. The higher the score, the closer the relationship. Your family score can be increased through regular contact, meaningful conversations, emotional support, and quality time. Your friend score will directly affect the relationship tier. You will also have a family score with other family members.<br><br>
+        <div style="display: flex; gap: 10px;">
+          <button onclick="document.getElementById('infoModalFriendTiers').style.display='block';">
+            Friend Tiers
+          </button>
+          <button onclick="document.getElementById('infoModalFamilyTiers').style.display='block';">
+            Family Tiers
+          </button>
+        </div>
+          <div id="infoModalFriendTiers" class="modal" style="z-index: 1000;">
+          <div class="modal-content" style="z-index: 1000;  width: 50%;" >
+              <span class="closebtn" onclick="document.getElementById('infoModalFriendTiers').style.display='none';">&times;</span>
+              <h1 class="center">Friend Tiers</h1>
+              <ul>
+                  <li><b>Strangest (0)</b> - You've never met them.</li>
+                  <li><b>Stranger (5)</b> - You've just met them.</li>
+                  <li><b>Strange (10)</b> - You've met them once or twice.</li>
+                  <li><b>Associates (20)</b> - You see each other often, but don't really interact.</li>
+                  <li><b>Acquaintances (40)</b> - You interact often, but don't know each other on a personal level.</li>
+                  <li><b>Friends (60)</b> - You know each other and interact often.</li>
+                  <li><b>Good Friends (80)</b> - You know each other well and trust each other.</li>
+                  <li><b>Close Friends (90)</b> - You know each other very well and confide in each other.</li>
+                  <li><b>Best Friends (100)</b> - You are basically family.</li>
+              </ul>
+          </div>
+          </div>
+            <div id="infoModalFamilyTiers" class="modal" style="z-index: 1000;">
+              <div class="modal-content" style="z-index: 1000;  width: 50%;" >
+                  <span class="closebtn" onclick="document.getElementById('infoModalFamilyTiers').style.display='none';">&times;</span>
+                  <h1 class="center">Family Tiers</h1>
+                  <ul>
+                      <li><b>Estranged (10)</b> - No contact or relationship beyond biological ties</li>
+                      <li><b>Distant (20)</b> - 	Rare contact (holidays/birthdays only), minimal emotional connection</li>
+                      <li><b>Familiar (40)</b> - Occasional contact, surface-level interactions at family events</li>
+                      <li><b>Supportive (60)</b> - Regular check-ins, some emotional sharing during important life events</li>
+                      <li><b>Close (80)</b> - Frequent meaningful contact, trusted with personal matters</li>
+                      <li><b>Devoted (90)</b> - Deep emotional bond, considered immediate family, provides daily support</li>
+                      <li><b>Inseparable (100)</b> - Unconditional love and support, like parent-child or sibling soulmates</li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="earn-display">
+        <div class="grid-tile">
+        <div class="tile-title">Associates</div>
+        <div class="tile-content">
+            <b>From work: </b>Your employees (20), Xi'er (25), Zhangjie (22)<br> 
+        </div>
+        </div>
+        <div class="grid-tile">
+        <div class="tile-title">Acquaintances</div>
+        <div class="tile-content">
+            <b>Neighbors: </b>Authur and Amelia (40) <br> 
+        </div>
+        </div>
+        <div class="grid-tile">
+        <div class="tile-title">Friends</div>
+        <div class="tile-content">
+            You don't have any friends yet. Try making friends!
+        </div>
+        </div>
+        <div class="grid-tile">
+        <div class="tile-title">Good Friends</div>
+        <div class="tile-content">
+            You don't have any good friends yet. Try becoming better friends with your friends!
+        </div>
+        </div>
+  </div>
+      <div class="earn-display">
+        <div class="grid-tile">
+        <div class="tile-title">Close Friends</div>
+        <div class="tile-content">
+            You don't have any close friends yet. Try becoming better friends with your friends!
+        </div>
+        </div>
+        <div class="grid-tile">
+        <div class="tile-title">Romantic Relationships</div>
+        <div class="tile-content">
+            You aren't in a romantic relationship yet. Try dating someone!
+        </div>
+        </div>
+        <div class="grid-tile">
+        <div class="tile-title">Relatives</div>
+        <div class="tile-content">
+            You don't have any known relatives yet. Try exploring your family history.
+        </div>
+        </div>
+        <div class="grid-tile">
+        <div class="tile-title">Family</div>
+        <div class="tile-content">
+            <b>Parents: </b>Unkown <br>
+            <b>Siblings: </b>Unkown <br>
+            <b>Girlfriend/Wife: </b>None<br>
+        </div>
+        </div>
+  </div>
+</div>
+<!-- Wrong Password Punishment -->
+<div id="BigBadBox" style="display: none;"></div>
+<div id="passwordModal2"
+  style="display: none; position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+  <div
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 5px;">
+    <label for="modalPasswordWrong">You've entered the wrong password. Enter the password correctly to unlock this
+      website.</label>
+    <input type="password" id="modalPasswordWrong" />
+    <button onclick="submitPasswordWrong()">Submit</button>
+  </div>
+</div>
+<script type="module" src="script.js"></script>
+</body>
+
+</html>
