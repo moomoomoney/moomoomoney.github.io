@@ -67,7 +67,7 @@
   </a>
 </nav>
 
-  <h2 class="center">Goal: <span class="coins"></span> / 350 <span id="status-icon"></span> </h2>
+  <h2 class="center">Goal: <span class="coins"></span> / 200 <span id="status-icon"></span> </h2>
 
   <button class="dropdownTitle" onclick="reveal('table')">
     <h3 class="heading"><b>Tracking Table</b></h3>
@@ -166,8 +166,8 @@
       });
     });
     const statusIcon = document.getElementById('status-icon');
-    // Check if coins are greater than 350
-    if (coins > 350) {
+    // Check if coins are greater than 200
+    if (coins > 200) {
       statusIcon.textContent = '✔️'; // Checkmark
       statusIcon.style.color = 'green'; // Optional styling
     } else {
