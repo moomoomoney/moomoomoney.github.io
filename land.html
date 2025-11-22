@@ -72,8 +72,10 @@
   </a>
 </nav>
 <h1 class="center">Current Land: Small Farm</h1>
-<p class="center"><b>Value:</b> 600 M³ <br>
-  <b>Water Use:</b> 2 buckets / day
+<p class="center">
+  <b>Value:</b> 650 M³ <br>
+  <b>Water Use:</b> 5 buckets / day <br>
+  <b>Time Use:</b> 2.5 hrs / day
 </p>
 
 <button class="dropdownTitle" onclick="reveal('myland')">
@@ -102,7 +104,7 @@
             <tbody>
               <tr>
                 <td><button class="farmBtn" onclick="infoModal('infoModalCrop1')">(1)</button></td>
-                <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">2</button></td>
+                <td><button class="farmBtn" onclick="infoModal('infoModalWheat')">(2)</button></td>
                 <td><button class="farmBtn" onclick="infoModal('infoModalEmptyPlot')">3</button></td>
               </tr>
               <tr>
@@ -164,11 +166,26 @@
     <span class="closebtn" onclick="document.getElementById('infoModalCrop1').style.display='none';">&times;</span>
     <h1 class="center">Carrot</h1>
     <p class="center">
-      <b>Dies: </b>November 17<br>
+      <b>Dies: </b>December 17<br>
       <b>Condition: </b> 100%<br>
       <b>Water: </b>2/2 buckets<br>
       <b>Time: </b>0.5 hr / day<br>
       <b>Earns: </b> 2 M³ / day<br><br>
+    </p>
+  </div>
+</div>
+
+<!-- Info Modal Wheat -->
+<div id="infoModalWheat" class="modal" style=" z-index: 900;">
+  <div class="modal-content"style=" width: 30%; z-index: 1000;">
+    <span class="closebtn" onclick="document.getElementById('infoModalWheat').style.display='none';">&times;</span>
+    <h1 class="center">Wheat</h1>
+    <p class="center">
+      <b>Dies: </b>December 21<br>
+      <b>Condition: </b> 100%<br>
+      <b>Water: </b>3/3 buckets<br>
+      <b>Time: </b>2 hr / day<br>
+      <b>Earns: </b> 10 M³ / day<br><br>
     </p>
   </div>
 </div>
