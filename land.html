@@ -72,8 +72,8 @@
   </a>
 </nav>
 <h1 class="center">Current Land: Small Farm</h1>
-<p class="center"><b>Value:</b> 800 M³ <br>
-  <b>Water Use:</b> 3 buckets / day
+<p class="center"><b>Value:</b> 600 M³ <br>
+  <b>Water Use:</b> 2 buckets / day
 </p>
 
 <button class="dropdownTitle" onclick="reveal('myland')">
@@ -86,7 +86,9 @@
     <div class="one-item">
         <div class="map-container">
           <!-- Grass background -->
-          <img src="images/grass.jpg" alt="grass" class="map-grass" />
+          <button class="map-grass-btn" onclick="infoModal('infoModalGrass')">
+            <img src="images/grass.jpg" alt="grass" class="map-grass" />
+          </button>
           <!-- Hut -->
           <button class="map-btn hut-btn" onclick="infoModal('infoModalHut')">
             <img src="images/hut.jpg" alt="hut" width="400px"/>
@@ -125,7 +127,7 @@
   <div class="modal-content" style="z-index: 1000;  width: 50%;" >
     <span class="closebtn" onclick="document.getElementById('infoModalHut').style.display='none';">&times;</span>
     <h1 class="center">Your Hut</h1>
-    <!-- <div class="alert">
+    <!-- <div class="warningAlert">
       <strong>Warning:</strong> Your house has not been occupied in a long time, and has fallen into a state of disrepair.Your house is full of cobwebs. Cleaning will cost you <b>30 M³</b> and this cost will only increase the longer you wait.
     </div> -->
     <br>
@@ -149,7 +151,7 @@
   <div class="modal-content"style=" width: 30%; z-index: 1000;">
     <span class="closebtn" onclick="document.getElementById('infoModalEmptyPlot').style.display='none';">&times;</span>
     <h1 class="center">This Plot of Land</h1>
-    <!-- <div class="alert">
+    <!-- <div class="warningAlert">
       <strong>Warning:</strong> Your farmalnds have not been used in a long time, and is overgrown with weeds. Weeding and restoring will cost you <b>60 M³</b> and this cost will only increase the longer you wait.
      </div> -->
     <p class="center">Your land is empty! Buy plants at the <a href="market.html">Market</a>!</p>
@@ -165,7 +167,8 @@
       <b>Dies: </b>November 17<br>
       <b>Condition: </b> 100%<br>
       <b>Water: </b>2/2 buckets<br>
-      <b>Earns: </b> 1 M³ / day (Sold to StateFarm)<br><br>
+      <b>Time: </b>0.5 hr / day<br>
+      <b>Earns: </b> 2 M³ / day<br><br>
     </p>
   </div>
 </div>
@@ -175,9 +178,9 @@
   <div class="modal-content"style=" width: 70%; z-index: 1000;">
     <span class="closebtn" onclick="document.getElementById('infoModalBarn').style.display='none';">&times;</span>
     <h1 class="center">Your Barn</h1>
-    <!-- <div class="alert">
+    <div class="warningAlert">
     <strong>Warning:</strong> Your barn has not been used in a long time, and has fallen into a state of disrepair. Your barn is full of cobwebs and certain repairs are needed. Cleaning and fixing will cost you <b>40 M³</b> and this cost will only increase the longer you wait.
-   </div> -->
+   </div>
     <p class="center">You don't have any animals! Your barn is 0/3 full.
 <div class="three-display">
   <div class="grid-tile">
@@ -210,9 +213,9 @@
   <div class="modal-content"style=" width: 50%; z-index: 1000;">
     <span class="closebtn" onclick="document.getElementById('infoModalGrass').style.display='none';">&times;</span>
     <h1 class="center">Grassy Field</h1>
-    <!-- <div class="alert">
+    <div class="warningAlert">
       <strong>Warning:</strong> Your grassy field has not been used in a long time, and is overgrown with weeds. Weeding will cost you <b>40 M³</b> and this cost will only increase the longer you wait.
-     </div> -->
+     </div>
     <p class="center">A piece of grassy field for animals to roam and eat. Grass enough for two cows/horses. Buy better grass at the <a href="market.html">Market</a>!</p>
   </div>
 </div>
