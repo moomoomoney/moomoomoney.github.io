@@ -17,15 +17,239 @@
   <a href="./home.html">
     <img src="./images/cow.jpg" alt="logo" width="150" height="150" class="img" />
   </a>
-  <br> 
+  <br>
 
+  <!-- Moo Moo Festival! -->
+  <div class="dropdown">
+    <button class="dropdownTitle" onclick="reveal('festival')">
+      <h2 class="center">Moo Moo Festival!</h2>
+    </button>
+    <div class="dropdownText" id="festival"
+      style="display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 200px;">
+
+      <!-- Total Earned Display -->
+      <div class="one-display">
+        <div class="one-item">
+          <h2 class="title" style="margin-top: 0px; text-align: center;">Total Earnings</h2>
+          <div style="display: flex; gap: 25rem; font-size: 24px;">
+            <span><b>M³ Won: </b><span id="festivalM3Earned"></span></span>
+            <span><b>Redeem Coupon Won: </b><span id="festivalRCEarned"></span></span>
+            <span><b>Prestige Won: </b><span id="festivalPEarned"></span></span>
+          </div>
+          <br>
+          <div style="display: flex; gap: 10px;">
+            <button class="changeBtn" onclick="applyFestivalEarnings()">
+              Apply Earnings
+            </button>
+            <button class="changeBtn" onclick="clearFestivalEarnings()">
+              Clear Earnings
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Festival Options -->
+      <div class="earn-display">
+        <div class="grid-tile">
+          <div class="tile-title">Carnival Game</div>
+          <div class="tile-content">
+            <ol>
+              <li>10 M³</li>
+              <li>5 M³</li>
+              <li>10 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t1a" />/ <input class="spinInput" type="number" id="t1b" />
+            <button class="changeBtn" onclick="spin('t1a', 't1b', 3, ['10M','5M','10RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Pie Contest</div>
+          <div class="tile-content">
+            <ol>
+              <li>30 M³</li>
+              <li>15 M³</li>
+              <li>15 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t2a" />/ <input class="spinInput" type="number" id="t2b" />
+            <button class="changeBtn" onclick="spin('t2a', 't2b', 3, ['30M','15M','15RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Guessing Game</div>
+          <div class="tile-content">
+            <ol>
+              <li>20 M³</li>
+              <li>10 M³</li>
+              <li>15 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t3a" />/ <input class="spinInput" type="number" id="t3b" />
+            <button class="changeBtn" onclick="spin('t3a', 't3b', 3, ['20M','10M','15RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Trivia Game</div>
+          <div class="tile-content">
+            <ol>
+              <li>20 M³</li>
+              <li>10 M³</li>
+              <li>15 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t4a" />/ <input class="spinInput" type="number" id="t4b" />
+            <button class="changeBtn" onclick="spin('t4a', 't4b', 3, ['20M','10M','15RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="earn-display">
+        <div class="grid-tile">
+          <div class="tile-title">Art Contest</div>
+          <div class="tile-content">
+            <ol>
+              <li>40 M³</li>
+              <li>15 M³</li>
+              <li>20 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t5a" />/ <input class="spinInput" type="number" id="t5b" />
+            <button class="changeBtn" onclick="spin('t5a', 't5b', 3, ['40M','15M','20RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Beauty Competition</div>
+          <div class="tile-content">
+            <ol>
+              <li>40 M³</li>
+              <li>15 M³</li>
+              <li>20 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t6a" />/ <input class="spinInput" type="number" id="t6b" />
+            <button class="changeBtn" onclick="spin('t6a', 't6b', 3, ['40M','15M','20RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Archery Contest</div>
+          <div class="tile-content">
+            <ol>
+              <li>50 M³</li>
+              <li>20 M³</li>
+              <li>20 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t7a" />/ <input class="spinInput" type="number" id="t7b" />
+            <button class="changeBtn" onclick="spin('t7a', 't7b', 3, ['50M','20M','20RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Builders' Competition</div>
+          <div class="tile-content">
+            <ol>
+              <li>20 Prestige</li>
+              <li>40 M³</li>
+              <li>30 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t8a" />/ <input class="spinInput" type="number" id="t8b" />
+            <button class="changeBtn" onclick="spin('t8a', 't8b', 3, ['20P','40M','30RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div class="earn-display">
+        <div class="grid-tile">
+          <div class="tile-title">Idiocy Competition</div>
+          <div class="tile-content">
+            <ol>
+              <li>40 M³</li>
+              <li>15 M³</li>
+              <li>20 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t9a" />/ <input class="spinInput" type="number" id="t9b" />
+            <button class="changeBtn" onclick="spin('t9a', 't9b', 3, ['40M','15M','20RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Poetry Event</div>
+          <div class="tile-content">
+            <ol>
+              <li>40 M³</li>
+              <li>15 M³</li>
+              <li>20 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t10a" />/ <input class="spinInput" type="number" id="t10b" />
+            <button class="changeBtn" onclick="spin('t10a', 't10b', 3, ['40M','15M','20RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Farmer's Raffle</div>
+          <div class="tile-content">
+            <ol>
+              <li>50 M³</li>
+              <li>25 M³</li>
+              <li>50 Redeem Coupons</li>
+              <li>10 M³</li>
+              <li>25 Redeem Coupons</li>
+              <li>5 M³</li>
+              <li>10 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t11a" />/ <input class="spinInput" type="number" id="t11b" />
+            <button class="changeBtn" onclick="spin('t11a', 't11b', 3, ['50M','25M','50RC','10M','25RC','5M','10RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+        <div class="grid-tile">
+          <div class="tile-title">Poor People's Raffle</div>
+          <div class="tile-content">
+            <ol>
+              <li>10 Prestige</li>
+              <li>50 M³</li>
+              <li>25 M³</li>
+              <li>50 Redeem Coupons</li>
+              <li>10 M³</li>
+              <li>30 Redeem Coupons</li>
+              <li>15 Redeem Coupons</li>
+            </ol>
+            <input class="spinInput" type="number" id="t12a" />/ <input class="spinInput" type="number" id="t12b" />
+            <button class="changeBtn" onclick="spin('t12a', 't12b', 3, ['10P','50M','25M','50RC','10M','30RC','15RC'])">
+              Spin!
+            </button>
+          </div>
+        </div>
+      </div>
+      <br />
+
+    </div>
+  </div>
+  <br>
+  <br>
   <!-- Train Generation -->
   <div class="dropdown">
     <button class="dropdownTitle" onclick="reveal('trainGeneration')">
       <h2 class="center">Train Generation</h2>
     </button>
-    <div class="dropdownText" id="trainGeneration" style="display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 200px;">
-      <form onsubmit="generateTrain(event)" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+    <div class="dropdownText" id="trainGeneration"
+      style="display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; min-height: 200px;">
+      <form onsubmit="generateTrain(event)"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
         <p>Exclude Trains:</p>
         <div style="display: flex; align-items: center; gap: 5px;">
           <input type="checkbox" id="express" name="express" value="express">
@@ -42,32 +266,33 @@
       <button onclick="generateStation()">Generate Station</button>
     </div>
 
-    </div>
+  </div>
   </div>
 
 
   <!-- Scripts -->
   <script type="module" src="script.js"></script>
   <script type="module" src="control.js"></script>
+  <script type="module" src="festival.js"></script>
 
   <script>
     let lastTrain = null; // Store the last generated train
 
     function generateTrain(event) {
       event.preventDefault();
-  
+
       const excludedTrains = {
         express: document.getElementById("express").checked,
         intercity: document.getElementById("intercity").checked,
       };
-  
+
       let train;
       let validTrain = false;
-  
+
       while (!validTrain) {
         // Generate a random number between 0 and 99
         const random = Math.floor(Math.random() * 100);
-  
+
         // Determine train type based on weighted probabilities
         if (random < 40) {
           train = Math.random() < 0.5 ? 1 : 2; // 40% chance for Local (1 or 2)
@@ -76,7 +301,7 @@
         } else {
           train = Math.random() < 0.5 ? 7 : 8; // 15% chance for Intercity (7 or 8)
         }
-  
+
         // Check if the train is excluded or is the same as the last train
         if (
           (train === 3 || train === 4) && excludedTrains.express ||
@@ -85,12 +310,12 @@
         ) {
           continue; // Skip this iteration and regenerate
         }
-  
+
         validTrain = true; // Mark as valid if no exclusion matches and it's not the same as the last train
       }
-  
+
       lastTrain = train; // Store the current train as the last train
-  
+
       // Display the result
       if (train === 1) {
         alert("LOCAL towards COUNTERCLOCKWISE");
@@ -116,4 +341,5 @@
   </script>
 
 </body>
+
 </html>
