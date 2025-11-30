@@ -118,19 +118,19 @@
     const statusIcon = document.getElementById('status-icon');
     // Check if coins are greater than 200
     if (coins > 200) {
-      statusIcon.textContent = '✔️'; // Checkmark
-      statusIcon.style.color = 'green'; // Optional styling
+      statusIcon.textContent = '✔️';
+      statusIcon.style.color = 'green'; 
     } else {
-      statusIcon.textContent = '❌'; // X mark
-      statusIcon.style.color = 'red'; // Optional styling
+      statusIcon.textContent = '❌'; 
+      statusIcon.style.color = 'red'; 
     }
 
-    // Function to update the tracker table with data from localStorage
+    // Update tracker table
     function updateTracker() {
       const trackerTable = document.getElementById('tracker-table-body');
       const coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
 
-      trackerTable.innerHTML = ''; // Clear existing rows
+      trackerTable.innerHTML = '';
 
       coinsData.forEach(entry => {
         const row = document.createElement('tr');
@@ -143,7 +143,6 @@
       });
     }
 
-    // Call the function to populate the table on page load
     updateTracker();
   </script>
 </body>

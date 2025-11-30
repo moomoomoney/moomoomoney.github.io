@@ -256,7 +256,7 @@ function updateAutoEarnTable() {
   if (totalEarnedAmount) {
     totalEarnedAmount.innerHTML = totalEarned + totalAutoEarn;
   }
-  console.log(`tracker table updated`);
+  console.log(`autoearn tracker table updated`);
 }
 
 // Generate description for whatAutoEarn
@@ -361,7 +361,7 @@ function updateAutoEarnDashboard() {
 }
 
 // Store the already hashed password
-let correctPassword = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+let correctPassword = "3258ca0784cae2e33e086306589ecaa8e36920e38c10df23d48b16d8924f1256";
 
 // Function to hash entered password
 async function hashPassword(password) {

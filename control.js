@@ -58,6 +58,7 @@ function updateDashboard() {
 export function addIncome(amount) {
   income += amount;
   localStorage.setItem('income', income);
+  console.log(`Income after addition: ${income}`);
   updateDashboard();
 }
 
@@ -248,6 +249,15 @@ function addPrestige() {
   document.getElementsByClassName("addReason")[2].value = "";
 }
 
+export function increasePrestige(amount) {
+  const n = parseInt(amount, 10) || 0;
+  if (n === 0) return;
+  prestige += n;
+  localStorage.setItem('prestige', prestige);
+  updatePrestigeDisplay();
+  updateDashboard();
+}
+
 function clearPrestige() {
   prestige = 0;
   localStorage.setItem('prestige', prestige);
@@ -360,4 +370,4 @@ export function setCoins(value) {
   localStorage.setItem('coins', coins); 
 }
 
-export { updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, prestige, losses, totalEarned, passwordCorrect };
+export { updateDashboard, wrongPassword, checkWrongPassword, submitPasswordWrong, hashPassword, coins, openModal, closeModal, isWrongPassword, income, prestige, losses, totalEarned, passwordCorrect, updateCouponTracker, updatePrestigeDisplay, addPrestige };

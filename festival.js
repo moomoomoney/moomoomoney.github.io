@@ -1,4 +1,4 @@
-import { coins, income, losses, prestige, getCoins, setCoins, wrongPassword, checkWrongPassword, passwordCorrect, submitPasswordWrong, hashPassword, openModal, closeModal, isWrongPassword } from './control.js';
+import { getCoins, setCoins, addIncome, increasePrestige, updateDashboard, updateCouponTracker, updatePrestigeDisplay } from './control.js';
 // Save in local storage
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.spinInput').forEach(input => {
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+const confettiAudio = document.getElementById('confettiAudio');
 // Track festival winnings
 let festivalM3 = parseInt(localStorage.getItem('festivalM3'), 10);
 if (isNaN(festivalM3)) {
@@ -47,23 +48,26 @@ displayFestivalWinnings();
 // Apply Earnings
 function applyFestivalEarnings() {
     if (festivalM3 > 0) {
-        coins += festivalM3;
-        setCoins(festivalM3);
+        var myCoins = getCoins();
+        myCoins += festivalM3;
+        setCoins(myCoins);
         addIncome(festivalM3);
         totalEarned += festivalM3;
         localStorage.setItem('totalEarned', totalEarned);
-          
+
         let coinsData = JSON.parse(localStorage.getItem('coinsData')) || [];
         const date = new Date();
         coinsData.push({
-        date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
-        amount: festivalM3,
-        reason: "Moo Moo Festival Winnings"
+            date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+            amount: festivalM3,
+            reason: "Moo Moo Festival Winnings"
         });
         localStorage.setItem('coinsData', JSON.stringify(coinsData));
         localStorage.setItem('coins', coins);
-        updateDashboard();
-        updateTracker();
+
+        festivalM3 = 0;
+        localStorage.setItem('festivalM3', festivalM3);
+        displayFestivalWinnings();
     }
     if (festivalRC > 0) {
         const couponsData = JSON.parse(localStorage.getItem('couponsData')) || [];
@@ -75,14 +79,23 @@ function applyFestivalEarnings() {
         };
         couponsData.push(newCoupon);
         localStorage.setItem('couponsData', JSON.stringify(couponsData));
-        updateCouponTracker();
+
+        festivalRC = 0;
+        localStorage.setItem('festivalRC', festivalRC);
+        displayFestivalWinnings();
     }
     if (festivalP > 0) {
-        prestige += festivalP;
-        localStorage.setItem('prestige', prestige);
-        updatePrestigeDisplay();
-        updateDashboard();
+        let prest = parseInt(localStorage.getItem('prestige') || '0');
+        prest += festivalP;
+        localStorage.setItem('prestige', prest);
+
+        festivalP = 0;
+        localStorage.setItem('festivalP', festivalP);
+        displayFestivalWinnings();
     }
+    launchConfetti();
+    confettiAudio.play();
+    alert("Festival earnings applied!");
 }
 window.applyFestivalEarnings = applyFestivalEarnings;
 
@@ -106,12 +119,12 @@ window.clearFestivalEarnings = clearFestivalEarnings;
 function spin(inputA, inputB, spinTimes, prizes) {
     const inputAElement = document.getElementById(inputA);
     const inputBElement = document.getElementById(inputB);
-    
+
     if (!inputAElement || !inputBElement) {
         alert('Input elements not found!');
         return;
     }
-    
+
     const inputAValue = inputAElement.value;
     const inputBValue = inputBElement.value;
     if (inputAValue.trim() === '' || inputBValue.trim() === '') {
@@ -133,7 +146,7 @@ function spin(inputA, inputB, spinTimes, prizes) {
         alert('Second value cannot be zero.');
         return;
     }
-    
+
     let chance = numA / numB;
     if (chance < 0 || chance > 1) {
         alert('Please enter a fraction between 0 and 1.');
@@ -146,12 +159,14 @@ function spin(inputA, inputB, spinTimes, prizes) {
 
     let won = false;
     let place;
-    
+
     for (let i = 0; i < spins; i++) {
         const currentChance = numA / (numB - i);
         const effectiveChance = Math.max(0, Math.min(1, currentChance));
-        
+
         if (Math.random() < effectiveChance) {
+            launchConfetti();
+            confettiAudio.play();
             const pos = i + 1;
             if (pos % 10 === 1) {
                 place = "st";
@@ -162,7 +177,6 @@ function spin(inputA, inputB, spinTimes, prizes) {
             } else {
                 place = "th";
             }
-
             alert(`Congratulations! You came in ${pos}${place} and won ${prizes[i]}!`);
             won = true;
             // Add prize to count
@@ -191,3 +205,49 @@ function spin(inputA, inputB, spinTimes, prizes) {
 }
 
 window.spin = spin;
+
+// Confetti animation
+function launchConfetti() {
+  const count = 120;
+  const palette = ['#ef4444','#f97316','#f59e0b','#10b981','#3b82f6','#8b5cf6','#ec4899'];
+
+  let container = document.getElementById('confetti-container');
+  const docW = document.documentElement.clientWidth;
+  const docH = window.innerHeight;
+
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    Object.assign(el.style, {
+      position: 'fixed',
+      width: (6 + Math.random() * 10) + 'px',
+      height: (10 + Math.random() * 14) + 'px',
+      left: (Math.random() * docW) + 'px',
+      top: (-20 - Math.random() * 120) + 'px',
+      background: palette[Math.floor(Math.random() * palette.length)],
+      opacity: '1',
+      pointerEvents: 'none',
+      transform: `rotate(${Math.random() * 360}deg)`,
+      zIndex: '99999',
+      borderRadius: '2px',
+      willChange: 'transform, opacity'
+    });
+    container.appendChild(el);
+
+    const duration = 2500 + Math.random() * 2500;
+    const dx = (Math.random() - 0.5) * (docW * 0.6);
+    const dy = docH + 200 + Math.random() * 300;
+    const rot = (Math.random() > 0.5 ? 1 : -1) * (360 + Math.random() * 720);
+
+    requestAnimationFrame(() => {
+      el.style.transition = `transform ${duration}ms cubic-bezier(.2,.7,.3,1), opacity ${duration}ms linear`;
+      el.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg)`;
+      el.style.opacity = '0';
+    });
+
+    setTimeout(() => {
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    }, duration + 600);
+  }
+}
+window.launchConfetti = launchConfetti;
